@@ -1,0 +1,47 @@
+[
+  {
+    "name": "character-bald",
+    "prompt": "man, bald, no shirt, black pants, muscular, face, angry",
+    "img": "character"
+  },
+  {
+    "name": "character-bee",
+    "prompt": "bee, hive, insect, wings, yellow and black stripes",
+    "img": "bee"
+  },
+  {
+    "name": "character-cat",
+    "prompt": "cat, cute, fluffy, whiskers, face",
+    "img": "cat"
+  },
+  {
+    "name": "character-firefighter",
+    "prompt": "firefighter, firefighter suit, helmet, red with yellow stripes, face",
+    "img": "character"
+  },
+  {
+    "name": "character-flame",
+    "prompt": "flame, burning, face, angry",
+    "img": "flame"
+  },
+  {
+    "name": "character-mumbuquinha",
+    "prompt": "boy, dark skin, afro hair, blue shirt, red pants, blue shoes, face, happy",
+    "img": "character"
+  },
+  {
+    "name": "character-rabbit",
+    "prompt": "rabbit, white fur, long ears, cute, face",
+    "img": "rabbit"
+  },
+  {
+    "name": "scene-fire",
+    "prompt": "fire, flames, heat, burning",
+    "img": "fire"
+  },
+  {
+    "name": "scene-forest",
+    "prompt": "tree, flower, grass, ground",
+    "img": "forest"
+  }
+]

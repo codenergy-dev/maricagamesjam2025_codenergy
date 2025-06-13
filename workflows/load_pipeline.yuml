@@ -1,0 +1,11 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+
+// stabilityai/stable-diffusion-xl-base-1.0
+// [load_pipeline:1|type=txt2img|model=stabilityai/stable-diffusion-xl-base-1.0|controlnet=scribble|scheduler=dpmpp-2m-karras|device=cuda|torch_dtype=float16]
+
+// cagliostrolab/animagine-xl-4.0
+[load_pipeline:1|type=txt2img|model=cagliostrolab/animagine-xl-4.0|controlnet=scribble|scheduler=euler-a|device=cuda|torch_dtype=float16]
+
+[load_pipeline:2|type=img2img|model=Anomaly-Games-Inc/aziibpixelmix-json|controlnet=scribble|clip_skip=2|scheduler=dpmpp-2m-karras|device=cuda|torch_dtype=float16]

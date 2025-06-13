@@ -1,0 +1,21 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+
+// stabilityai/stable-diffusion-xl-base-1.0
+// [prompt_pipeline:$NAME1|prompt=$PROMPT, simple background, highly detailed, 4k, uhd]
+// [auto_pipeline:$NAME1|width=1024|height=1024|count=1|num_inference_steps=20|guidance_scale=7|controlnet_conditioning_scale=0.7|controlnet=output/scribble-$IMG.png]
+
+// cagliostrolab/animagine-xl-4.0
+[prompt_pipeline:$NAME1|prompt=$PROMPT, simple background, masterpiece, high score, great score, absurdres|negative_prompt=lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, fewer digits, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, blurry]
+[auto_pipeline:$NAME1|width=1024|height=1024|count=4|num_inference_steps=28|guidance_scale=5|controlnet_conditioning_scale=0.7|controlnet=output/scribble-$IMG.png]
+
+[prompt_pipeline:$NAME1]->[auto_pipeline:$NAME1]
+[load_pipeline:1]->[auto_pipeline:$NAME1]
+
+[prompt_pipeline:$NAME2|prompt=pixel art, pixel world, $PROMPT|negative_prompt=low_quality, bad_quality]
+[auto_pipeline:$NAME2|width=1024|height=1024|count=4|num_inference_steps=20|guidance_scale=7|strength=0.7|controlnet_conditioning_scale=1|controlnet=output/scribble-$IMG.png]
+
+[auto_pipeline:$NAME1]->[auto_pipeline:$NAME2]
+[prompt_pipeline:$NAME2]->[auto_pipeline:$NAME2]
+[load_pipeline:2]->[auto_pipeline:$NAME2]

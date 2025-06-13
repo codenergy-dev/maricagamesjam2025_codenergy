@@ -1,0 +1,13 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+
+[raw_image_pipeline:$NAME|image=img/$IMG.jpeg]
+[resize_pipeline:$NAME|width=2048|height=2048]
+[crop_pipeline:$NAME|width=1024|height=1024]
+[copy_image_pipeline:$NAME|name=scribble-$IMG.png]
+
+[raw_image_pipeline:$NAME]->[resize_pipeline:$NAME]
+[resize_pipeline:$NAME]->[crop_pipeline:$NAME]
+[crop_pipeline:$NAME]->[invert_color_pipeline:$NAME]
+[invert_color_pipeline:$NAME]->[copy_image_pipeline:$NAME]
