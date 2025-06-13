@@ -9,7 +9,7 @@ radius = 64.0312
 [sub_resource type="CircleShape2D" id="CircleShape2D_6nmc3"]
 radius = 64.1249
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Pet" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_8wqpi")
 
