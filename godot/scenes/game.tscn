@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dit1a017pswy0"]
+
+[ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bsks3p5vrlvd8" path="res://scenes/fire.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(700, 124)
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_yqjtg")]
+position = Vector2(-85, -1)
+
+[node name="Fire" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(172, 0)
+
+[node name="Bee" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(488, -173)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(201, 125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lbhrr")
