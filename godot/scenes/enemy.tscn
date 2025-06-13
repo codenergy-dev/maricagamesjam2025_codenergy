@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkqqwut40t2b3"]
+
+[ext_resource type="Script" uid="uid://bjaqouugol2m" path="res://scripts/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bsaus5f18qvh1" path="res://icon.svg" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://ctr5wvslt7dxu" path="res://scripts/thrower.gd" id="2_md0e3"]
+[ext_resource type="PackedScene" uid="uid://cop2qhl2u7s1d" path="res://scenes/projectile.tscn" id="3_4ra3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 64.0078
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_5uy6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_md0e3")
+
+[node name="Thrower" type="Node2D" parent="."]
+script = ExtResource("2_md0e3")
+projectile_scene = ExtResource("3_4ra3w")
+launch_interval = 60.0
+
+[node name="TrajectoryLine" type="Line2D" parent="Thrower"]
+
+[node name="LaunchPoint" type="Node2D" parent="Thrower"]
