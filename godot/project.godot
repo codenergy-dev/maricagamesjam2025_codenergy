@@ -14,6 +14,11 @@ config/name="mumbuquinha"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+knockback=""
+player=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
