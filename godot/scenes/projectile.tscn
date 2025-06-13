@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cop2qhl2u7s1d"]
+
+[ext_resource type="Texture2D" uid="uid://bsaus5f18qvh1" path="res://icon.svg" id="1_c8fcr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3m7n"]
+radius = 64.0078
+
+[node name="Projectile" type="RigidBody2D" groups=["knockback"]]
+collision_layer = 32
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c8fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q3m7n")
