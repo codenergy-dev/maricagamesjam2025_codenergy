@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal action_taken(action_details)
+
 @onready var knockback = $Knockback
 @onready var flash = $Flash
 
@@ -14,13 +16,17 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if knockback.is_zero() and Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		action_taken.emit({"type": "jump"})
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if knockback.is_zero() and direction:
 		velocity.x = direction * SPEED
+		action_taken.emit({"type": "move", "direction": direction})
 	elif knockback.is_zero():
+		if velocity.x != 0:
+			action_taken.emit({"type": "move", "direction": 0})
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	velocity += knockback.knockback
