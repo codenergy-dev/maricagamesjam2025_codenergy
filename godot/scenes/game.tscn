@@ -1,34 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://dit1a017pswy0"]
+[gd_scene load_steps=7 format=3 uid="uid://dit1a017pswy0"]
 
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bsks3p5vrlvd8" path="res://scenes/fire.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bkqqwut40t2b3" path="res://scenes/enemy.tscn" id="5_iywne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(1303, 124)
+size = Vector2(3594, 124)
 
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(-510, -1)
+position = Vector2(-510, 0)
 
 [node name="Fire" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(-163, 0)
-
-[node name="Fire2" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(155, 0)
-
-[node name="Bee" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(510, -173)
+position = Vector2(-317, 0)
 
 [node name="Pet" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-154, 0)
+
+[node name="Fire2" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(1, 0)
+
+[node name="Bee" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(247, -173)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-224, 125)
+position = Vector2(0, 125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(226.5, 0)
 shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("5_iywne")]
+position = Vector2(511, 0)
+target_node = NodePath("../Player")
