@@ -20,6 +20,13 @@ config/icon="res://icon.svg"
 knockback=""
 player=""
 
+[layer_names]
+
+2d_physics/layer_1="scene"
+2d_physics/layer_2="player"
+2d_physics/layer_3="follow_player"
+2d_physics/layer_4="tackle"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
