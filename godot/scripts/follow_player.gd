@@ -15,6 +15,7 @@ var is_performing_action = false
 # Get gravity from project settings
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var timer = $Timer
 
 func _ready():
@@ -42,6 +43,8 @@ func _physics_process(delta):
 	# This ensures the cat stops when the queued action is "stop".
 	if velocity.x != 0 and get_action_type() != "move":
 		velocity.x = move_toward(velocity.x, 0, speed)
+	elif velocity == Vector2.ZERO and is_on_floor():
+		animated_sprite.play("idle")
 
 	move_and_slide()
 
@@ -75,10 +78,14 @@ func _execute_next_action():
 	if next_action.type == "jump":
 		if is_on_floor():
 			velocity.y = jump_velocity
+			animated_sprite.play("jump")
 	elif next_action.type == "move":
 		var direction = next_action.direction
 		if direction != 0:
 			velocity.x = direction * speed
+			animated_sprite.flip_h = direction > 0
+			if is_on_floor():
+				animated_sprite.play("walk")
 		else:
 			# This handles the "stop" action.
 			velocity.x = 0
