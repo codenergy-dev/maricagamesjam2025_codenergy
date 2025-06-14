@@ -32,14 +32,16 @@ func _physics_process(delta: float) -> void:
 	velocity += knockback.knockback
 	
 	move_and_slide()
-	
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
+
+func _on_knockback_body_entered(body: Node2D) -> void:
+	if body.is_in_group("knockback"):
+		# Não temos mais a "normal da colisão" de move_and_slide.
+		# A melhor maneira de obter a direção do knockback é a partir da direção do projétil
+		# ou da posição relativa entre o player e o projétil.
+
+		# Opção Robusta: Calcular a normal baseada na posição
+		var knockback_direction = (global_position - body.global_position).normalized()
 		
-		# Se colidimos com algo do grupo "knockback"...
-		if collider and collider.is_in_group("knockback"):
-			# ...dizemos ao nosso componente para aplicar um novo knockback.
-			# O Player não sabe COMO o knockback funciona, ele apenas o aciona.
-			knockback.apply_knockback(collision.get_normal())
-			flash.start_flash()
+		# Dizemos ao nosso componente para aplicar o knockback.
+		knockback.apply_knockback(knockback_direction)
+		flash.start_flash()
