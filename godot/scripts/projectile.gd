@@ -21,6 +21,13 @@ func _ready():
 
 
 func _on_body_entered(body):
+	if body.is_in_group("player"):
+		# AQUI ESTÁ A LÓGICA PRINCIPAL
+		# Nós removemos a camada do 'player' da nossa máscara de colisão.
+		# A camada do player é a número 2. O valor dela em bits é 2.
+		# A operação "& ~" significa "desligue o bit correspondente".
+		collision_mask &= ~2
+		collision_layer = 128
 	# Verifica se o corpo com o qual colidimos está no grupo "ground".
 	if body.is_in_group("ground"):
 		
@@ -38,8 +45,3 @@ func _on_body_entered(body):
 			if physics_material_override:
 				print("Sem mais quiques. O projétil vai parar.")
 				physics_material_override.bounce = 0
-	else:
-		# Se colidir com qualquer outra coisa (um inimigo, uma parede, etc.),
-		# o projétil é destruído imediatamente.
-		print("Projétil atingiu um corpo que não é o chão:", body.name)
-		queue_free()
