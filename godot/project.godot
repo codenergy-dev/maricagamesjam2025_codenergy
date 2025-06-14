@@ -33,6 +33,8 @@ player=""
 2d_physics/layer_4="tackle"
 2d_physics/layer_5="enemy"
 2d_physics/layer_6="projectile"
+2d_physics/layer_7="collectable"
+2d_physics/layer_8="ghost"
 
 [rendering]
 
