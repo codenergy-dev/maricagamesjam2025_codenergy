@@ -66,6 +66,7 @@ shape = SubResource("CircleShape2D_md0e3")
 script = ExtResource("2_md0e3")
 projectile_scene = ExtResource("3_4ra3w")
 launch_interval = 5.0
+trajectory_point_count = 0
 
 [node name="TrajectoryLine" type="Line2D" parent="Thrower"]
 
