@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_knockback_body_entered(body: Node2D) -> void:
-	if body.is_in_group("knockback"):
+	if body.is_in_group("hitbox"):
 		# Não temos mais a "normal da colisão" de move_and_slide.
 		# A melhor maneira de obter a direção do knockback é a partir da direção do projétil
 		# ou da posição relativa entre o player e o projétil.
@@ -47,7 +47,7 @@ func _on_knockback_body_entered(body: Node2D) -> void:
 		flash.start_flash()
 
 func _on_knockback_area_entered(area: Area2D) -> void:
-	if area.is_in_group("knockback"):
+	if area.is_in_group("hitbox"):
 		# Não temos mais a "normal da colisão" de move_and_slide.
 		# A melhor maneira de obter a direção do knockback é a partir da direção do projétil
 		# ou da posição relativa entre o player e o projétil.

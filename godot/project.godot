@@ -22,8 +22,8 @@ window/size/viewport_height=1080
 
 [global_group]
 
-knockback=""
 player=""
+hitbox=""
 
 [layer_names]
 
