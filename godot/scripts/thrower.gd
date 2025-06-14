@@ -1,5 +1,7 @@
 extends Node2D
 
+signal throw()
+
 @export var projectile_scene: PackedScene
 @export var target_node: Node2D
 
@@ -108,3 +110,5 @@ func launch_projectile():
 	var initial_velocity = calculate_initial_velocity()
 	if initial_velocity != Vector2.ZERO:
 		projectile.linear_velocity = initial_velocity
+	
+	throw.emit()
