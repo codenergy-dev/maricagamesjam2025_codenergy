@@ -45,3 +45,16 @@ func _on_knockback_body_entered(body: Node2D) -> void:
 		# Dizemos ao nosso componente para aplicar o knockback.
 		knockback.apply_knockback(knockback_direction)
 		flash.start_flash()
+
+func _on_knockback_area_entered(area: Area2D) -> void:
+	if area.is_in_group("knockback"):
+		# Não temos mais a "normal da colisão" de move_and_slide.
+		# A melhor maneira de obter a direção do knockback é a partir da direção do projétil
+		# ou da posição relativa entre o player e o projétil.
+
+		# Opção Robusta: Calcular a normal baseada na posição
+		var knockback_direction = (global_position - area.global_position).normalized()
+		
+		# Dizemos ao nosso componente para aplicar o knockback.
+		knockback.apply_knockback(knockback_direction)
+		flash.start_flash()
