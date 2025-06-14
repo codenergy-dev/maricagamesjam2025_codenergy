@@ -15,12 +15,13 @@ signal throw()
 
 # Variáveis de controle de tempo
 @export var launch_interval: float = 2.0
+@export var trajectory_point_count = 50
 var time_since_launch: float = 0.0
 
 @onready var launch_point = $LaunchPoint
 @onready var trajectory_line = $TrajectoryLine
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var trajectory_point_count = 50
 
 # A função _process permanece a mesma
 func _process(delta):
