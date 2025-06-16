@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var animated_sprite = $AnimatedSprite2D
-# Pega uma referência ao nó filho
 @onready var thrower = $Thrower
+@onready var knockback = $Knockback
 
 # Cria uma variável "proxy" que aparecerá no inspetor
 @export var target_node: Node2D :
@@ -23,3 +23,11 @@ func _on_throw():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "throw":
 		animated_sprite.play("idle")
+
+func _on_knockback_body_entered(body: Node2D) -> void:
+	if animated_sprite.animation == "knockback":
+		return
+	thrower.target_node = null
+	position.y += 25
+	knockback.collision_layer = 128
+	animated_sprite.play("knockback")

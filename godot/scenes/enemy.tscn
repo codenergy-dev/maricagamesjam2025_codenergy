@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkqqwut40t2b3"]
+[gd_scene load_steps=14 format=3 uid="uid://bkqqwut40t2b3"]
 
 [ext_resource type="Script" uid="uid://bjaqouugol2m" path="res://scripts/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="2_5uy6h"]
@@ -12,6 +12,14 @@ region = Rect2(408, 0, 204, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
 atlas = ExtResource("2_5uy6h")
 region = Rect2(612, 0, 204, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(612, 512, 204, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(204, 256, 204, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
 atlas = ExtResource("2_5uy6h")
@@ -36,6 +44,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipns3")
+}],
+"loop": false,
+"name": &"knockback",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nenq2")
 }, {
 "duration": 1.0,
@@ -48,6 +67,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
 radius = 64.0078
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
+radius = 63.0079
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 16
@@ -65,11 +87,20 @@ shape = SubResource("CircleShape2D_md0e3")
 [node name="Thrower" type="Node2D" parent="."]
 script = ExtResource("2_md0e3")
 projectile_scene = ExtResource("3_4ra3w")
-launch_interval = 5.0
+launch_interval = 3.0
 trajectory_point_count = 0
 
 [node name="TrajectoryLine" type="Line2D" parent="Thrower"]
 
 [node name="LaunchPoint" type="Node2D" parent="Thrower"]
 
+[node name="Knockback" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2(0, -99)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback"]
+shape = SubResource("CircleShape2D_5uy6h")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Knockback" to="." method="_on_knockback_body_entered"]
