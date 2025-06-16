@@ -102,3 +102,8 @@ func _on_knockback_area_entered(area: Area2D) -> void:
 		knockback.apply_knockback(knockback_direction)
 		flash.start_flash()
 		animated_sprite.play("knockback")
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		velocity.y = -jump_velocity
+		animated_sprite.play("jump")
