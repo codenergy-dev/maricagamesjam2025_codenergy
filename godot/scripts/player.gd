@@ -6,19 +6,32 @@ signal action_taken(action_details)
 @onready var knockback = $Knockback
 @onready var flash = $Flash
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const SPEED = 600.0
+
+# Adicione estas variáveis exportadas para ajustar no Inspetor
+@export var JUMP_HEIGHT: float = 240.0 # Altura do pulo em pixels
+@export var TIME_TO_PEAK: float = 0.4   # Tempo para atingir o pico do pulo em segundos
+@export var TIME_TO_FALL: float = 0.3   # Tempo para cair do pico (menor para cair mais rápido)
+
+# Variáveis que serão calculadas
+@onready var jump_velocity: float = (2.0 * JUMP_HEIGHT) / TIME_TO_PEAK
+@onready var jump_gravity: float = (2.0 * JUMP_HEIGHT) / (TIME_TO_PEAK * TIME_TO_PEAK)
+@onready var fall_gravity: float = (2.0 * JUMP_HEIGHT) / (TIME_TO_FALL * TIME_TO_FALL)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-		if animated_sprite.animation != "knockback":
-			animated_sprite.play("jump")
+		if velocity.y > 0: # Caindo
+			velocity.y += fall_gravity * delta
+			animated_sprite.play("knockback")
+		else: # Subindo
+			velocity.y += jump_gravity * delta
+			if animated_sprite.animation != "knockback":
+				animated_sprite.play("jump")
 
 	# Handle jump.
 	if knockback.is_zero() and Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = -jump_velocity
 		action_taken.emit({"type": "jump"})
 		animated_sprite.play("jump")
 
