@@ -19,6 +19,9 @@ extends RigidBody2D
 var target_object = null
 var is_charging: bool = false
 
+@export var max_tackle_count = 1
+var tackle_count = 0
+
 func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 
@@ -32,8 +35,11 @@ func _physics_process(delta):
 		global_rotation = angle_to_target + rotation_offset
 		# --------------------------------
 
-	elif not is_charging:
+	elif not is_charging and tackle_count < max_tackle_count:
 		detect_target()
+	
+	else:
+		lock_rotation = tackle_count >= max_tackle_count
 
 func detect_target():
 	if raycast.is_colliding():
@@ -60,3 +66,4 @@ func _on_timer_timeout():
 
 	is_charging = false
 	target_object = null
+	tackle_count += 1
