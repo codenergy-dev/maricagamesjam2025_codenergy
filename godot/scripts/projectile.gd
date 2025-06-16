@@ -21,25 +21,19 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		# AQUI ESTÁ A LÓGICA PRINCIPAL
-		# Nós removemos a camada do 'player' da nossa máscara de colisão.
-		# A camada do player é a número 2. O valor dela em bits é 2.
-		# A operação "& ~" significa "desligue o bit correspondente".
-		collision_mask &= ~2
-		collision_layer = 128
-	# Verifica se o corpo com o qual colidimos está no grupo "ground".
-	if body.is_in_group("ground"):
-		
-		# Verifica se ainda temos quiques restantes.
-		if current_bounces < max_bounces:
-			current_bounces += 1
-			
-			# Opcional: Você pode adicionar um efeito sonoro ou de partícula aqui.
-			
-		else:
-			# Se não houver mais quiques, removemos a capacidade de quicar.
-			# Ao definir o 'bounce' como 0, o projétil vai parar de quicar
-			# e deslizará até parar na próxima colisão com o chão.
-			if physics_material_override:
-				physics_material_override.bounce = 0
+	# AQUI ESTÁ A LÓGICA PRINCIPAL
+	# Nós removemos a camada do 'player' da nossa máscara de colisão.
+	# A camada do player é a número 2. O valor dela em bits é 2.
+	# A operação "& ~" significa "desligue o bit correspondente".
+	collision_mask &= ~2
+	collision_layer = 128
+	
+	if current_bounces < max_bounces:
+		current_bounces += 1
+		# Opcional: Você pode adicionar um efeito sonoro ou de partícula aqui.
+	else:
+		# Se não houver mais quiques, removemos a capacidade de quicar.
+		# Ao definir o 'bounce' como 0, o projétil vai parar de quicar
+		# e deslizará até parar na próxima colisão com o chão.
+		if physics_material_override:
+			physics_material_override.bounce = 0
