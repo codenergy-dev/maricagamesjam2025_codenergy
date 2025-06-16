@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bcqrpg6j4kk04"]
+[gd_scene load_steps=7 format=4 uid="uid://bcqrpg6j4kk04"]
 
 [ext_resource type="Texture2D" uid="uid://bdib5oo03wsth" path="res://assets/sprites/florest.png" id="1_ab4qm"]
+[ext_resource type="Texture2D" uid="uid://bvgqqjv11tdlh" path="res://assets/sprites/fire.png" id="2_io50f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_io50f"]
 texture = ExtResource("1_ab4qm")
@@ -31,6 +32,24 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 18
 sources/1 = SubResource("TileSetAtlasSource_io50f")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2kk7"]
+texture = ExtResource("2_io50f")
+texture_region_size = Vector2i(192, 192)
+0:0/animation_columns = 3
+0:0/animation_frame_0/duration = 0.15
+0:0/animation_frame_1/duration = 0.15
+0:0/animation_frame_2/duration = 0.15
+0:0/animation_frame_3/duration = 0.15
+0:0/animation_frame_4/duration = 0.15
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-42.1306, 25.3393, 50.1589, 25.3393, 50.1589, 96, -43.851, 96)
+
+[sub_resource type="TileSet" id="TileSet_hpwl4"]
+tile_size = Vector2i(192, 192)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_y2kk7")
+
 [node name="Level 1 1" type="TileMap"]
 tile_set = SubResource("TileSet_y2kk7")
 format = 2
@@ -39,3 +58,7 @@ format = 2
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD7/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAD7/wEAAQABAAAAAAD8/wEAAQABAAAAAAD9/wEAAQABAAAAAAD+/wEAAQABAAAAAAD//wEAAQABAAAAAAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAD7/wIAAQABAAAAAAD8/wIAAQABAAAAAAD9/wIAAQABAAAAAAD+/wIAAQABAAAAAAD//wIAAQABAAAAAAAAAAIAAQABAAAAAAABAAIAAQABAAAAAAACAAIAAQABAAAAAAADAAIAAQABAAAAAAAEAAIAAQABAAAAAAD7/wMAAQABAAAAAAD8/wMAAQABAAAAAAD9/wMAAQABAAAAAAD+/wMAAQABAAAAAAD//wMAAQABAAAAAAAAAAMAAQABAAAAAAABAAMAAQABAAAAAAACAAMAAQABAAAAAAADAAMAAQABAAAAAAAEAAMAAQABAAAAAAD8////AQAAAAIAAAAAAP//AQACAAAAAAADAP//AQACAAAAAAD2/wAAAQAAAAAAAAD3/wAAAQAAAAAAAAD4/wAAAQAAAAAAAAD5/wAAAQAAAAAAAAD6/wAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAD2/wEAAQABAAAAAAD3/wEAAQABAAAAAAD4/wEAAQABAAAAAAD5/wEAAQABAAAAAAD6/wEAAQABAAAAAAD2/wIAAQABAAAAAAD3/wIAAQABAAAAAAD4/wIAAQABAAAAAAD5/wIAAQABAAAAAAD6/wIAAQABAAAAAAD2/wMAAQABAAAAAAD3/wMAAQABAAAAAAD4/wMAAQABAAAAAAD5/wMAAQABAAAAAAD6/wMAAQABAAAAAAAFAAEAAQABAAAAAAAFAAIAAQABAAAAAAAFAAMAAQABAAAAAAAGAAEAAQABAAAAAAAGAAIAAQABAAAAAAAGAAMAAQABAAAAAAAHAAEAAQABAAAAAAAHAAIAAQABAAAAAAAHAAMAAQABAAAAAAAIAAEAAQABAAAAAAAIAAIAAQABAAAAAAAIAAMAAQABAAAAAAAJAAEAAQABAAAAAAAJAAIAAQABAAAAAAAJAAMAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_y2kk7")
+
+[node name="fire" type="TileMapLayer" parent="." groups=["hitbox"]]
+tile_map_data = PackedByteArray("AAABAP//AQAAAAAAAAD/////AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hpwl4")

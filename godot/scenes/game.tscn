@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dit1a017pswy0"]
+[gd_scene load_steps=6 format=3 uid="uid://dit1a017pswy0"]
 
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://bsks3p5vrlvd8" path="res://scenes/fire.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bkqqwut40t2b3" path="res://scenes/enemy.tscn" id="5_iywne"]
@@ -16,14 +15,8 @@ zoom = Vector2(0.75, 0.75)
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(-880, 0)
 
-[node name="Fire" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(-71, 0)
-
 [node name="Pet" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-482, 0)
-
-[node name="Fire2" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(247, 0)
 
 [node name="Bee" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(-292, -50)
