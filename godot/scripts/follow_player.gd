@@ -53,7 +53,6 @@ func _on_follow_area_body_entered(body):
 	# Check if the body that entered is the player (e.g., by checking its script or group).
 	# And ensure we only connect the signal once.
 	if body.name == "Player" and not is_following:
-		print("Cat says: Player detected! Now following.")
 		is_following = true
 		# Connect to the player's action signal to start receiving its moves.
 		body.action_taken.connect(_on_player_action_taken)
@@ -62,7 +61,6 @@ func _on_follow_area_body_entered(body):
 func _on_player_action_taken(action):
 	# Add the received action to our queue.
 	action_queue.append(action)
-	print("Cat says: New action recorded:", action)
 
 # This function is called when the ActionTimer times out.
 func _execute_next_action():
@@ -72,7 +70,6 @@ func _execute_next_action():
 
 	# Get the oldest action from the queue.
 	var next_action = action_queue.pop_front()
-	print("Cat says: Performing action:", next_action)
 
 	# Execute the action based on its type.
 	if next_action.type == "jump":

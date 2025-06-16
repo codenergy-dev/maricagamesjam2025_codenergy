@@ -34,7 +34,6 @@ func _on_body_entered(body):
 		# Verifica se ainda temos quiques restantes.
 		if current_bounces < max_bounces:
 			current_bounces += 1
-			print("Quicou! (", current_bounces, "/", max_bounces, ")")
 			
 			# Opcional: Você pode adicionar um efeito sonoro ou de partícula aqui.
 			
@@ -43,5 +42,4 @@ func _on_body_entered(body):
 			# Ao definir o 'bounce' como 0, o projétil vai parar de quicar
 			# e deslizará até parar na próxima colisão com o chão.
 			if physics_material_override:
-				print("Sem mais quiques. O projétil vai parar.")
 				physics_material_override.bounce = 0

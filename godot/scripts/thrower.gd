@@ -75,7 +75,6 @@ func calculate_initial_velocity() -> Vector2:
 	var denominator = 2 * cos_angle * cos_angle * (abs_dx * tan_angle - dy)
 	
 	if denominator <= 0:
-		print("Alvo em posição impossível para este ângulo.")
 		return Vector2.ZERO
 
 	var g = gravity
@@ -99,7 +98,6 @@ func calculate_initial_velocity() -> Vector2:
 
 func launch_projectile():
 	if not projectile_scene:
-		print("Cena do projétil não definida!")
 		return
 
 	var projectile = projectile_scene.instantiate() as RigidBody2D
