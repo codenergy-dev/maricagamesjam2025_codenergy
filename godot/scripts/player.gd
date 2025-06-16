@@ -54,20 +54,26 @@ func _physics_process(delta: float) -> void:
 	velocity += knockback.knockback
 	
 	move_and_slide()
+	
+	# --- INÍCIO DA NOVA LÓGICA DE KNOCKBACK ---
+	# Após mover, verificamos se houve colisões.
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
 
-func _on_knockback_body_entered(body: Node2D) -> void:
-	if body.is_in_group("hitbox"):
-		# Não temos mais a "normal da colisão" de move_and_slide.
-		# A melhor maneira de obter a direção do knockback é a partir da direção do projétil
-		# ou da posição relativa entre o player e o projétil.
+		# Verificamos se colidimos com um corpo no grupo "hitbox"
+		if collider and collider.is_in_group("hitbox"):
+			# A 'normal' da colisão é o vetor que aponta para fora da superfície atingida.
+			# Perfeito para a direção do knockback!
+			var knockback_direction = collision.get_normal()
+			
+			# Aplicamos o knockback
+			knockback.apply_knockback(knockback_direction)
+			flash.start_flash()
+			animated_sprite.play("knockback")
 
-		# Opção Robusta: Calcular a normal baseada na posição
-		var knockback_direction = (global_position - body.global_position).normalized()
-		
-		# Dizemos ao nosso componente para aplicar o knockback.
-		knockback.apply_knockback(knockback_direction)
-		flash.start_flash()
-		animated_sprite.play("knockback")
+			# Opcional: Se você só quer processar uma colisão de dano por frame.
+			break
 
 func _on_knockback_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hitbox"):
