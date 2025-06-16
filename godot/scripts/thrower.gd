@@ -35,6 +35,9 @@ func _process(delta):
 func update_trajectory():
 	trajectory_line.clear_points()
 	
+	if not target_node:
+		return
+	
 	# Calcula a velocidade inicial necessária
 	var initial_velocity = calculate_initial_velocity()
 
@@ -97,7 +100,7 @@ func calculate_initial_velocity() -> Vector2:
 
 
 func launch_projectile():
-	if not projectile_scene:
+	if not target_node or not projectile_scene:
 		return
 
 	var projectile = projectile_scene.instantiate() as RigidBody2D
