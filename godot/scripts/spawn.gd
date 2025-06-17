@@ -11,13 +11,18 @@ func _ready():
 
 func spawn():
 	# Itera sobre a sua camada de cenário principal
+	var game = get_tree().get_first_node_in_group("game")
+	var player = get_tree().get_first_node_in_group("player")
 	var used_cells = get_used_cells()
 
 	for cell_coords in used_cells:
 		var tile_data = get_cell_tile_data(cell_coords)
 		if tile_data:
 			var spawn = tile_data.get_custom_data("spawn")
-			if spawn_map.has(spawn):
+			if spawn == "player" and player:
+				set_cell(cell_coords, -1)
+				continue
+			elif spawn_map.has(spawn):
 				# 1. Pega o caminho da cena do inimigo
 				var spawn_scene = spawn_map[spawn]
 
@@ -30,7 +35,6 @@ func spawn():
 					spawn_instance.global_position = spawn_position
 
 					# Adiciona o inimigo à cena (como irmão do TileMap, por exemplo)
-					var game = get_tree().get_first_node_in_group("game")
 					game.add_child(spawn_instance)
 
 					# 3. Apaga o tile marcador para que ele não apareça no jogo
