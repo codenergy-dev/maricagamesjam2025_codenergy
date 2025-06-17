@@ -22,18 +22,33 @@ var is_charging: bool = false
 @export var max_tackle_count = 1
 var tackle_count = 0
 
+@export var max_rotation_degrees: float = 30.0
+var start_rotation: float = 0
+
 func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 
 func _physics_process(delta):
 	if is_charging and is_instance_valid(target_object):
-		# --- LÓGICA DE ROTAÇÃO MANUAL ---
-		# 1. Calcula o ângulo em radianos na direção do alvo.
+		# 1. Definimos o nosso limite em radianos.
+		var max_rotation_rad = deg_to_rad(max_rotation_degrees)
+
+		# 2. Calculamos o ângulo ideal (absoluto) para olhar para o alvo.
 		var angle_to_target = (target_object.global_position - global_position).angle()
-		
-		# 2. Aplica esse ângulo à rotação global do corpo, somando nosso offset de correção.
-		global_rotation = angle_to_target + rotation_offset
-		# --------------------------------
+
+		# 3. Calculamos o ângulo que o nosso sprite precisa ter para olhar para o alvo.
+		#    Isso considera o offset da imagem.
+		var desired_rotation = angle_to_target + rotation_offset
+
+		# 4. Calculamos a DIFERENÇA entre a rotação desejada e a rotação INICIAL da carga.
+		#    `angle_difference` lida corretamente com a "virada" de 180 para -180 graus.
+		var angle_diff = angle_difference(desired_rotation, start_rotation)
+
+		# 5. Clampamos (limitamos) essa DIFERENÇA de ângulo.
+		var clamped_diff = clamp(angle_diff, -max_rotation_rad, max_rotation_rad)
+
+		# 6. A nossa rotação final será a rotação INICIAL mais a diferença limitada.
+		global_rotation = start_rotation + clamped_diff * -1
 
 	elif not is_charging and tackle_count < max_tackle_count:
 		detect_target()
@@ -47,6 +62,7 @@ func detect_target():
 		if collider.is_in_group(target_group):
 			is_charging = true
 			target_object = collider
+			start_rotation = global_rotation
 			timer.start()
 
 func _on_timer_timeout():
