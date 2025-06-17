@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://i17ubpshnwb3"]
+
+[ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
+[ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
+[ext_resource type="Script" uid="uid://bs3f83175nq7e" path="res://scripts/spawn.gd" id="3_v21g4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
+texture = ExtResource("1_0oeay")
+texture_region_size = Vector2i(192, 256)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/custom_data_0 = "bald"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8pum"]
+texture = ExtResource("2_v21g4")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/custom_data_0 = "bee"
+
+[sub_resource type="TileSet" id="TileSet_thjrq"]
+tile_size = Vector2i(192, 192)
+custom_data_layer_0/name = "enemy"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_suvqx")
+sources/1 = SubResource("TileSetAtlasSource_a8pum")
+
+[node name="Spawn" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_thjrq")
+script = ExtResource("3_v21g4")
