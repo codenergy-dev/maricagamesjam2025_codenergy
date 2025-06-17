@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=15 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
 [ext_resource type="Texture2D" uid="uid://cvuigbmsy4yvx" path="res://assets/sprites/cat.png" id="3_p0o2y"]
 [ext_resource type="Script" uid="uid://bs3f83175nq7e" path="res://scripts/spawn.gd" id="3_v21g4"]
+[ext_resource type="Texture2D" uid="uid://c0cjcpaf6p3vs" path="res://assets/sprites/mumbuquinha.png" id="4_50vgb"]
 [ext_resource type="PackedScene" uid="uid://bkqqwut40t2b3" path="res://scenes/enemy.tscn" id="5_640p5"]
 [ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="6_50vgb"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="7_lpbsx"]
+[ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="9_lpbsx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -28,6 +30,13 @@ texture_region_size = Vector2i(192, 128)
 0:0/0/texture_origin = Vector2i(0, -32)
 0:0/0/custom_data_0 = "cat"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpbsx"]
+texture = ExtResource("4_50vgb")
+texture_region_size = Vector2i(192, 256)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/custom_data_0 = "player"
+
 [sub_resource type="TileSet" id="TileSet_thjrq"]
 tile_size = Vector2i(192, 192)
 custom_data_layer_0/name = "spawn"
@@ -35,6 +44,7 @@ custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_suvqx")
 sources/1 = SubResource("TileSetAtlasSource_a8pum")
 sources/2 = SubResource("TileSetAtlasSource_f5r3j")
+sources/3 = SubResource("TileSetAtlasSource_lpbsx")
 
 [node name="Spawn" type="TileMapLayer"]
 tile_map_data = PackedByteArray(0, 0, 2, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0)
@@ -43,5 +53,6 @@ script = ExtResource("3_v21g4")
 spawn_map = Dictionary[String, PackedScene]({
 "bald": ExtResource("5_640p5"),
 "bee": ExtResource("6_50vgb"),
-"cat": ExtResource("7_lpbsx")
+"cat": ExtResource("7_lpbsx"),
+"player": ExtResource("9_lpbsx")
 })
