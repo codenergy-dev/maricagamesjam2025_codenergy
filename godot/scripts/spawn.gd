@@ -6,9 +6,10 @@ extends TileMapLayer
 
 func _ready():
 	await get_tree().process_frame
-	spawn_enemies()
+	await get_tree().process_frame
+	spawn()
 
-func spawn_enemies():
+func spawn():
 	# Itera sobre a sua camada de cenário principal
 	var used_cells = get_used_cells()
 
