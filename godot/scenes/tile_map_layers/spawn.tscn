@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=16 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="6_50vgb"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="7_lpbsx"]
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="9_lpbsx"]
+[ext_resource type="PackedScene" uid="uid://42utgbpvbj7q" path="res://scenes/goal.tscn" id="10_3eo6f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -32,10 +33,13 @@ texture_region_size = Vector2i(192, 128)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpbsx"]
 texture = ExtResource("4_50vgb")
-texture_region_size = Vector2i(192, 256)
+texture_region_size = Vector2i(204, 256)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
 0:0/0/custom_data_0 = "player"
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 32)
+3:0/0/custom_data_0 = "goal"
 
 [sub_resource type="TileSet" id="TileSet_thjrq"]
 tile_size = Vector2i(192, 192)
@@ -53,5 +57,6 @@ spawn_map = Dictionary[String, PackedScene]({
 "bald": ExtResource("5_640p5"),
 "bee": ExtResource("6_50vgb"),
 "cat": ExtResource("7_lpbsx"),
+"goal": ExtResource("10_3eo6f"),
 "player": ExtResource("9_lpbsx")
 })
