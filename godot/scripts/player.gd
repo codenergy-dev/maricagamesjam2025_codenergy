@@ -18,7 +18,12 @@ const SPEED = 600.0
 @onready var jump_gravity: float = (2.0 * JUMP_HEIGHT) / (TIME_TO_PEAK * TIME_TO_PEAK)
 @onready var fall_gravity: float = (2.0 * JUMP_HEIGHT) / (TIME_TO_FALL * TIME_TO_FALL)
 
+var lives = 1
+
 func _physics_process(delta: float) -> void:
+	if lives <= 0 and knockback.is_zero():
+		queue_free()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		if velocity.y > 0: # Caindo
@@ -79,6 +84,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		animated_sprite.play("jump")
 
 func apply_knockback(direction: Vector2):
+	lives -= 1
 	knockback.apply_knockback(direction)
 	flash.start_flash()
 	animated_sprite.play("knockback")
