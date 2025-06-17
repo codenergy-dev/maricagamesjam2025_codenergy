@@ -1,12 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dit1a017pswy0"]
+[gd_scene load_steps=4 format=3 uid="uid://dit1a017pswy0"]
 
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bkqqwut40t2b3" path="res://scenes/enemy.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bcqrpg6j4kk04" path="res://scenes/level_1_1.tscn" id="7_u5sy4"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["game"]]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -200)
@@ -17,13 +15,6 @@ position = Vector2(-880, 0)
 
 [node name="Pet" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-482, 0)
-
-[node name="Bee" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-292, -50)
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("5_iywne")]
-position = Vector2(511, 0)
-target_node = NodePath("../Player")
 
 [node name="Level 1 1" parent="." instance=ExtResource("7_u5sy4")]
 position = Vector2(0, 64)
