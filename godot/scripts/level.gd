@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	add_to_group("level")
 	await get_tree().process_frame
 	var game = get_tree().get_first_node_in_group("game")
 	if not game:
