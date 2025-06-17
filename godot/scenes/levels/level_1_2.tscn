@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://n1gyi4jeul0f"]
+
+[ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_0uxh5"]
+[ext_resource type="PackedScene" uid="uid://cantrh524qf7" path="res://scenes/tile_map_layers/forest.tscn" id="2_qkoqn"]
+[ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="3_gxte6"]
+[ext_resource type="PackedScene" uid="uid://bilbj45lba2pl" path="res://scenes/tile_map_layers/fire.tscn" id="3_qkoqn"]
+
+[node name="Level 1 2" type="Node2D"]
+script = ExtResource("1_0uxh5")
+
+[node name="Forest" parent="." instance=ExtResource("2_qkoqn")]
+
+[node name="Fire" parent="." instance=ExtResource("3_qkoqn")]
+tile_map_data = PackedByteArray(0, 0, 6, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 15, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 9, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 12, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Spawn" parent="." instance=ExtResource("3_gxte6")]
+tile_map_data = PackedByteArray(0, 0, 5, 0, 255, 255, 3, 0, 0, 0, 0, 0, 0, 0, 16, 0, 255, 255, 3, 0, 3, 0, 0, 0, 0, 0)
+
+[node name="Next" type="Marker2D" parent="."]
+position = Vector2(4224, 0)
