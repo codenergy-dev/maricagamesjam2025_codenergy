@@ -27,6 +27,7 @@ hitbox=""
 enemy=""
 game=""
 level=""
+camera=""
 
 [layer_names]
 
