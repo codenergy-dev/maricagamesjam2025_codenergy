@@ -24,7 +24,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "throw":
 		animated_sprite.play("idle")
 
-func _on_knockback_body_entered(body: Node2D) -> void:
+func _on_knockback_area_entered(area: Area2D) -> void:
+	if not area.is_in_group("player"):
+		return
 	if animated_sprite.animation == "knockback":
 		return
 	thrower.target_node = null
