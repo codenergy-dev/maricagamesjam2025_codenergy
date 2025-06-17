@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var thrower = $Thrower
@@ -16,6 +16,12 @@ func _ready():
 	# Garante que os valores iniciais sejam aplicados quando a cena carregar
 	thrower.target_node = target_node
 	thrower.throw.connect(_on_throw)
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	move_and_slide()
 
 func _on_throw():
 	animated_sprite.play("throw")
