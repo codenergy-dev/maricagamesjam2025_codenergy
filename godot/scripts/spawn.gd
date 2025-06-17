@@ -10,7 +10,6 @@ func _ready():
 	spawn()
 
 func spawn():
-	# Itera sobre a sua camada de cenário principal
 	var game = get_tree().get_first_node_in_group("game")
 	var player = get_tree().get_first_node_in_group("player")
 	var used_cells = get_used_cells()
@@ -19,23 +18,20 @@ func spawn():
 		var tile_data = get_cell_tile_data(cell_coords)
 		if tile_data:
 			var spawn = tile_data.get_custom_data("spawn")
-			if spawn == "player" and player:
-				set_cell(cell_coords, -1)
-				continue
-			elif spawn_map.has(spawn):
-				# 1. Pega o caminho da cena do inimigo
+			if spawn_map.has(spawn):
 				var spawn_scene = spawn_map[spawn]
-
 				if spawn_scene:
-					# 2. Calcula a posição no mundo para o spawn
 					var spawn_position = to_global(map_to_local(cell_coords))
-
-					# Instancia a cena do inimigo
+					if spawn == "player":
+						var checkpoint_scene = spawn_map["checkpoint"]
+						var checkpoint_instance = checkpoint_scene.instantiate()
+						checkpoint_instance.global_position = spawn_position
+						game.add_child(checkpoint_instance)
+					if spawn == "player" and player:
+						set_cell(cell_coords, -1)
+						continue
+					
 					var spawn_instance = spawn_scene.instantiate()
 					spawn_instance.global_position = spawn_position
-
-					# Adiciona o inimigo à cena (como irmão do TileMap, por exemplo)
 					game.add_child(spawn_instance)
-
-					# 3. Apaga o tile marcador para que ele não apareça no jogo
 					set_cell(cell_coords, -1)
