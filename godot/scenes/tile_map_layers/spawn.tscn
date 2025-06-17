@@ -47,7 +47,6 @@ sources/2 = SubResource("TileSetAtlasSource_f5r3j")
 sources/3 = SubResource("TileSetAtlasSource_lpbsx")
 
 [node name="Spawn" type="TileMapLayer"]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_thjrq")
 script = ExtResource("3_v21g4")
 spawn_map = Dictionary[String, PackedScene]({
