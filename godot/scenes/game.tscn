@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dit1a017pswy0"]
+[gd_scene load_steps=3 format=3 uid="uid://dit1a017pswy0"]
 
+[ext_resource type="PackedScene" uid="uid://bdrcrhcbqgo0e" path="res://scenes/camera.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bcqrpg6j4kk04" path="res://scenes/level_1_1.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D" groups=["game"]]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -200)
-zoom = Vector2(0.75, 0.75)
+[node name="Camera" parent="." instance=ExtResource("2_yqjtg")]
 
 [node name="Level 1 1" parent="." instance=ExtResource("7_u5sy4")]
 position = Vector2(0, 64)
