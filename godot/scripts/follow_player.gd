@@ -6,8 +6,10 @@ var is_following = false
 var is_performing_action = false
 
 # Movement properties should mirror the player's for an exact copy
-@export var speed = 300.0
-@export var jump_velocity = -500.0
+@export var speed = 1000.0
+@export var jump_height: float = 400.0 # Altura do pulo em pixels
+@export var time_to_peak: float = 0.4   # Tempo para atingir o pico do pulo em segundos
+@export var time_to_fall: float = 0.3   # Tempo para cair do pico (menor para cair mais rápido)
 
 # Delay in seconds before the cat mimics an action
 @export var follow_delay = 0.01
@@ -30,7 +32,10 @@ func _ready():
 func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if velocity.y > 0: # Caindo
+			velocity.y += get_fall_gravity() * delta
+		else: # Subindo
+			velocity.y += get_jump_gravity() * delta
 
 	# If we are following and not busy, check for new actions to perform.
 	if is_following and not action_queue.is_empty() and not is_performing_action:
@@ -74,7 +79,7 @@ func _execute_next_action():
 	# Execute the action based on its type.
 	if next_action.type == "jump":
 		if is_on_floor():
-			velocity.y = jump_velocity
+			velocity.y = -get_jump_velocity()
 			animated_sprite.play("jump")
 	elif next_action.type == "move":
 		var direction = next_action.direction
@@ -95,3 +100,12 @@ func get_action_type():
 	if not action_queue.is_empty() and is_performing_action:
 		return action_queue[0].type
 	return ""
+
+func get_jump_velocity() -> float:
+	return (2.0 * jump_height) / time_to_peak
+
+func get_jump_gravity() -> float:
+	return (2.0 * jump_height) / (time_to_peak * time_to_peak)
+
+func get_fall_gravity() -> float:
+	return (2.0 * jump_height) / (time_to_fall * time_to_fall)
