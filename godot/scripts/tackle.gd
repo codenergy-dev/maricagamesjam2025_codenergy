@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var target_group: String = "player"
 
 # Multiplier for the launch force.
-@export var force_multiplier: float = 1000.0
+@export var force_multiplier: float = 2000.0
 
 # NEW: Offset de rotação em radianos. Ajuste este valor!
 # Use PI (para 180 graus), PI/2 (para 90 graus), -PI/2 (para -90 graus), etc.
