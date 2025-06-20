@@ -110,3 +110,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_6nmc3")
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
+[connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]

@@ -1,111 +1,66 @@
 extends CharacterBody2D
 
-# A queue to store the player's actions
-var action_queue = []
+# O delay em segundos que o follower terá em relação ao jogador
+@export var follow_delay: float = 0.5 
+
+# A velocidade com que o follower se move para a posição correta (para suavizar)
+@export var catch_up_speed: float = 30.0
+
 var is_following = false
-var is_performing_action = false
-
-# Movement properties should mirror the player's for an exact copy
-@export var speed = 1000.0
-@export var jump_height: float = 400.0 # Altura do pulo em pixels
-@export var time_to_peak: float = 0.4   # Tempo para atingir o pico do pulo em segundos
-@export var time_to_fall: float = 0.3   # Tempo para cair do pico (menor para cair mais rápido)
-
-# Delay in seconds before the cat mimics an action
-@export var follow_delay = 0.01
-
-# Get gravity from project settings
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var timer = $Timer
 
-func _ready():
-	# Connect the area's signal to a function.
-	$FollowArea.body_entered.connect(_on_follow_area_body_entered)
-	# Connect the timer's timeout signal.
-	timer.timeout.connect(_execute_next_action)
-	# Set the timer to only run once per start() call.
-	timer.one_shot = true
-	timer.wait_time = follow_delay
-
-func _physics_process(delta):
-	# Apply gravity
+func _physics_process(delta: float) -> void:
+	# A gravidade ainda é aplicada normalmente pelo CharacterBody2D
 	if not is_on_floor():
-		if velocity.y > 0: # Caindo
-			velocity.y += get_fall_gravity() * delta
-		else: # Subindo
-			velocity.y += get_jump_gravity() * delta
+		velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
 
-	# If we are following and not busy, check for new actions to perform.
-	if is_following and not action_queue.is_empty() and not is_performing_action:
-		# Start the timer to introduce the delay.
-		# The action will be executed when the timer finishes.
-		is_performing_action = true
-		timer.start()
-		
-	# Constant deceleration for the horizontal movement
-	# This ensures the cat stops when the queued action is "stop".
-	if velocity.x != 0 and get_action_type() != "move":
-		velocity.x = move_toward(velocity.x, 0, speed)
-	elif velocity == Vector2.ZERO and is_on_floor():
+	if not is_following:
+		move_and_slide()
+		return
+
+	# 1. Calcula qual era o tempo 'agora' menos o nosso delay.
+	var target_timestamp = Time.get_ticks_msec() - (follow_delay * 1000)
+
+	# 2. Pede ao gravador o estado do jogador naquele momento no passado.
+	var target_state = PlayerRecorder.get_state_at_time(target_timestamp)
+
+	# Se não houver estado (ex: jogo acabou de começar), não faz nada.
+	if target_state.is_empty():
+		move_and_slide()
+		return
+
+	# 3. Pega a posição e a direção do estado gravado.
+	var target_position = target_state.position
+	var target_flip_h = target_state.flip_h
+	var target_velocity_y = target_state.velocity_y
+
+	# 4. Move-se suavemente em direção à posição alvo.
+	# Em vez de teletransporte, usamos lerp para um movimento mais natural.
+	# Isso cria um movimento autônomo que sempre busca o ponto correto na trilha.
+	global_position = global_position.lerp(target_position, catch_up_speed * delta)
+	
+	# 5. Atualiza a aparência para espelhar o jogador.
+	animated_sprite.flip_h = target_flip_h
+	
+	# Gerencia as animações baseado na movimentação e no estado do pulo gravado.
+	if not is_on_floor():
+		animated_sprite.play("jump")
+	elif global_position.distance_to(target_position) > 2: # Se estiver se movendo para o alvo
+		animated_sprite.play("walk")
+	else: # Se já chegou no alvo
 		animated_sprite.play("idle")
-
+	
+	# Nós não controlamos mais a velocidade diretamente, mas move_and_slide()
+	# ainda é útil para colisões com o chão e paredes.
 	move_and_slide()
 
-# This function is called when the player enters the cat's detection area.
 func _on_follow_area_body_entered(body):
+	pass
+
+func _on_follow_area_body_exited(body: Node2D) -> void:
 	# Check if the body that entered is the player (e.g., by checking its script or group).
 	# And ensure we only connect the signal once.
 	if body.name == "Player" and not is_following:
 		is_following = true
-		# Connect to the player's action signal to start receiving its moves.
-		body.action_taken.connect(_on_player_action_taken)
-
-# This function is called every time the player emits the "action_taken" signal.
-func _on_player_action_taken(action):
-	# Add the received action to our queue.
-	action_queue.append(action)
-
-# This function is called when the ActionTimer times out.
-func _execute_next_action():
-	if action_queue.is_empty():
-		is_performing_action = false
-		return
-
-	# Get the oldest action from the queue.
-	var next_action = action_queue.pop_front()
-
-	# Execute the action based on its type.
-	if next_action.type == "jump":
-		if is_on_floor():
-			velocity.y = -get_jump_velocity()
-			animated_sprite.play("jump")
-	elif next_action.type == "move":
-		var direction = next_action.direction
-		if direction != 0:
-			velocity.x = direction * speed
-			animated_sprite.flip_h = direction > 0
-			if is_on_floor():
-				animated_sprite.play("walk")
-		else:
-			# This handles the "stop" action.
-			velocity.x = 0
-			
-	# We are ready for the next action now.
-	is_performing_action = false
-
-# A helper function to check the type of the current action being performed.
-func get_action_type():
-	if not action_queue.is_empty() and is_performing_action:
-		return action_queue[0].type
-	return ""
-
-func get_jump_velocity() -> float:
-	return (2.0 * jump_height) / time_to_peak
-
-func get_jump_gravity() -> float:
-	return (2.0 * jump_height) / (time_to_peak * time_to_peak)
-
-func get_fall_gravity() -> float:
-	return (2.0 * jump_height) / (time_to_fall * time_to_fall)
+		PlayerRecorder.clear_player_state()
