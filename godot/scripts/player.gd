@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	PlayerRecorder.record_player_state(global_position, animated_sprite.flip_h, velocity.y)
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
