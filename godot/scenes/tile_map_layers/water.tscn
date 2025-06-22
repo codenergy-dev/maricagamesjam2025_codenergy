@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfayasugtpufk"]
+
+[ext_resource type="Shader" uid="uid://ji1w6114rift" path="res://shaders/water.gdshader" id="1_nn4rv"]
+[ext_resource type="Texture2D" uid="uid://m732youmwhnd" path="res://assets/sprites/water.png" id="1_qxauu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sjkkb"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p35p5"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_sjkkb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xnrv"]
+shader = ExtResource("1_nn4rv")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_p35p5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nn4rv"]
+texture = ExtResource("1_qxauu")
+texture_region_size = Vector2i(192, 192)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4tqci"]
+tile_size = Vector2i(192, 192)
+sources/0 = SubResource("TileSetAtlasSource_nn4rv")
+
+[node name="Water" type="TileMapLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_2xnrv")
+tile_set = SubResource("TileSet_4tqci")
