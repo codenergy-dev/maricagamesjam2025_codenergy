@@ -39,6 +39,14 @@ func _on_knockback_area_entered(area: Area2D) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	state.on_hitbox_area_entered(area)
 
+func _on_body_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("water"):
+		state = state_instances["swim"]
+
+func _on_body_area_area_exited(area: Area2D) -> void:
+	if area.is_in_group("water"):
+		pass
+
 func apply_knockback(direction: Vector2):
 	lives -= 1
 	knockback.apply_knockback(direction)
