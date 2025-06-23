@@ -6,6 +6,8 @@ extends PlayerState
 @export var time_to_fall: float = 0.3   # Tempo para cair do pico (menor para cair mais rápido)
 
 func physics_process(delta):
+	player.rotation = 0
+	
 	# Add the gravity.
 	if not player.is_on_floor():
 		if player.velocity.y > 0: # Caindo
