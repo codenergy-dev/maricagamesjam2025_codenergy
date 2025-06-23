@@ -45,7 +45,7 @@ func _on_body_area_area_entered(area: Area2D) -> void:
 
 func _on_body_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("water"):
-		pass
+		state = state_instances["default"]
 
 func apply_knockback(direction: Vector2):
 	lives -= 1
