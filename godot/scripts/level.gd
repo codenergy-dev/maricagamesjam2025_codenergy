@@ -1,5 +1,7 @@
 extends Node
 
+@export var player_sprite_frames: String = "default"
+
 static var current_level: Node
 
 func _ready():
@@ -13,6 +15,9 @@ func _ready():
 		var camera_scene = load("res://scenes/camera.tscn")
 		var camera_instance = camera_scene.instantiate()
 		add_child(camera_instance)
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.set_sprite_frames(player_sprite_frames)
 
 func _physics_process(delta: float) -> void:
 	if current_level != self:

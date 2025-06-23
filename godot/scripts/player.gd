@@ -6,6 +6,7 @@ signal action_taken(action_details)
 @export var lives = 3
 @export var state_name: String = "default"
 @export var state_scripts: Dictionary[String, Script]
+@export var sprite_frames: Dictionary[String, SpriteFrames]
 
 var state: PlayerState
 var state_instances: Dictionary[String, PlayerState]
@@ -52,3 +53,14 @@ func apply_knockback(direction: Vector2):
 	knockback.apply_knockback(direction)
 	flash.start_flash()
 	animated_sprite.play("knockback")
+
+func set_sprite_frames(sprite_frames: String):
+	var current_animation = animated_sprite.animation
+	var current_frame = animated_sprite.frame
+	var is_playing = animated_sprite.is_playing()
+
+	animated_sprite.sprite_frames = self.sprite_frames[sprite_frames]
+
+	if is_playing:
+		animated_sprite.play(current_animation)
+	animated_sprite.frame = current_frame
