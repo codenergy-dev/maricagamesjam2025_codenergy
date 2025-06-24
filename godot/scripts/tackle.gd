@@ -18,6 +18,7 @@ extends RigidBody2D
 
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
+@onready var audio: AudioManager = $AudioManager
 
 var target_object = null
 var is_charging: bool = false
@@ -57,6 +58,7 @@ func detect_target():
 			play_detection_recoil()
 			
 			timer.start()
+			audio.play("charge")
 
 # [NOVO] Função que cria a animação de "aviso"
 func play_detection_recoil():
@@ -94,3 +96,8 @@ func _on_timer_timeout():
 	is_charging = false
 	target_object = null
 	tackle_count += 1
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group(target_group):
+		audio.play("hit")
