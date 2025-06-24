@@ -14,6 +14,7 @@ var state_instances: Dictionary[String, PlayerState]
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var knockback = $Knockback
 @onready var flash = $Flash
+@onready var audio: AudioManager = $AudioManager
 
 func _ready() -> void:
 	for state_script in state_scripts:
@@ -43,6 +44,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func _on_body_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("water"):
 		change_state("swim")
+		audio.play("splash")
 
 func _on_body_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("water"):
@@ -66,6 +68,7 @@ func apply_knockback(direction: Vector2):
 	knockback.apply_knockback(direction)
 	flash.start_flash()
 	animated_sprite.play("knockback")
+	audio.play("knockback")
 
 func set_sprite_frames(sprite_frames: String):
 	var current_animation = animated_sprite.animation
