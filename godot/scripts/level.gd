@@ -15,6 +15,7 @@ func _ready():
 		var camera_scene = load("res://scenes/camera.tscn")
 		var camera_instance = camera_scene.instantiate()
 		add_child(camera_instance)
+	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.set_sprite_frames(player_sprite_frames)
