@@ -44,6 +44,7 @@ water=""
 2d_physics/layer_6="water"
 2d_physics/layer_7="collectable"
 2d_physics/layer_8="ghost"
+2d_physics/layer_9="fish"
 
 [rendering]
 
