@@ -42,11 +42,24 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_body_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("water"):
-		state = state_instances["swim"]
+		change_state("swim")
 
 func _on_body_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("water"):
-		state = state_instances["default"]
+		change_state("default")
+
+func change_state(new_state_name: String):
+	if state_name == new_state_name:
+		return
+	
+	if state and state.has_method("exit"):
+		state.exit()
+	
+	state_name = new_state_name
+	state = state_instances[new_state_name]
+	
+	if state and state.has_method("enter"):
+		state.enter()
 
 func apply_knockback(direction: Vector2):
 	lives -= 1
