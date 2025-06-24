@@ -29,6 +29,14 @@ func _physics_process(delta: float):
 	
 	# move_and_slide lida com a aplicação da velocidade
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider:
+			move_speed = abs(move_speed) * collision.get_normal().x
+			sprite.flip_h = move_speed > 0
+			break
 
 # --- A FUNÇÃO MÁGICA ---
 # Esta função será chamada pelo Spawner para configurar a aparência do peixe.
