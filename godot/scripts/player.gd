@@ -15,6 +15,7 @@ var state_instances: Dictionary[String, PlayerState]
 @onready var knockback = $Knockback
 @onready var flash = $Flash
 @onready var audio: AudioManager = $AudioManager
+@onready var joystick: VirtualJoystick = $"Controls/Virtual Joystick"
 
 func _ready() -> void:
 	for state_script in state_scripts:
@@ -24,7 +25,8 @@ func _ready() -> void:
 	state = state_instances[state_name]
 
 func _physics_process(delta: float) -> void:
-	if lives <= 0 and knockback.is_zero():
+	if lives <= -1 or lives <= 0 and knockback.is_zero():
+		joystick._reset()
 		queue_free()
 	state.physics_process(delta)
 
