@@ -5,5 +5,5 @@ extends Node
 func _physics_process(delta: float) -> void:
 	if checkpoint.is_colliding():
 		var level = get_tree().get_nodes_in_group("level")[-1]
-		level.current_level = level
+		Game.set_current_level(level)
 		queue_free()

@@ -1,8 +1,9 @@
+class_name Level
 extends Node
 
 @export var player_sprite_frames: String = "default"
 
-static var current_level: Node
+var index: int = 0
 
 func _ready():
 	add_to_group("level")
@@ -21,16 +22,8 @@ func _ready():
 		player.set_sprite_frames(player_sprite_frames)
 
 func _physics_process(delta: float) -> void:
-	if current_level != self:
+	if Game.current_level != self:
 		return
 	var player = get_tree().get_first_node_in_group("player")
 	if not player:
-		var game = get_tree().get_first_node_in_group("game")
-		var children = game.get_children()
-		for child in children:
-			if child.name != "Camera":
-				child.queue_free()
-		
-		var level_scene = load(scene_file_path)
-		var level_instance = level_scene.instantiate()
-		game.add_child(level_instance)
+		Game.reset_level(self)
