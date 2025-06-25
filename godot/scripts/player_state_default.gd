@@ -45,8 +45,6 @@ func physics_process(delta):
 	
 	player.move_and_slide()
 	
-	PlayerRecorder.record_player_state(player.global_position, player.animated_sprite.flip_h, player.velocity.y)
-	
 	for i in player.get_slide_collision_count():
 		var collision = player.get_slide_collision(i)
 		var collider = collision.get_collider()

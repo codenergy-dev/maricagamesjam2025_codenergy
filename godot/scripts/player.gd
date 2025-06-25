@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		joystick._reset()
 		queue_free()
 	state.physics_process(delta)
+	PlayerRecorder.record_player_state(global_position, animated_sprite.flip_h, velocity.y)
 
 func _on_knockback_body_entered(body: Node2D) -> void:
 	if body is not TileMapLayer and body.is_in_group("hitbox"):
