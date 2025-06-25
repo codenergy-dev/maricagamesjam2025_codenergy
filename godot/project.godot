@@ -24,6 +24,10 @@ PlayerRecorder="*res://scripts/player_recorder.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/virtual_joystick/plugin.cfg")
+
 [global_group]
 
 player=""
@@ -33,6 +37,11 @@ game=""
 level=""
 camera=""
 water=""
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
