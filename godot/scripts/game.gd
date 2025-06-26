@@ -30,7 +30,7 @@ static func reset_level(level: Level):
 	var game = level.get_tree().get_first_node_in_group("game")
 	var children = game.get_children()
 	for child in children:
-		if child.name != "Camera":
+		if child.name not in ["Camera", "AudioStreamPlayer"]:
 			child.queue_free()
 	
 	auto_level_index = level.index - 1
