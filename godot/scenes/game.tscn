@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dit1a017pswy0"]
+[gd_scene load_steps=5 format=3 uid="uid://dit1a017pswy0"]
 
 [ext_resource type="Script" uid="uid://b7841cy81nq5c" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://n1gyi4jeul0f" path="res://scenes/levels/level_1_2.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bdifde0m5dtwe" path="res://scenes/levels/level_2_1.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bcqrpg6j4kk04" path="res://scenes/levels/level_1_1.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_lnu2h")
-levels = Array[PackedScene]([ExtResource("7_u5sy4"), ExtResource("3_lbhrr")])
+levels = Array[PackedScene]([ExtResource("7_u5sy4"), ExtResource("3_lbhrr"), ExtResource("4_lbhrr")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
