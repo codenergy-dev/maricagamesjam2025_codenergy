@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ex2bnscbk8kg"]
+[gd_scene load_steps=21 format=3 uid="uid://ex2bnscbk8kg"]
 
 [ext_resource type="Script" uid="uid://dea0wajfas0un" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ctqe7py0maaqw" path="res://scripts/player_state_default.gd" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://dmnpbejwi1ece" path="res://scripts/player_state_swim.gd" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://bhdbrw1qsvv3e" path="res://scripts/knockback.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://dhnvply7571s7" path="res://scripts/player_state_dialogue.gd" id="4_a8ls1"]
 [ext_resource type="Script" uid="uid://cn4odp2t3xvpf" path="res://scripts/flash.gd" id="4_dqkch"]
 [ext_resource type="SpriteFrames" uid="uid://dtewq8y7ea0xo" path="res://assets/animations/player_default.tres" id="4_fjrip"]
 [ext_resource type="SpriteFrames" uid="uid://b151qiutnbo2k" path="res://assets/animations/player_swim.tres" id="4_tuyoq"]
@@ -36,6 +37,7 @@ collision_mask = 9
 script = ExtResource("1_g2els")
 state_scripts = Dictionary[String, Script]({
 "default": ExtResource("2_tuyoq"),
+"dialogue": ExtResource("4_a8ls1"),
 "swim": ExtResource("3_fjrip")
 })
 sprite_frames = Dictionary[String, SpriteFrames]({
