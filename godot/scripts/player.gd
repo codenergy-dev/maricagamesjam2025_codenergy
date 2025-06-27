@@ -15,6 +15,7 @@ var state_instances: Dictionary[String, PlayerState]
 @onready var knockback = $Knockback
 @onready var flash = $Flash
 @onready var audio: AudioManager = $AudioManager
+@onready var controls = $Controls
 @onready var joystick: VirtualJoystick = $"Controls/Virtual Joystick"
 
 func _ready() -> void:
