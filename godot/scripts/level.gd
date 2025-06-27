@@ -4,6 +4,7 @@ extends Node2D
 @export var player_sprite_frames: String = "default"
 
 var index: int = 0
+var player: Player
 
 @onready var next = $Next
 
@@ -20,10 +21,12 @@ func _ready():
 		add_child(camera)
 	camera.limit_right = next.global_position.x
 	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.set_sprite_frames(player_sprite_frames)
 	load_music()
+	DialogueManager.get_current_scene = func():
+		return self
 
 func _physics_process(delta: float) -> void:
 	if Game.current_level != self:
