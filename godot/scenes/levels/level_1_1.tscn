@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://bcqrpg6j4kk04"]
+[gd_scene load_steps=7 format=4 uid="uid://bcqrpg6j4kk04"]
 
 [ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_hpwl4"]
 [ext_resource type="PackedScene" uid="uid://cantrh524qf7" path="res://scenes/tile_map_layers/forest.tscn" id="1_y2kk7"]
 [ext_resource type="PackedScene" uid="uid://bilbj45lba2pl" path="res://scenes/tile_map_layers/fire.tscn" id="3_8hvw5"]
 [ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="3_064gf"]
+[ext_resource type="PackedScene" uid="uid://bcqh7ikttb63x" path="res://scenes/dialogue.tscn" id="5_mmk5a"]
+[ext_resource type="Resource" uid="uid://cxqxw16ud44ru" path="res://dialogue/level_1.dialogue" id="6_uu7xq"]
 
 [node name="Level 1 1" type="Node2D"]
 script = ExtResource("1_hpwl4")
@@ -19,3 +21,8 @@ tile_map_data = PackedByteArray("AAAFAP//AwAAAAAAAAALAP//AQAAAAAAAAAQAP//AwADAAA
 
 [node name="Next" type="Marker2D" parent="."]
 position = Vector2(4224, 0)
+
+[node name="Dialogue" parent="." instance=ExtResource("5_mmk5a")]
+position = Vector2(1632, -79)
+resource = ExtResource("6_uu7xq")
+start = "bee"
