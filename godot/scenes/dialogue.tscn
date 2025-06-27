@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcqh7ikttb63x"]
+
+[ext_resource type="Script" uid="uid://n5joc064qkke" path="res://scripts/dialogue.gd" id="1_jwyou"]
+
+[node name="Dialogue" type="Node2D"]
+script = ExtResource("1_jwyou")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -1000)
+target_position = Vector2(0, 2000)
+collision_mask = 2
