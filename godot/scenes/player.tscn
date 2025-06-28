@@ -58,8 +58,8 @@ shape = SubResource("CircleShape2D_dqkch")
 [node name="Flash" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("4_dqkch")
 target_node = NodePath("../AnimatedSprite2D")
-flash_color = Color(1, 0, 0, 1)
-flash_frequency = 4.0
+flash_color = Color(0, 0, 0, 0)
+flash_frequency = 8.0
 
 [node name="Knockback" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
