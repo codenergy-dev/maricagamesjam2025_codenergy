@@ -11,6 +11,7 @@ signal action_taken(action_details)
 var state: PlayerState
 var state_instances: Dictionary[String, PlayerState]
 
+@onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var knockback = $Knockback
 @onready var flash = $Flash
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		joystick._reset()
 		queue_free()
 	state.physics_process(delta)
+	global_position.x = clamp(global_position.x, camera.limit_left + 100, camera.limit_right)
 	PlayerRecorder.record_player_state(global_position, animated_sprite.flip_h, velocity.y)
 
 func _on_knockback_body_entered(body: Node2D) -> void:
