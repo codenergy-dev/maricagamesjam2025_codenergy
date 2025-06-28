@@ -70,11 +70,12 @@ func change_state(new_state_name: String):
 		state.enter()
 
 func apply_knockback(direction: Vector2):
-	lives -= 1
-	knockback.apply_knockback(direction)
-	flash.start_flash()
-	animated_sprite.play("knockback")
-	audio.play("knockback")
+	if flash._flash_timer.is_stopped():
+		lives -= 1
+		knockback.apply_knockback(direction)
+		flash.start_flash()
+		animated_sprite.play("knockback")
+		audio.play("knockback")
 
 func set_sprite_frames(sprite_frames: String):
 	var current_animation = animated_sprite.animation
