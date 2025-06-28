@@ -1,0 +1,7 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+
+[raw_image_pipeline|image=/image/1024x1024.png]
+[resize_pipeline|width=128|height=128|resample=nearest]
+[raw_image_pipeline]->[resize_pipeline]
