@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerRecorder="*res://scripts/player_recorder.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+TransitionManager="*res://scripts/transition_manager.gd"
 
 [dialogue_manager]
 
