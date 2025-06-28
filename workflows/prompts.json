@@ -20,6 +20,11 @@
     "img": "character"
   },
   {
+    "name": "character-fishes",
+    "prompt": "fish, jellyfish, shrimp, turtle, swordfish",
+    "img": "fishes"
+  },
+  {
     "name": "character-flame",
     "prompt": "flame, burning, face, angry",
     "img": "flame"
@@ -30,9 +35,24 @@
     "img": "character"
   },
   {
+    "name": "character-mumbuquinha-diver",
+    "prompt": "boy, scuba diver, wetsuit, diving gear",
+    "img": "character"
+  },
+  {
+    "name": "character-mumbuquinha-iron-man",
+    "prompt": "boy, dark skin, afro hair, iron man",
+    "img": "character"
+  },
+  {
     "name": "character-rabbit",
     "prompt": "rabbit, white fur, long ears, cute, face",
     "img": "rabbit"
+  },
+  {
+    "name": "scene-beach",
+    "prompt": "beach, water, sand, rock, shell, boat, surfboard, fishing rod, chair, umbrella",
+    "img": "beach"
   },
   {
     "name": "scene-fire",
@@ -43,5 +63,20 @@
     "name": "scene-forest",
     "prompt": "tree, flower, grass, ground",
     "img": "forest"
+  },
+  {
+    "name": "scene-sea",
+    "prompt": "sea, water, sand, coral, seaweed, rock, starfish, shell",
+    "img": "sea"
+  },
+  {
+    "name": "scene-sky",
+    "prompt": "sky, airplane, ballon, firework, cloud, robot, alien, drone, seagull",
+    "img": "sky"
+  },
+  {
+    "name": "scene-trash",
+    "prompt": "trash",
+    "img": "trash"
   }
 ]
