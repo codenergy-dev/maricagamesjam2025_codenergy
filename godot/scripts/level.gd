@@ -5,6 +5,7 @@ extends Node2D
 
 var index: int = 0
 var player: Player
+var reset_level = false
 
 @onready var next = $Next
 
@@ -47,8 +48,9 @@ func _physics_process(delta: float) -> void:
 		game.add_child(next_level)
 	
 	var player = get_tree().get_first_node_in_group("player")
-	if not player:
-		Game.reset_level(self)
+	if not player and not reset_level:
+		reset_level = true
+		TransitionManager.transition("reset_level")
 
 func load_music():
 	var game = get_tree().get_first_node_in_group("game")
