@@ -1,5 +1,10 @@
 [
   {
+    "name": "character-arcade",
+    "prompt": "arcade",
+    "img": "arcade"
+  },
+  {
     "name": "character-bald",
     "prompt": "man, bald, no shirt, black pants, muscular, face, angry",
     "img": "character"
@@ -26,7 +31,7 @@
   },
   {
     "name": "character-flame",
-    "prompt": "flame, burning, face, angry",
+    "prompt": "flame, burning, eyes, mouth, angry",
     "img": "flame"
   },
   {
@@ -41,13 +46,48 @@
   },
   {
     "name": "character-mumbuquinha-iron-man",
-    "prompt": "boy, dark skin, afro hair, iron man",
+    "prompt": "iron man",
     "img": "character"
   },
   {
     "name": "character-rabbit",
     "prompt": "rabbit, white fur, long ears, cute, face",
     "img": "rabbit"
+  },
+  {
+    "name": "character-tripod-robot",
+    "prompt": "tripod, robot, metal",
+    "img": "tripod_robot"
+  },
+  {
+    "name": "poster-earth",
+    "prompt": "poster, planet, earth, stars",
+    "img": "poster_earth"
+  },
+  {
+    "name": "poster-forest",
+    "prompt": "poster, wildfire, forest",
+    "img": "poster_forest"
+  },
+  {
+    "name": "poster-recycle",
+    "prompt": "poster, recycle",
+    "img": "poster_recycle"
+  },
+  {
+    "name": "poster-rocket",
+    "prompt": "poster, rocket",
+    "img": "poster_rocket"
+  },
+  {
+    "name": "poster-sea",
+    "prompt": "poster, trash, sea, fish",
+    "img": "poster_sea"
+  },
+  {
+    "name": "poster-sky",
+    "prompt": "poster, sky, ballon, cloud, fireworks",
+    "img": "poster_sky"
   },
   {
     "name": "scene-beach",
@@ -63,6 +103,21 @@
     "name": "scene-forest",
     "prompt": "tree, flower, grass, ground",
     "img": "forest"
+  },
+  {
+    "name": "scene-forest-wildfire",
+    "prompt": "wildfire, tree, flower, grass, ground",
+    "img": "forest"
+  },
+  {
+    "name": "scene-office",
+    "prompt": "office, chair, water cooler, aquarium, monitor, tv, table, plant pot, door, truss, spotlight",
+    "img": "office"
+  },
+  {
+    "name": "scene-rock",
+    "prompt": "rock",
+    "img": "rock"
   },
   {
     "name": "scene-sea",
