@@ -23,6 +23,7 @@ static func next_level() -> Level:
 
 static func set_current_level(level: Level):
 	if current_levels.size() == 0:
+		auto_level_index = 0
 		current_levels = [load(level.scene_file_path)]
 	current_level = level
 
