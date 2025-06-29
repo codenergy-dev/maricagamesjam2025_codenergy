@@ -40,11 +40,12 @@ func _physics_process(delta: float) -> void:
 	var camera_right = camera_center.x + (camera_center.x - camera_left)
 	if camera_left >= global_position.x:
 		camera.limit_left = global_position.x
-	if camera_right >= next.global_position.x and Game.auto_level_index == index:
+	if is_instance_valid(next) and camera_right >= next.global_position.x and Game.auto_level_index == index:
 		var game = get_tree().get_first_node_in_group("game")
 		var next_level = Game.next_level()
 		camera.limit_right = 10000000
 		next_level.global_position = next.global_position
+		next.queue_free()
 		game.add_child(next_level)
 	
 	var player = get_tree().get_first_node_in_group("player")
