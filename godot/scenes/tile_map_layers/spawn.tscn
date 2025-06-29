@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=22 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://df0ybjnvyufa2" path="res://scenes/checkpoint.tscn" id="11_g6o4p"]
 [ext_resource type="PackedScene" uid="uid://ddhpu230a1djj" path="res://scenes/fish.tscn" id="13_a3iv7"]
 [ext_resource type="PackedScene" uid="uid://bke5f2yk4foae" path="res://scenes/swordfish.tscn" id="14_t1yv7"]
+[ext_resource type="PackedScene" uid="uid://c1tip1yxqqn75" path="res://scenes/jellyfish.tscn" id="15_sgfwq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -50,6 +51,7 @@ texture = ExtResource("5_7s0d0")
 texture_region_size = Vector2i(128, 128)
 0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
+0:0/0/custom_data_0 = "jellyfish"
 2:1/size_in_atlas = Vector2i(2, 2)
 2:1/0 = 0
 2:1/0/custom_data_0 = "fish"
@@ -66,6 +68,7 @@ texture_region_size = Vector2i(128, 128)
 3:3/0/custom_data_0 = "fish"
 6:0/size_in_atlas = Vector2i(2, 6)
 6:0/0 = 0
+6:0/0/custom_data_0 = "jellyfish"
 0:6/size_in_atlas = Vector2i(8, 2)
 0:6/0 = 0
 0:6/0/custom_data_0 = "swordfish"
@@ -93,6 +96,7 @@ spawn_map = Dictionary[String, PackedScene]({
 "checkpoint": ExtResource("11_g6o4p"),
 "fish": ExtResource("13_a3iv7"),
 "goal": ExtResource("10_3eo6f"),
+"jellyfish": ExtResource("15_sgfwq"),
 "player": ExtResource("9_lpbsx"),
 "swordfish": ExtResource("14_t1yv7")
 })
