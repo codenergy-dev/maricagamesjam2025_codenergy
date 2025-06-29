@@ -54,6 +54,10 @@ func _physics_process(delta: float) -> void:
 
 func load_music():
 	var game = get_tree().get_first_node_in_group("game")
+	var has_audio_stream_player = game.has_node("AudioStreamPlayer")
+	if not has_audio_stream_player:
+		return
+	
 	var audio_stream_player: AudioStreamPlayer = game.get_node("AudioStreamPlayer")
 	if audio_stream_player:
 		var level = int(scene_file_path.split("/")[-1].split("_")[1])
