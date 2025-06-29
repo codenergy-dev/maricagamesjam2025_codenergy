@@ -32,17 +32,29 @@ func spawn():
 						continue
 					
 					var spawn_instance = spawn_scene.instantiate()
-					if spawn_instance.has_method("set_sprite_texture"):
-						var source_id = get_cell_source_id(cell_coords)
-						var atlas_coords = get_cell_atlas_coords(cell_coords)
-						var tile_source = tile_set.get_source(source_id)
-						var entity_size_in_tiles = tile_source.get_tile_size_in_atlas(atlas_coords)
-						var atlas_texture: Texture2D = tile_source.texture
-						var tile_size_in_pixels = tile_source.texture_region_size
-						var region_size_in_pixels = entity_size_in_tiles * tile_size_in_pixels
-						var region_start_in_pixels = atlas_coords * tile_size_in_pixels
-						var region_rect = Rect2i(region_start_in_pixels, region_size_in_pixels)
-						spawn_instance.set_sprite_texture(atlas_texture, region_rect)
 					spawn_instance.global_position = spawn_position
+					set_sprite_texture(spawn_instance, cell_coords)
 					game.add_child(spawn_instance)
 					set_cell(cell_coords, -1)
+
+func set_sprite_texture(node: Node, cell_coords: Vector2):
+	await node.ready
+	
+	var has_sprite = node.has_node("Sprite2D")
+	if not has_sprite:
+		return
+	
+	var sprite: Sprite2D = node.get_node("Sprite2D")
+	if not sprite.texture:
+		var source_id = get_cell_source_id(cell_coords)
+		var atlas_coords = get_cell_atlas_coords(cell_coords)
+		var tile_source = tile_set.get_source(source_id)
+		var entity_size_in_tiles = tile_source.get_tile_size_in_atlas(atlas_coords)
+		var atlas_texture: Texture2D = tile_source.texture
+		var tile_size_in_pixels = tile_source.texture_region_size
+		var region_size_in_pixels = entity_size_in_tiles * tile_size_in_pixels
+		var region_start_in_pixels = atlas_coords * tile_size_in_pixels
+		var region_rect = Rect2i(region_start_in_pixels, region_size_in_pixels)
+		sprite.texture = atlas_texture
+		sprite.region_enabled = true
+		sprite.region_rect = region_rect
