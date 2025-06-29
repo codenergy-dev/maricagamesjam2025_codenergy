@@ -37,14 +37,3 @@ func _physics_process(delta: float):
 			move_speed = abs(move_speed) * collision.get_normal().x
 			sprite.flip_h = move_speed > 0
 			break
-
-# --- A FUNÇÃO MÁGICA ---
-# Esta função será chamada pelo Spawner para configurar a aparência do peixe.
-func set_sprite_texture(atlas_texture: Texture2D, region_rect: Rect2i):
-	# Garante que o nó do sprite esteja pronto antes de tentarmos acessá-lo.
-	await ready 
-	
-	if sprite:
-		sprite.texture = atlas_texture
-		sprite.region_enabled = true
-		sprite.region_rect = region_rect
