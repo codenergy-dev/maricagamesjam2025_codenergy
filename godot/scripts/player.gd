@@ -56,6 +56,10 @@ func _on_body_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("water"):
 		change_state("default")
 
+func _on_body_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("collectable"):
+		audio.play("collect")
+
 func change_state(new_state_name: String):
 	if state_name == new_state_name:
 		return
