@@ -6,6 +6,8 @@ extends CharacterBody2D
 # A velocidade com que o follower se move para a posição correta (para suavizar)
 @export var catch_up_speed: float = 30.0
 
+@export var offset: Vector2 = Vector2.ZERO
+
 var is_following = false
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -31,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# 3. Pega a posição e a direção do estado gravado.
-	var target_position = target_state.position
+	var target_position = target_state.position + offset
 	var target_flip_h = target_state.flip_h
 	var target_velocity_y = target_state.velocity_y
 
