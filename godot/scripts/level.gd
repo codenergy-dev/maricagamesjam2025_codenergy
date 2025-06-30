@@ -15,12 +15,13 @@ func _ready():
 	await get_tree().process_frame
 	var game = get_tree().get_first_node_in_group("game")
 	if not game:
-		add_to_group("game")
+		game = get_tree().root
+		game.add_to_group("game")
 	var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 	if not camera:
 		var camera_scene = load("res://scenes/camera.tscn")
 		camera = camera_scene.instantiate()
-		add_child(camera)
+		game.add_child(camera)
 	camera.limit_right = next.global_position.x
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	var camera_right = camera_center.x + (camera_center.x - camera_left)
 	if camera_left >= global_position.x:
 		camera.limit_left = global_position.x
+		Game.queue_free_previous_level()
 	if is_instance_valid(next) and camera_right >= next.global_position.x and Game.auto_level_index == index:
 		var game = get_tree().get_first_node_in_group("game")
 		var next_level = Game.next_level()

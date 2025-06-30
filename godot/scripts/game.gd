@@ -5,6 +5,7 @@ extends Node
 
 static var current_levels: Array[PackedScene] = []
 static var current_level: Level
+static var previous_level: Level
 
 static var auto_level_index = -1
 
@@ -31,8 +32,17 @@ static func reset_level(level: Level):
 	var game = level.get_tree().get_first_node_in_group("game")
 	var children = game.get_children()
 	for child in children:
-		if child.name not in ["Camera", "AudioStreamPlayer", "Transition"]:
+		if child.name not in ["AudioStreamPlayer", "Transition"]:
 			child.queue_free()
 	
+	current_level = null
+	previous_level = null
 	auto_level_index = level.index - 1
 	game.add_child(next_level())
+
+static func queue_free_previous_level():
+	if is_instance_valid(previous_level):
+		for spawn_instance in previous_level.spawn_instances:
+			if is_instance_valid(spawn_instance) and not spawn_instance.is_in_group("player"):
+				spawn_instance.queue_free()
+		previous_level.queue_free()
