@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1tip1yxqqn75"]
+[gd_scene load_steps=6 format=3 uid="uid://c1tip1yxqqn75"]
 
 [ext_resource type="Script" uid="uid://ulvbiqk0bxcs" path="res://scripts/jellyfish.gd" id="1_52w0f"]
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="2_po3rc"]
 [ext_resource type="AudioStream" uid="uid://dwx0jawjbb805" path="res://assets/sounds/jellyfish.wav" id="3_po3rc"]
+
+[sub_resource type="Curve" id="Curve_po3rc"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0.00282486, 0.00577199), 0.0, 0.0, 0, 0, Vector2(0.50565, 1.49708), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_71a4x"]
+offsets = PackedFloat32Array(0, 0.523333, 1)
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Jellyfish" type="Area2D" groups=["hitbox"]]
 collision_layer = 8
@@ -19,5 +28,18 @@ metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
 
 [node name="Hit" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("3_po3rc")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(16, 32)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_amount_curve = SubResource("Curve_po3rc")
+color_ramp = SubResource("Gradient_71a4x")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
