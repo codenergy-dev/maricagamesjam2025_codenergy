@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var target_group: String = "player"
 
 # Multiplier for the launch force.
-@export var force_multiplier: float = 2000.0
+@export var force_multiplier: float = 250.0
 
 @export var rotation_offset: float = PI 
 
@@ -12,7 +12,7 @@ extends RigidBody2D
 
 # [NOVO] Variáveis para configurar o recuo
 @export_group("Recuo (Recoil)")
-@export var detection_recoil_distance: float = 96.0 # Distância em pixels do recuo
+@export var detection_recoil_distance: float = 12.0 # Distância em pixels do recuo
 @export var detection_recoil_duration: float = 0.5 # Duração do movimento para trás
 @export var detection_return_duration: float = 0.25 # Duração do movimento de volta
 

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var move_speed: float = -25.0
+@export var move_speed: float = -3.125
 @export var move_frequency: float = 0.8
-@export var move_amplitude: float = 35.0
+@export var move_amplitude: float = 4.375
 
 # Pegamos a referência para o nosso Sprite2D filho
 @onready var sprite: Sprite2D = $Sprite2D

@@ -5,36 +5,33 @@
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="3_ogg2i"]
 [ext_resource type="AudioStream" uid="uid://t53fdmk3xvb5" path="res://assets/sounds/bee.wav" id="4_qf6nb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogg2i"]
-atlas = ExtResource("2_vie5o")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qf6nb"]
 atlas = ExtResource("2_vie5o")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oynbf"]
 atlas = ExtResource("2_vie5o")
-region = Rect2(0, 128, 128, 128)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkr4b"]
 atlas = ExtResource("2_vie5o")
-region = Rect2(128, 128, 128, 128)
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kro73"]
 atlas = ExtResource("2_vie5o")
-region = Rect2(0, 128, 128, 128)
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qe60h"]
 atlas = ExtResource("2_vie5o")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiyqc"]
+atlas = ExtResource("2_vie5o")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yiyqc"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogg2i")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qf6nb")
 }, {
@@ -49,6 +46,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qe60h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiyqc")
 }],
 "loop": true,
 "name": &"default",
@@ -56,10 +56,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1q2x0"]
-radius = 46.0435
+radius = 5.75
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vie5o"]
-radius = 46.0
+radius = 5.75
 
 [node name="Bee" type="RigidBody2D"]
 collision_layer = 16
@@ -69,14 +69,15 @@ script = ExtResource("1_vie5o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yiyqc")
 autoplay = "default"
-frame_progress = 0.280748
+frame = 2
+frame_progress = 0.407061
 speed_scale = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1q2x0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-480, 0)
+target_position = Vector2(-48, 0)
 collision_mask = 2
 
 [node name="Timer" type="Timer" parent="."]

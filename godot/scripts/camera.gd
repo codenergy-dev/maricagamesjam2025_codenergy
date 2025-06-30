@@ -14,13 +14,13 @@ extends Camera2D
 # Offset "Olhar à Frente"
 @export_group("Offset (Look Ahead)")
 @export var lookahead_enabled: bool = true
-@export var lookahead_offset: Vector2 = Vector2(250, 0) # Quão à frente/acima a câmera olha.
+@export var lookahead_offset: Vector2 = Vector2(31.25, 0) # Quão à frente/acima a câmera olha.
 @export var lookahead_speed: float = 4.0 # Quão rápido o offset se ajusta.
 
 # Zona Morta Vertical
 @export_group("Zona Morta (Dead Zone)")
 @export var vertical_deadzone_enabled: bool = true
-@export var vertical_deadzone_height: float = 200.0 # Altura da "caixa" onde a câmera não se move.
+@export var vertical_deadzone_height: float = 25.0 # Altura da "caixa" onde a câmera não se move.
 
 # Limites do Mapa (Bounds)
 @export_group("Limites (Bounds)")

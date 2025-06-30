@@ -20,9 +20,9 @@ tile_map_data = PackedByteArray("AAAMAP//AQAAAAAAAAA=")
 tile_map_data = PackedByteArray("AAAFAP//AwAAAAAAAAALAP//AQAAAAAAAAAQAP//AwADAAAAAAAPAP//AgAAAAAAAAA=")
 
 [node name="Next" type="Marker2D" parent="."]
-position = Vector2(4224, 0)
+position = Vector2(528, 0)
 
 [node name="Dialogue" parent="." instance=ExtResource("5_mmk5a")]
-position = Vector2(1632, -79)
+position = Vector2(192, -24)
 resource = ExtResource("6_uu7xq")
 start = "bee"

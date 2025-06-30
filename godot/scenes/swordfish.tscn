@@ -6,16 +6,15 @@
 [ext_resource type="AudioStream" uid="uid://gv5lbls7ner3" path="res://assets/sounds/swordfish_hit.wav" id="4_4biw8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1q2x0"]
-radius = 46.0435
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4biw8"]
-b = Vector2(-240, 0)
+b = Vector2(-64, 0)
 
 [node name="Swordfish" type="RigidBody2D"]
 collision_layer = 16
 gravity_scale = 0.0
 script = ExtResource("1_4biw8")
-force_multiplier = 2500.0
+force_multiplier = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -23,7 +22,7 @@ force_multiplier = 2500.0
 shape = SubResource("CircleShape2D_1q2x0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-1200, 0)
+target_position = Vector2(-150, 0)
 collision_mask = 2
 
 [node name="Timer" type="Timer" parent="."]

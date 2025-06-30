@@ -1,7 +1,7 @@
 extends PlayerState
 
-@export var speed = 1000.0
-@export var jump_height: float = 400.0 # Altura do pulo em pixels
+@export var speed = 125.0
+@export var jump_height: float = 50.0 # Altura do pulo em pixels
 @export var time_to_peak: float = 0.4   # Tempo para atingir o pico do pulo em segundos
 @export var time_to_fall: float = 0.3   # Tempo para cair do pico (menor para cair mais rápido)
 

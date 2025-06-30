@@ -2,12 +2,12 @@
 extends PlayerState
 
 @export_group("Natação")
-@export var swim_speed = 1000.0 # Velocidade de nado em qualquer direção
+@export var swim_speed = 125.0 # Velocidade de nado em qualquer direção
 @export var rotation_speed = 5.0
 @export var water_drag = 5.0  # Quão rápido o player para na água. Maior = mais arrasto.
 
 @export_group("Pulo para Fora d'Água")
-@export var water_exit_jump_force = -2000.0 # Um impulso forte para sair da água
+@export var water_exit_jump_force = -250.0 # Um impulso forte para sair da água
 
 func physics_process(delta):
 	# --- MOVIMENTO DIRECIONAL ---

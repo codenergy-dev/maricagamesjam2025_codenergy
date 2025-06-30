@@ -4,18 +4,29 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6rs8"]
 texture = ExtResource("1_opeq4")
-texture_region_size = Vector2i(192, 192)
-0:0/animation_columns = 3
-0:0/animation_frame_0/duration = 0.15
-0:0/animation_frame_1/duration = 0.15
-0:0/animation_frame_2/duration = 0.15
-0:0/animation_frame_3/duration = 0.15
-0:0/animation_frame_4/duration = 0.15
+texture_region_size = Vector2i(24, 24)
+0:0/animation_columns = 5
+0:0/animation_speed = 8.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-42.1306, 25.3393, 50.1589, 25.3393, 50.1589, 96, -43.851, 96)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.82411, 5.92804, 4.71461, 5.96024, 4.71253, 12, -5.76147, 12)
+0:1/animation_columns = 5
+0:1/animation_speed = 8.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.74773, 0.710995, 5.06936, 0.819709, 5.30853, 12, -5.76147, 12)
 
 [sub_resource type="TileSet" id="TileSet_5glsx"]
-tile_size = Vector2i(192, 192)
+tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_d6rs8")

@@ -18,18 +18,16 @@
 [ext_resource type="Script" uid="uid://3ijmbm3p1np1" path="res://scripts/input_button.gd" id="15_oprun"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
-radius = 63.0
+radius = 7.8
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
-radius = 69.0
-height = 240.0
+radius = 8.6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(120, 20)
+size = Vector2(15, 2.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
-radius = 69.0
-height = 240.0
+radius = 8.6
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -46,13 +44,13 @@ sprite_frames = Dictionary[String, SpriteFrames]({
 })
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -60)
 sprite_frames = ExtResource("4_fjrip")
 animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_dqkch")
 
 [node name="Flash" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
@@ -62,28 +60,28 @@ flash_color = Color(0, 0, 0, 0)
 flash_frequency = 8.0
 
 [node name="Knockback" type="Area2D" parent="." groups=["player"]]
+position = Vector2(0, 2)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("3_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback"]
-position = Vector2(0, -51)
 shape = SubResource("CapsuleShape2D_dqkch")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]
+position = Vector2(0, 16)
 collision_layer = 8
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 59)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [node name="BodyArea" type="Area2D" parent="."]
+position = Vector2(0, 2)
 collision_layer = 2
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
-position = Vector2(0, -51)
 shape = SubResource("CapsuleShape2D_tuyoq")
 
 [node name="AudioManager" type="Node" parent="."]

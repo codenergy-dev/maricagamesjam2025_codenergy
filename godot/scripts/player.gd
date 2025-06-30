@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		joystick._reset()
 		queue_free()
 	state.physics_process(delta)
-	global_position.x = clamp(global_position.x, camera.limit_left + 100, camera.limit_right)
+	global_position.x = clamp(global_position.x, camera.limit_left + 12.5, camera.limit_right)
 	PlayerRecorder.record_player_state(global_position, animated_sprite.flip_h, velocity.y)
 
 func _on_knockback_body_entered(body: Node2D) -> void:

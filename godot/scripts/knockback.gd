@@ -1,11 +1,11 @@
 extends Node
 
 ## A força a ser aplicada no knockback.
-@export var force = 250.0
+@export var force = 31.25
 ## A rapidez com que o efeito de knockback se dissipa. Valores mais altos = dissipação mais rápida.
-@export var decay_rate = 2000.0
+@export var decay_rate = 250.0
 ## Quanto menor este valor, mais fraco será o empurrão PARA CIMA. 1.0 = sem mudança.
-@export var vertical_dampening = 0.6
+@export var vertical_dampening = 1.0
 
 # O vetor de knockback atual. O script do Player irá ler este valor.
 var knockback = Vector2.ZERO
