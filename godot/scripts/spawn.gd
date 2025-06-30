@@ -11,6 +11,7 @@ func _ready():
 
 func spawn():
 	var game = get_tree().get_first_node_in_group("game")
+	var level: Level = get_parent()
 	var player = get_tree().get_first_node_in_group("player")
 	var used_cells = get_used_cells()
 
@@ -35,6 +36,7 @@ func spawn():
 					spawn_instance.global_position = spawn_position
 					set_sprite_texture(spawn_instance, cell_coords)
 					game.add_child(spawn_instance)
+					level.spawn_instances.append(spawn_instance)
 					set_cell(cell_coords, -1)
 
 func set_sprite_texture(node: Node, cell_coords: Vector2):

@@ -6,6 +6,7 @@ extends Node2D
 var index: int = 0
 var player: Player
 var reset_level = false
+var spawn_instances: Array[Node] = []
 
 @onready var next = $Next
 
