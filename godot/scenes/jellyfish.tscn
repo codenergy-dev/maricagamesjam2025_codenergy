@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1tip1yxqqn75"]
+[gd_scene load_steps=4 format=3 uid="uid://c1tip1yxqqn75"]
 
 [ext_resource type="Script" uid="uid://ulvbiqk0bxcs" path="res://scripts/jellyfish.gd" id="1_52w0f"]
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="2_po3rc"]
 [ext_resource type="AudioStream" uid="uid://dwx0jawjbb805" path="res://assets/sounds/jellyfish.wav" id="3_po3rc"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qk80q"]
 
 [node name="Jellyfish" type="Area2D" groups=["hitbox"]]
 collision_layer = 8
@@ -14,7 +12,6 @@ script = ExtResource("1_52w0f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_qk80q")
 
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource("2_po3rc")
