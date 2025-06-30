@@ -45,6 +45,7 @@ game=""
 level=""
 camera=""
 water=""
+collectable=""
 
 [input_devices]
 
