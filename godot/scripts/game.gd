@@ -32,8 +32,17 @@ static func reset_level(level: Level):
 	var game = level.get_tree().get_first_node_in_group("game")
 	var children = game.get_children()
 	for child in children:
-		if child.name not in ["AudioStreamPlayer", "Transition"]:
-			child.queue_free()
+		if child is AudioStreamPlayer:
+			continue
+		elif child is DialogueManager:
+			continue
+		elif child is PlayerRecorder:
+			continue
+		elif child is Transition:
+			continue
+		elif child is TransitionManager:
+			continue
+		child.queue_free()
 	
 	current_level = null
 	previous_level = null
