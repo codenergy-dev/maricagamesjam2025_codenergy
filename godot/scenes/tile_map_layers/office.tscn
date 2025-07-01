@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://hiqp3edbusny"]
+
+[ext_resource type="Texture2D" uid="uid://dp4csqaelmt0g" path="res://assets/sprites/office.png" id="1_ckat2"]
+[ext_resource type="Texture2D" uid="uid://c5lu30lnxdbkq" path="res://assets/sprites/posters.png" id="2_a18xf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a18xf"]
+texture = ExtResource("1_ckat2")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 8)
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 8)
+6:0/size_in_atlas = Vector2i(2, 2)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 8)
+4:2/size_in_atlas = Vector2i(2, 2)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, 8)
+6:2/size_in_atlas = Vector2i(2, 2)
+6:2/0 = 0
+6:2/0/texture_origin = Vector2i(0, 8)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/size_in_atlas = Vector2i(3, 1)
+0:3/0 = 0
+0:4/size_in_atlas = Vector2i(3, 1)
+0:4/0 = 0
+0:5/size_in_atlas = Vector2i(2, 3)
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 16)
+2:5/size_in_atlas = Vector2i(2, 1)
+2:5/0 = 0
+2:6/size_in_atlas = Vector2i(2, 1)
+2:6/0 = 0
+2:7/size_in_atlas = Vector2i(2, 1)
+2:7/0 = 0
+4:5/size_in_atlas = Vector2i(2, 3)
+4:5/0 = 0
+4:5/0/texture_origin = Vector2i(0, 16)
+6:5/size_in_atlas = Vector2i(2, 3)
+6:5/0 = 0
+6:5/0/texture_origin = Vector2i(0, 16)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fk4s6"]
+texture = ExtResource("2_a18xf")
+0:0/size_in_atlas = Vector2i(2, 3)
+0:0/0 = 0
+2:0/size_in_atlas = Vector2i(2, 3)
+2:0/0 = 0
+4:0/size_in_atlas = Vector2i(2, 3)
+4:0/0 = 0
+6:0/size_in_atlas = Vector2i(2, 3)
+6:0/0 = 0
+0:3/size_in_atlas = Vector2i(2, 3)
+0:3/0 = 0
+2:3/size_in_atlas = Vector2i(2, 3)
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fk4s6"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_a18xf")
+sources/1 = SubResource("TileSetAtlasSource_fk4s6")
+
+[node name="Office" type="TileMapLayer"]
+tile_set = SubResource("TileSet_fk4s6")
