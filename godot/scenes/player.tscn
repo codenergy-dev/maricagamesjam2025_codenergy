@@ -45,6 +45,7 @@ sprite_frames = Dictionary[String, SpriteFrames]({
 })
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = ExtResource("4_fjrip")
 animation = &"idle"
 autoplay = "idle"
