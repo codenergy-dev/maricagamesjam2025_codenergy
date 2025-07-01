@@ -28,6 +28,6 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_nn4rv")
 
 [node name="Water" type="TileMapLayer" groups=["water"]]
-z_index = 1
+z_index = 2
 material = SubResource("ShaderMaterial_2xnrv")
 tile_set = SubResource("TileSet_4tqci")
