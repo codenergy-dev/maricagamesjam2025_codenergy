@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 @export var player_sprite_frames: String = "default"
+@export var player_light_enabled: bool = false
 
 var index: int = 0
 var player: Player
@@ -26,6 +27,7 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	if player:
+		player.get_node("PointLight2D").enabled = player_light_enabled
 		player.set_sprite_frames(player_sprite_frames)
 	load_music()
 	DialogueManager.get_current_scene = func():

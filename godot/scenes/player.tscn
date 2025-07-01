@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ex2bnscbk8kg"]
+[gd_scene load_steps=23 format=3 uid="uid://ex2bnscbk8kg"]
 
 [ext_resource type="Script" uid="uid://dea0wajfas0un" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ctqe7py0maaqw" path="res://scripts/player_state_default.gd" id="2_tuyoq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bm30au8mjfc2f" path="res://addons/virtual_joystick/textures/joystick_base_outline.png" id="13_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://bkvmydfn5saxg" path="res://addons/virtual_joystick/textures/joystick_tip.png" id="14_oprun"]
 [ext_resource type="Script" uid="uid://3ijmbm3p1np1" path="res://scripts/input_button.gd" id="15_oprun"]
+[ext_resource type="Texture2D" uid="uid://b7hr4fje3ueqe" path="res://assets/sprites/light.png" id="18_fulsm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 7.8
@@ -130,6 +131,11 @@ texture_normal = ExtResource("13_f1ej7")
 texture_pressed = ExtResource("14_oprun")
 stretch_mode = 3
 script = ExtResource("15_oprun")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+energy = 0.5
+texture = ExtResource("18_fulsm")
 
 [connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
 [connection signal="body_entered" from="Knockback" to="." method="_on_knockback_body_entered"]
