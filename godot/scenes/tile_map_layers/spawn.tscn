@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=28 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ct7hv8g8ifqie" path="res://assets/sprites/fishes.png" id="5_7s0d0"]
 [ext_resource type="PackedScene" uid="uid://bkqqwut40t2b3" path="res://scenes/enemy.tscn" id="5_640p5"]
 [ext_resource type="PackedScene" uid="uid://j1qhlx1eb1j2" path="res://scenes/bee.tscn" id="6_50vgb"]
+[ext_resource type="Texture2D" uid="uid://eco2j1b5kvpp" path="res://assets/sprites/arcade.png" id="7_357tc"]
 [ext_resource type="PackedScene" uid="uid://hfdx2agbin6m" path="res://scenes/pet.tscn" id="7_lpbsx"]
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="9_lpbsx"]
 [ext_resource type="PackedScene" uid="uid://42utgbpvbj7q" path="res://scenes/goal.tscn" id="10_3eo6f"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bke5f2yk4foae" path="res://scenes/swordfish.tscn" id="14_t1yv7"]
 [ext_resource type="PackedScene" uid="uid://c1tip1yxqqn75" path="res://scenes/jellyfish.tscn" id="15_sgfwq"]
 [ext_resource type="PackedScene" uid="uid://ctog6dxji3yyd" path="res://scenes/collectable.tscn" id="17_ujrjd"]
+[ext_resource type="PackedScene" uid="uid://tx2nxbmcjb2a" path="res://scenes/arcade.tscn" id="19_n236h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -111,6 +113,13 @@ texture = ExtResource("5_7s0d0")
 0:6/0 = 0
 0:6/0/custom_data_0 = "swordfish"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sv3x"]
+texture = ExtResource("7_357tc")
+texture_region_size = Vector2i(32, 40)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/custom_data_0 = "arcade"
+
 [sub_resource type="TileSet" id="TileSet_thjrq"]
 tile_size = Vector2i(24, 24)
 custom_data_layer_0/name = "spawn"
@@ -121,11 +130,13 @@ sources/2 = SubResource("TileSetAtlasSource_f5r3j")
 sources/3 = SubResource("TileSetAtlasSource_lpbsx")
 sources/5 = SubResource("TileSetAtlasSource_a3iv7")
 sources/4 = SubResource("TileSetAtlasSource_ujrjd")
+sources/6 = SubResource("TileSetAtlasSource_4sv3x")
 
 [node name="Spawn" type="TileMapLayer"]
 tile_set = SubResource("TileSet_thjrq")
 script = ExtResource("3_v21g4")
 spawn_map = Dictionary[String, PackedScene]({
+"arcade": ExtResource("19_n236h"),
 "bald": ExtResource("5_640p5"),
 "bee": ExtResource("6_50vgb"),
 "cat": ExtResource("7_lpbsx"),
