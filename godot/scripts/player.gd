@@ -13,6 +13,7 @@ var state_instances: Dictionary[String, PlayerState]
 
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var knockback = $Knockback
 @onready var flash = $Flash
 @onready var audio: AudioManager = $AudioManager
