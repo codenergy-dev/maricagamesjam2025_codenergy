@@ -8,6 +8,3 @@
 [node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_lnu2h")
 levels = Array[PackedScene]([ExtResource("7_u5sy4"), ExtResource("3_lbhrr"), ExtResource("4_lbhrr")])
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-autoplay = true
