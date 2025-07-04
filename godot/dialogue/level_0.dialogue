@@ -1,0 +1,12 @@
+~ start
+Mumbuquinha: Ah não, esse papo de meio ambiente, que chatice! Eu quero é me divertir haha!
+=> END
+
+~ arcade_1
+Mumbuquinha: Uau, que videogame enorme!
+=> END
+
+~ arcade_2
+Videogame: Ah é, você não se importa com o meio ambiente... Agora você vai sentir na pele... [wave amp=25 freq=5]HAHAHAHAHA[/wave]
+do arcade_abducts_player()
+=> END
