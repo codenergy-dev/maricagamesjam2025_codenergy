@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="mumbuquinha"
-run/main_scene="uid://dit1a017pswy0"
+run/main_scene="uid://drjq3iq02byun"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
