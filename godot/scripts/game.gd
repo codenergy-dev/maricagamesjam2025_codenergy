@@ -29,6 +29,17 @@ static func set_current_level(level: Level):
 	current_level = level
 
 static func reset_level(level: Level):
+	clear_level(level)
+	reset_game(level.index - 1)
+	var game = level.get_tree().get_first_node_in_group("game")
+	game.add_child(next_level())
+
+static func reset_game(auto_level_index: int = -1):
+	current_level = null
+	previous_level = null
+	Game.auto_level_index = auto_level_index
+
+static func clear_level(level: Level):
 	var game = level.get_tree().get_first_node_in_group("game")
 	var children = game.get_children()
 	for child in children:
@@ -43,11 +54,6 @@ static func reset_level(level: Level):
 		elif child is TransitionManager:
 			continue
 		child.queue_free()
-	
-	current_level = null
-	previous_level = null
-	auto_level_index = level.index - 1
-	game.add_child(next_level())
 
 static func queue_free_previous_level():
 	if is_instance_valid(previous_level):
