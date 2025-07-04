@@ -62,15 +62,20 @@ func load_music():
 	var game = get_tree().get_first_node_in_group("game")
 	var has_audio_stream_player = game.has_node("AudioStreamPlayer")
 	if not has_audio_stream_player:
-		return
+		var audio_stream_player = AudioStreamPlayer.new()
+		audio_stream_player.name = "AudioStreamPlayer"
+		game.add_child(audio_stream_player)
 	
 	var audio_stream_player: AudioStreamPlayer = game.get_node("AudioStreamPlayer")
 	if audio_stream_player:
 		var level = int(scene_file_path.split("/")[-1].split("_")[1])
 		var music: Dictionary[int, String] = {
+			0: "res://assets/music/level_office.wav",
 			1: "res://assets/music/level_forest.wav",
 			2: "res://assets/music/level_sea.wav",
 		}
+		if not music.has(level):
+			return
 		if not audio_stream_player.stream or audio_stream_player.stream.resource_path != music[level]:
 			audio_stream_player.stop()
 			audio_stream_player.stream = load(music[level])
