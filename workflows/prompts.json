@@ -1,5 +1,10 @@
 [
   {
+    "name": "character-alligator",
+    "prompt": "alligator",
+    "img": "alligator"
+  },
+  {
     "name": "character-arcade",
     "prompt": "arcade",
     "img": "arcade"
@@ -18,6 +23,16 @@
     "name": "character-cat",
     "prompt": "cat, cute, fluffy, whiskers, face",
     "img": "cat"
+  },
+  {
+    "name": "character-crab",
+    "prompt": "crab, red",
+    "img": "crab"
+  },
+  {
+    "name": "character-eagle",
+    "prompt": "eagle",
+    "img": "eagle"
   },
   {
     "name": "character-firefighter",
@@ -90,9 +105,34 @@
     "img": "poster_sky"
   },
   {
+    "name": "scene-airplane",
+    "prompt": "airplane, white, blue stripes",
+    "img": "airplane"
+  },
+  {
+    "name": "scene-airport-facade",
+    "prompt": "airport, facade, white, red roof, black windows",
+    "img": "airport_facade"
+  },
+  {
+    "name": "scene-ballon-fireworks",
+    "prompt": "ballon, rocket fireworks, colorful",
+    "img": "ballon_fireworks"
+  },
+  {
     "name": "scene-beach",
-    "prompt": "beach, water, sand, rock, shell, boat, surfboard, fishing rod, chair, umbrella",
+    "prompt": "beach, water, sand, rock, shell, surfboard, fishing rod, chair, umbrella",
     "img": "beach"
+  },
+  {
+    "name": "scene-boat",
+    "prompt": "motorboat",
+    "img": "boat"
+  },
+  {
+    "name": "scene-drone-robot",
+    "prompt": "drone, robot, alien, ufo",
+    "img": "drone_robot"
   },
   {
     "name": "scene-fire",
@@ -108,6 +148,26 @@
     "name": "scene-forest-wildfire",
     "prompt": "wildfire, tree, flower, grass, ground",
     "img": "forest"
+  },
+  {
+    "name": "scene-hangar-1",
+    "prompt": "airport, hangar, white, gray door",
+    "img": "hangar_1"
+  },
+  {
+    "name": "scene-hangar-2",
+    "prompt": "airport, hangar, white, gray stripes, open",
+    "img": "hangar_2"
+  },
+  {
+    "name": "scene-helicopter",
+    "prompt": "helicopter, white, red, blue",
+    "img": "helicopter"
+  },
+  {
+    "name": "scene-laser",
+    "prompt": "laser beam",
+    "img": "laser"
   },
   {
     "name": "scene-office",
@@ -126,12 +186,37 @@
   },
   {
     "name": "scene-sky",
-    "prompt": "sky, airplane, ballon, firework, cloud, robot, alien, drone, seagull",
+    "prompt": "sky, cloud, seagull",
     "img": "sky"
   },
   {
     "name": "scene-trash",
     "prompt": "trash",
     "img": "trash"
+  },
+  {
+    "name": "scene-truck",
+    "prompt": "truck, white, yellow, red stripes",
+    "img": "truck"
+  },
+  {
+    "name": "scene-truck-gas",
+    "prompt": "truck, gas, white, yellow, red stripes",
+    "img": "truck_gas"
+  },
+  {
+    "name": "scene-truck-firefighter-1",
+    "prompt": "truck, firefighter, yellow, red stripes",
+    "img": "truck"
+  },
+  {
+    "name": "scene-truck-firefighter-2",
+    "prompt": "truck, firefighter, red",
+    "img": "truck"
+  },
+  {
+    "name": "scene-truck-tow",
+    "prompt": "truck, tow, white, yellow, red stripes",
+    "img": "truck_tow"
   }
 ]
