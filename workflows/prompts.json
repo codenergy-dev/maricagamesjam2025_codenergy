@@ -126,12 +126,12 @@
   },
   {
     "name": "scene-boat",
-    "prompt": "motorboat",
+    "prompt": "motorboat, wooden",
     "img": "boat"
   },
   {
     "name": "scene-drone-robot",
-    "prompt": "drone, robot, alien, ufo",
+    "prompt": "drone, robot, alien",
     "img": "drone_robot"
   },
   {
