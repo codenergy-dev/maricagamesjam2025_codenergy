@@ -39,7 +39,7 @@ func physics_process(delta):
 	# --- PULO PARA SAIR DA ÁGUA ---
 	# Este pulo tem prioridade e sobrepõe a velocidade vertical.
 	if Input.is_action_just_pressed("ui_accept"):
-		player.velocity = -input_direction * water_exit_jump_force
+		player.velocity = (-input_direction if input_direction != Vector2.ZERO else Vector2(0, 1)) * water_exit_jump_force
 		# Poderia adicionar um som de pulo na água aqui, ou um efeito de splash
 		player.action_taken.emit({"type": "water_jump"})
 
