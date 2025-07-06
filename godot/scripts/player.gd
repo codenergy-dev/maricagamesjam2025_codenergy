@@ -21,6 +21,9 @@ var state_instances: Dictionary[String, PlayerState]
 @onready var joystick: VirtualJoystick = $"Controls/Virtual Joystick"
 
 func _ready() -> void:
+	var platform = OS.get_name()
+	$Controls.visible = platform == "Android" or platform == "iOS"
+	
 	for state_script in state_scripts:
 		var state_instance = state_scripts[state_script].new()
 		state_instance.player = self
