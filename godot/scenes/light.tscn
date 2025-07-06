@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6ydr8vbg7ay"]
+
+[ext_resource type="Texture2D" uid="uid://b7hr4fje3ueqe" path="res://assets/sprites/light.png" id="1_24oxn"]
+
+[node name="Light" type="Sprite2D"]
+modulate = Color(10, 10, 10, 1)
+texture = ExtResource("1_24oxn")
