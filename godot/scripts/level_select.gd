@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 
 func select():
 	audio.play("select")
+	await AudioFade.out(get_tree().root.get_node("AudioStreamPlayer"), 0.25)
 	TransitionManager.transition("level_select_" + str(current_level))
 
 func next():
