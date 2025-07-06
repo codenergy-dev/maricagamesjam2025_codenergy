@@ -78,7 +78,7 @@ func load_music():
 			return
 		if not audio_stream_player.stream or audio_stream_player.stream.resource_path != music[level]:
 			if audio_stream_player.playing:
-				await AudioFade.out(audio_stream_player)
+				await AudioFade.out(audio_stream_player, 0.25)
 			audio_stream_player.stop()
 			audio_stream_player.volume_db = 0
 			audio_stream_player.stream = load(music[level])
