@@ -52,10 +52,11 @@ lock_rotation = true
 script = ExtResource("1_jdxlk")
 rotation_offset = -1.571
 max_rotation_degrees = 0.0
+max_tackle_count = 100
+linear_velocity_threshold = 10.0
 detection_recoil_duration = 0.25
 return_to_start_pos = true
 return_speed_multiplier = 0.5
-max_tackle_count = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7wwoj")
