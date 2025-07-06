@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsm66sqbbkxf1"]
+[gd_scene load_steps=9 format=3 uid="uid://bsm66sqbbkxf1"]
 
 [ext_resource type="Texture2D" uid="uid://c8obnubgqyqh5" path="res://assets/sprites/title.png" id="1_4ignj"]
 [ext_resource type="Script" uid="uid://ciupypokeh8n5" path="res://scripts/title.gd" id="1_p6dhs"]
-[ext_resource type="AudioStream" uid="uid://c4ej4pgo23qv5" path="res://assets/music/title.wav" id="2_wosw1"]
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="4_b3w7a"]
 [ext_resource type="AudioStream" uid="uid://djd87w88imgvk" path="res://assets/sounds/select.wav" id="5_4rr2b"]
 
@@ -210,10 +209,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_p6dhs")
 }
 autoplay = "start"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_wosw1")
-autoplay = true
 
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource("4_b3w7a")

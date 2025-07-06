@@ -2,11 +2,17 @@ extends Node
 
 var has_started_game = false
 
-@onready var music = $AudioStreamPlayer
 @onready var audio = $AudioManager
 
 func _ready() -> void:
-	get_tree().root.add_to_group("game")
+	var game = get_tree().root
+	game.add_to_group("game")
+	
+	var audio_stream_player = AudioStreamPlayer.new()
+	audio_stream_player.name = "AudioStreamPlayer"
+	audio_stream_player.stream = load("res://assets/music/title.wav")
+	audio_stream_player.autoplay = true
+	game.add_child.call_deferred(audio_stream_player)
 
 func _on_button_pressed() -> void:
 	start_game()
@@ -20,5 +26,4 @@ func start_game() -> void:
 		return
 	has_started_game = true
 	audio.play("select")
-	await AudioFade.out(music)
 	TransitionManager.transition("start_game")
