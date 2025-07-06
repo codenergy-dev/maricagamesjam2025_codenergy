@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dagw4rj3gqnqf" path="res://scripts/arcade.gd" id="1_24fbm"]
 [ext_resource type="Texture2D" uid="uid://eco2j1b5kvpp" path="res://assets/sprites/arcade.png" id="1_pig0t"]
-[ext_resource type="Texture2D" uid="uid://b7hr4fje3ueqe" path="res://assets/sprites/light.png" id="2_me10n"]
+[ext_resource type="PackedScene" uid="uid://bt6ydr8vbg7ay" path="res://scenes/light.tscn" id="3_24fbm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_me10n"]
 atlas = ExtResource("1_pig0t")
@@ -27,14 +27,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/path = NodePath("Light:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Light:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(10, 10, 10, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_24fbm"]
@@ -43,14 +55,26 @@ length = 3.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/path = NodePath("Light:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 3.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.0, 50.0]
+"values": [Vector2(1, 1), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Light:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(10, 10, 10, 0), Color(10, 10, 10, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wer3u"]
@@ -66,9 +90,10 @@ script = ExtResource("1_24fbm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24fbm")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-texture = ExtResource("2_me10n")
-texture_scale = 2.0
+[node name="Light" parent="." instance=ExtResource("3_24fbm")]
+modulate = Color(10, 10, 10, 0)
+z_index = 1
+position = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_24fbm")
