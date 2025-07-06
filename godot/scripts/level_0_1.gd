@@ -8,4 +8,4 @@ func arcade_abducts_player():
 	arcade.animation_player.play("abducts_player")
 	player.animation_player.play("abducted")
 	await arcade.animation_player.animation_finished
-	TransitionManager.transition("load_game")
+	TransitionManager.transition("level_select_1")
