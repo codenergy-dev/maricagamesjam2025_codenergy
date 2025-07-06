@@ -27,7 +27,7 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	if player:
-		player.get_node("PointLight2D").enabled = player_light_enabled
+		player.get_node("Light").visible = player_light_enabled
 		player.set_sprite_frames(player_sprite_frames)
 	load_music()
 	DialogueManager.get_current_scene = func():
