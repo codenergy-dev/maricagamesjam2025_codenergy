@@ -16,6 +16,10 @@ extends RigidBody2D
 @export var detection_recoil_duration: float = 0.5 # Duração do movimento para trás
 @export var detection_return_duration: float = 0.25 # Duração do movimento de volta
 
+@export_group("Retorno")
+@export var return_to_start_pos: bool = false
+@export var return_speed_multiplier: float = 1.0
+
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
 @onready var audio: AudioManager = $AudioManager
@@ -28,8 +32,11 @@ var is_charging: bool = false
 var tackle_count = 0
 
 var start_rotation: float = 0.0
+var start_position: Vector2
+var is_returning: bool = false
 
 func _ready():
+	start_position = global_position
 	timer.timeout.connect(_on_timer_timeout)
 
 func _physics_process(delta):
@@ -41,11 +48,15 @@ func _physics_process(delta):
 		var clamped_diff = clamp(angle_diff, -max_rotation_rad, max_rotation_rad)
 		global_rotation = start_rotation + clamped_diff * -1
 
-	elif not is_charging and tackle_count < max_tackle_count and linear_velocity.length() < 0.05:
-		detect_target()
-	
-	else:
-		lock_rotation = tackle_count >= max_tackle_count
+	elif not is_charging and not is_returning:
+		if tackle_count < max_tackle_count:
+			if linear_velocity.length() < 0.05:
+				if return_to_start_pos and global_position.distance_to(start_position) > 5.0:
+					_return_to_start_position()
+				else:
+					detect_target()
+		else:
+			lock_rotation = true
 
 func detect_target():
 	if raycast.is_colliding():
@@ -103,6 +114,17 @@ func _on_timer_timeout():
 	target_object = null
 	tackle_count += 1
 
+func _return_to_start_position():
+	is_returning = true
+	
+	var distance = global_position.distance_to(start_position)
+	var duration = (distance / 300.0) / return_speed_multiplier # 300 é uma velocidade base, ajuste se necessário
+	
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", start_position, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	
+	is_returning = false
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group(target_group):
