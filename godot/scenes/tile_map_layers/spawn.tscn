@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=37 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://du3ywot52wtpp" path="res://assets/sprites/alligator.png" id="8_4sv3x"]
 [ext_resource type="Texture2D" uid="uid://dgb10uo78j2ej" path="res://assets/sprites/crab.png" id="9_hkp5j"]
 [ext_resource type="PackedScene" uid="uid://ex2bnscbk8kg" path="res://scenes/player.tscn" id="9_lpbsx"]
+[ext_resource type="Texture2D" uid="uid://d1rvbpk36yk3f" path="res://assets/sprites/eagle.png" id="10_2tdm3"]
 [ext_resource type="PackedScene" uid="uid://42utgbpvbj7q" path="res://scenes/goal.tscn" id="10_3eo6f"]
 [ext_resource type="PackedScene" uid="uid://df0ybjnvyufa2" path="res://scenes/checkpoint.tscn" id="11_g6o4p"]
 [ext_resource type="PackedScene" uid="uid://ddhpu230a1djj" path="res://scenes/fish.tscn" id="13_a3iv7"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://tx2nxbmcjb2a" path="res://scenes/arcade.tscn" id="19_n236h"]
 [ext_resource type="PackedScene" uid="uid://bjfwytg3mh677" path="res://scenes/alligator.tscn" id="21_hkp5j"]
 [ext_resource type="PackedScene" uid="uid://bitg8eyxay04a" path="res://scenes/crab.tscn" id="23_0l35s"]
+[ext_resource type="PackedScene" uid="uid://kw25uc3h6ru3" path="res://scenes/eagle.tscn" id="25_d06yf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -136,6 +138,12 @@ texture = ExtResource("9_hkp5j")
 0:0/0 = 0
 0:0/0/custom_data_0 = "crab"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d06yf"]
+texture = ExtResource("10_2tdm3")
+0:0/size_in_atlas = Vector2i(3, 2)
+0:0/0 = 0
+0:0/0/custom_data_0 = "eagle"
+
 [sub_resource type="TileSet" id="TileSet_thjrq"]
 tile_size = Vector2i(24, 24)
 custom_data_layer_0/name = "spawn"
@@ -149,6 +157,7 @@ sources/4 = SubResource("TileSetAtlasSource_ujrjd")
 sources/6 = SubResource("TileSetAtlasSource_4sv3x")
 sources/7 = SubResource("TileSetAtlasSource_0l35s")
 sources/8 = SubResource("TileSetAtlasSource_2tdm3")
+sources/9 = SubResource("TileSetAtlasSource_d06yf")
 
 [node name="Spawn" type="TileMapLayer"]
 tile_set = SubResource("TileSet_thjrq")
@@ -162,6 +171,7 @@ spawn_map = Dictionary[String, PackedScene]({
 "checkpoint": ExtResource("11_g6o4p"),
 "collectable": ExtResource("17_ujrjd"),
 "crab": ExtResource("23_0l35s"),
+"eagle": ExtResource("25_d06yf"),
 "fish": ExtResource("13_a3iv7"),
 "goal": ExtResource("10_3eo6f"),
 "jellyfish": ExtResource("15_sgfwq"),
