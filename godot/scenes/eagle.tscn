@@ -48,6 +48,7 @@ radius = 5.0
 [node name="Eagle" type="RigidBody2D"]
 collision_layer = 16
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_jdxlk")
 rotation_offset = -1.571
 max_rotation_degrees = 0.0
