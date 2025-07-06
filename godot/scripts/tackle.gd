@@ -49,7 +49,7 @@ func _physics_process(delta):
 func detect_target():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
-		if collider.is_in_group(target_group):
+		if is_instance_valid(collider) and collider.is_in_group(target_group):
 			is_charging = true
 			target_object = collider
 			start_rotation = global_rotation
