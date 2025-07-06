@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjfwytg3mh677"]
+
+[ext_resource type="Texture2D" uid="uid://du3ywot52wtpp" path="res://assets/sprites/alligator.png" id="1_18w6k"]
+[ext_resource type="Script" uid="uid://cdc1stsqd2v51" path="res://scripts/tackle.gd" id="1_kh2uy"]
+[ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="3_xrxrs"]
+[ext_resource type="AudioStream" uid="uid://bjlijxh3u8k3" path="res://assets/sounds/alligator.wav" id="4_57tcj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh2uy"]
+atlas = ExtResource("1_18w6k")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrxrs"]
+atlas = ExtResource("1_18w6k")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57tcj"]
+atlas = ExtResource("1_18w6k")
+region = Rect2(0, 32, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4q2u"]
+atlas = ExtResource("1_18w6k")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rn248"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh2uy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xrxrs")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_57tcj")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_s4q2u")
+}],
+"loop": true,
+"name": &"tackle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18w6k"]
+size = Vector2(62, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kh2uy"]
+radius = 7.0
+
+[node name="Alligator" type="RigidBody2D"]
+collision_layer = 16
+script = ExtResource("1_kh2uy")
+max_rotation_degrees = 0.0
+detection_recoil_distance = 0.0
+detection_recoil_duration = 0.0
+detection_return_duration = 0.0
+max_tackle_count = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rn248")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_18w6k")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-75, 0)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2(-25, 1)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_kh2uy")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("3_xrxrs")
+metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
+
+[node name="Hit" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("4_57tcj")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
