@@ -77,6 +77,7 @@ func change_state(new_state_name: String):
 func apply_knockback(direction: Vector2):
 	if flash._flash_timer.is_stopped():
 		lives -= 1
+		velocity = Vector2.ZERO
 		knockback.apply_knockback(direction)
 		flash.start_flash()
 		animated_sprite.play("knockback")
