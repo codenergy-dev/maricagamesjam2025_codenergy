@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw2cmjtuieign"]
+[gd_scene load_steps=4 format=4 uid="uid://dw2cmjtuieign"]
 
 [ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_lfs61"]
 [ext_resource type="PackedScene" uid="uid://cantrh524qf7" path="res://scenes/tile_map_layers/forest.tscn" id="2_2ifhd"]
@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 [node name="Forest" parent="." instance=ExtResource("2_2ifhd")]
 
 [node name="Spawn" parent="." instance=ExtResource("3_k0cap")]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 255, 255, 3, 0, 0, 0, 0, 0, 0, 0, 19, 0, 255, 255, 3, 0, 3, 0, 0, 0, 0, 0, 7, 0, 255, 255, 7, 0, 0, 0, 0, 0, 0, 0, 11, 0, 255, 255, 8, 0, 0, 0, 0, 0, 0, 0, 16, 0, 255, 255, 8, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAACAP//AwAAAAAAAAATAP//AwADAAAAAAAHAP//BwAAAAAAAAALAP//CAAAAAAAAAAQAP//CAAAAAAAAAANAPz/CQAAAAAAAAA=")
 
 [node name="Next" type="Marker2D" parent="."]
 position = Vector2(528, 0)
