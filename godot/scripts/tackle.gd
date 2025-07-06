@@ -19,6 +19,7 @@ extends RigidBody2D
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
 @onready var audio: AudioManager = $AudioManager
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var target_object = null
 var is_charging: bool = false
@@ -59,6 +60,11 @@ func detect_target():
 			
 			timer.start()
 			audio.play("charge")
+			
+			if is_instance_valid(animated_sprite):
+				animated_sprite.play("tackle")
+	elif is_instance_valid(animated_sprite):
+		animated_sprite.play("default")
 
 # [NOVO] Função que cria a animação de "aviso"
 func play_detection_recoil():
