@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://kw25uc3h6ru3"]
+
+[ext_resource type="Texture2D" uid="uid://d1rvbpk36yk3f" path="res://assets/sprites/eagle.png" id="1_2vgvb"]
+[ext_resource type="Script" uid="uid://cdc1stsqd2v51" path="res://scripts/tackle.gd" id="1_jdxlk"]
+[ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="3_g2fde"]
+[ext_resource type="AudioStream" uid="uid://b1mhcnracsriu" path="res://assets/sounds/eagle.mp3" id="4_7wwoj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdxlk"]
+atlas = ExtResource("1_2vgvb")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2fde"]
+atlas = ExtResource("1_2vgvb")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wwoj"]
+atlas = ExtResource("1_2vgvb")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wwoj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdxlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2fde")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wwoj")
+}],
+"loop": true,
+"name": &"tackle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vgvb"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdxlk"]
+radius = 5.0
+
+[node name="Eagle" type="RigidBody2D"]
+collision_layer = 16
+gravity_scale = 0.0
+script = ExtResource("1_jdxlk")
+rotation_offset = -1.571
+max_rotation_degrees = 0.0
+detection_recoil_duration = 0.25
+return_to_start_pos = true
+return_speed_multiplier = 0.5
+max_tackle_count = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7wwoj")
+animation = &"tackle"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_2vgvb")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 200)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2(-2, 10)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_jdxlk")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("3_g2fde")
+metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
+
+[node name="Charge" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("4_7wwoj")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
