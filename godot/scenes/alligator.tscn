@@ -88,6 +88,9 @@ shape = SubResource("CircleShape2D_kh2uy")
 script = ExtResource("3_xrxrs")
 metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
 
+[node name="Charge" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("4_57tcj")
+
 [node name="Hit" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("4_57tcj")
 
