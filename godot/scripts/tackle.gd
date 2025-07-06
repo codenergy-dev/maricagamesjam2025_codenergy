@@ -40,7 +40,7 @@ func _physics_process(delta):
 		var clamped_diff = clamp(angle_diff, -max_rotation_rad, max_rotation_rad)
 		global_rotation = start_rotation + clamped_diff * -1
 
-	elif not is_charging and tackle_count < max_tackle_count:
+	elif not is_charging and tackle_count < max_tackle_count and linear_velocity.length() < 0.05:
 		detect_target()
 	
 	else:
