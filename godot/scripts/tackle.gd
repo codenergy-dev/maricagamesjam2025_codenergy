@@ -1,22 +1,20 @@
 extends RigidBody2D
 
-# A group to identify the secondary object (the character).
+@export_group("Tackle")
 @export var target_group: String = "player"
-
-# Multiplier for the launch force.
 @export var force_multiplier: float = 250.0
-
 @export var rotation_offset: float = PI 
-
 @export var max_rotation_degrees: float = 30.0
+@export var max_tackle_count = 1
+@export var linear_velocity_threshold = 0.05
 
 # [NOVO] Variáveis para configurar o recuo
-@export_group("Recuo (Recoil)")
+@export_group("Tackle Recoil")
 @export var detection_recoil_distance: float = 12.0 # Distância em pixels do recuo
 @export var detection_recoil_duration: float = 0.5 # Duração do movimento para trás
 @export var detection_return_duration: float = 0.25 # Duração do movimento de volta
 
-@export_group("Retorno")
+@export_group("Tackle Return")
 @export var return_to_start_pos: bool = false
 @export var return_speed_multiplier: float = 1.0
 
@@ -27,10 +25,7 @@ extends RigidBody2D
 
 var target_object = null
 var is_charging: bool = false
-
-@export var max_tackle_count = 1
 var tackle_count = 0
-
 var start_rotation: float = 0.0
 var start_position: Vector2
 var is_returning: bool = false
@@ -50,7 +45,7 @@ func _physics_process(delta):
 
 	elif not is_charging and not is_returning:
 		if tackle_count < max_tackle_count:
-			if linear_velocity.length() < 0.05:
+			if linear_velocity.length() < linear_velocity_threshold:
 				if return_to_start_pos and global_position.distance_to(start_position) > 5.0:
 					_return_to_start_position()
 				else:
