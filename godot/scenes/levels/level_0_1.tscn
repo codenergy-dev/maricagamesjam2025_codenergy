@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://cr7p6rhmwisdx" path="res://scripts/level_0_1.gd" id="1_iow32"]
 [ext_resource type="PackedScene" uid="uid://hiqp3edbusny" path="res://scenes/tile_map_layers/office.tscn" id="2_vbaru"]
 [ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="3_cs4hx"]
-[ext_resource type="Texture2D" uid="uid://b7hr4fje3ueqe" path="res://assets/sprites/light.png" id="4_7nw6i"]
 [ext_resource type="PackedScene" uid="uid://bcqh7ikttb63x" path="res://scenes/dialogue.tscn" id="5_lvdy6"]
 [ext_resource type="Resource" uid="uid://brq8ihi1h6bvk" path="res://dialogue/level_0.dialogue" id="6_iow32"]
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="7_qa7ry"]
 [ext_resource type="AudioStream" uid="uid://b2rguu1xvjy58" path="res://assets/sounds/abduction.wav" id="8_fikcq"]
+[ext_resource type="PackedScene" uid="uid://bt6ydr8vbg7ay" path="res://scenes/light.tscn" id="8_qa7ry"]
 
 [node name="Level 0 1" type="Node2D"]
 script = ExtResource("1_iow32")
-player_light_enabled = true
 metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 
 [node name="Background" parent="." instance=ExtResource("2_vbaru")]
@@ -31,47 +30,47 @@ color = Color(0.882353, 0.494118, 0.847059, 1)
 
 [node name="Light" type="Node2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="Light"]
+[node name="Light" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.35)
 position = Vector2(152, -24)
-texture = ExtResource("4_7nw6i")
 
-[node name="PointLight2D2" type="PointLight2D" parent="Light"]
+[node name="Light2" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.35)
 position = Vector2(200, -24)
-texture = ExtResource("4_7nw6i")
 
-[node name="PointLight2D3" type="PointLight2D" parent="Light"]
+[node name="Light3" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.35)
 position = Vector2(840, -24)
-texture = ExtResource("4_7nw6i")
 
-[node name="PointLight2D4" type="PointLight2D" parent="Light"]
+[node name="Light4" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(776, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
-[node name="PointLight2D5" type="PointLight2D" parent="Light"]
+[node name="Light5" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(840, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
-[node name="PointLight2D6" type="PointLight2D" parent="Light"]
+[node name="Light6" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(904, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
-[node name="PointLight2D7" type="PointLight2D" parent="Light"]
+[node name="Light7" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(968, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
-[node name="PointLight2D8" type="PointLight2D" parent="Light"]
+[node name="Light8" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(1032, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
-[node name="PointLight2D9" type="PointLight2D" parent="Light"]
+[node name="Light9" parent="Light" instance=ExtResource("8_qa7ry")]
+modulate = Color(10, 10, 10, 0.1)
 position = Vector2(1096, -56)
-texture = ExtResource("4_7nw6i")
-texture_scale = 2.0
+scale = Vector2(2, 2)
 
 [node name="Dialogue" parent="." instance=ExtResource("5_lvdy6")]
 position = Vector2(776, -16)
