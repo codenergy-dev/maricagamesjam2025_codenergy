@@ -20,7 +20,9 @@ func _on_button_pressed() -> void:
 	start_game()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+	elif event is InputEventKey and event.pressed and not event.echo:
 		start_game()
 
 func start_game() -> void:
