@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://2du1ftlbw1kt"]
+
+[ext_resource type="Texture2D" uid="uid://cpa6nmha7nyhh" path="res://assets/sprites/cash.png" id="1_41pws"]
+[ext_resource type="Script" uid="uid://dqrt0e8581syl" path="res://scripts/cash.gd" id="2_o3u0c"]
+
+[sub_resource type="Animation" id="Animation_18c7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5mmat"]
+resource_name = "bump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lku3k"]
+_data = {
+&"RESET": SubResource("Animation_18c7i"),
+&"bump": SubResource("Animation_5mmat")
+}
+
+[node name="Cash" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("1_41pws")
+script = ExtResource("2_o3u0c")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 6.0
+offset_right = 120.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_outline_color = Color(0.87451, 0.443137, 0.14902, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lku3k")
+}
