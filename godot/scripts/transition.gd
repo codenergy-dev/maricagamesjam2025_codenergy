@@ -14,10 +14,10 @@ func on_transition():
 	if type == "start_game":
 		get_tree().root.get_node("Title").queue_free()
 		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
-	elif type == "load_game":
+	elif type == "level_select":
 		Game.clear_level(Game.current_level)
 		Game.reset_game()
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 	elif type.begins_with("level_select_"):
 		var level = int(type.split("_")[2]) if type.split("_").size() == 3 else 0
 		var level_select = get_tree().root.get_node("LevelSelect")

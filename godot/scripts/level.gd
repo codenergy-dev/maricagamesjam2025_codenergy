@@ -93,3 +93,7 @@ func load_music():
 			audio_stream_player.volume_db = 0
 			audio_stream_player.stream = load(music[level])
 			audio_stream_player.play()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		TransitionManager.transition("level_select")
