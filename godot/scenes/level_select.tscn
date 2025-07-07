@@ -488,6 +488,7 @@ stream = ExtResource("6_4nqmc")
 
 [node name="Swipe" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("7_4nqmc")
+volume_db = 10.0
 
 [connection signal="gui_input" from="Control/Level" to="." method="_on_level_gui_input"]
 [connection signal="pressed" from="Control/Control/Left" to="." method="_on_left_pressed"]
