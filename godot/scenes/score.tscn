@@ -41,7 +41,6 @@ offset_right = -192.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-count = 50
 
 [node name="Cash" parent="Control" instance=ExtResource("2_bak1h")]
 layout_mode = 1
