@@ -4,6 +4,7 @@ extends Node2D
 @export var load_next_level: bool = true
 @export var player_sprite_frames: String = "default"
 @export var player_light_enabled: bool = false
+@export var player_hud_enabled: bool = true
 
 var index: int = 0
 var player: Player
@@ -29,6 +30,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.get_node("Light").visible = player_light_enabled
+		player.get_node("HUD").visible = player_hud_enabled
 		player.set_sprite_frames(player_sprite_frames)
 	load_music()
 	DialogueManager.get_current_scene = func():
