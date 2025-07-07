@@ -15,6 +15,11 @@ func _ready() -> void:
 static func is_level_scene_path_valid(base, step):
 	return ResourceLoader.exists("res://scenes/levels/level_" + str(base) + "_" + str(step) + ".tscn")
 
+static func will_next_level_change_base():
+	var next_level_path = get_next_level_path()
+	var next_level_base_index = int(next_level_path.split("_")[1])
+	return base_level_index != next_level_base_index
+
 static func load_level_scene(base, step):
 	return load("res://scenes/levels/level_" + str(base) + "_" + str(step) + ".tscn")
 

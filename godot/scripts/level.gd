@@ -56,6 +56,8 @@ func _physics_process(delta: float) -> void:
 		TransitionManager.transition("reset_level")
 
 func _load_next_level():
+	if Game.will_next_level_change_base():
+		return
 	var game = get_tree().get_first_node_in_group("game")
 	var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 	var next_level = Game.next_level()
