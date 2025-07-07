@@ -48,3 +48,7 @@ func _on_right_pressed() -> void:
 func _on_left_pressed() -> void:
 	animation_player.play("swipe_right")
 	audio.play("swipe")
+
+func _on_level_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and not event.pressed:
+		select()
