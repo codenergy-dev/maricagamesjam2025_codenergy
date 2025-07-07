@@ -11,8 +11,9 @@ func _ready() -> void:
 	queue_free()
 
 func on_transition():
-	if type == "start_game":
-		get_tree().root.get_node("Title").queue_free()
+	if type == "title":
+		get_tree().change_scene_to_file("res://scenes/title.tscn")
+	elif type == "start_game":
 		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 	elif type == "level_select":
 		Game.clear_level(Game.current_level)

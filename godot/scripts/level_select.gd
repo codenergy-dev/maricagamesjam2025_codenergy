@@ -52,3 +52,7 @@ func _on_left_pressed() -> void:
 func _on_level_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and not event.pressed:
 		select()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		TransitionManager.transition("title")
