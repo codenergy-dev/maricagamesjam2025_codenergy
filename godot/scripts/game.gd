@@ -1,31 +1,37 @@
 class_name Game
 extends Node
 
-@export var levels: Array[PackedScene] = []
-
-static var current_levels: Array[PackedScene] = []
 static var current_level: Level
 static var previous_level: Level
 
-static var auto_level_index = -1
+static var base_level_index = 0
+static var auto_level_index = 0
 
 func _ready() -> void:
-	current_levels = levels
 	add_child(next_level())
 
+static func is_level_scene_path_valid(base, step):
+	return ResourceLoader.exists("res://scenes/levels/level_" + str(base) + "_" + str(step) + ".tscn")
+
+static func load_level_scene(base, step):
+	return load("res://scenes/levels/level_" + str(base) + "_" + str(step) + ".tscn")
+
 static func next_level() -> Level:
-	if auto_level_index + 1 >= current_levels.size():
-		auto_level_index = 0
-	else:
+	if is_level_scene_path_valid(base_level_index, auto_level_index + 1):
 		auto_level_index += 1
-	var next_level: Level = current_levels[auto_level_index].instantiate()
+	elif is_level_scene_path_valid(base_level_index + 1, 1):
+		base_level_index += 1
+		auto_level_index = 1
+	else:
+		base_level_index = 1
+		auto_level_index = 1
+	var next_level: Level = load_level_scene(base_level_index, auto_level_index).instantiate()
 	next_level.index = auto_level_index
 	return next_level
 
 static func set_current_level(level: Level):
-	if current_levels.size() == 0:
-		auto_level_index = 0
-		current_levels = [load(level.scene_file_path)]
+	base_level_index = int(level.scene_file_path.split("_")[1])
+	auto_level_index = int(level.scene_file_path.split("_")[2])
 	current_level = level
 
 static func reset_level(level: Level):

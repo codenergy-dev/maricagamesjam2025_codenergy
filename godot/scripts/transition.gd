@@ -28,9 +28,8 @@ func on_transition():
 			Game.clear_level(Game.current_level)
 			Game.reset_game()
 		
-		if level == 0:
-			get_tree().change_scene_to_file("res://scenes/levels/level_0_1.tscn")
-		else:
-			get_tree().change_scene_to_file("res://scenes/game.tscn")
+		Game.base_level_index = level
+		Game.auto_level_index = 0
+		get_tree().root.add_child(Game.next_level())
 	elif type == "reset_level":
 		Game.reset_level(Game.current_level)
