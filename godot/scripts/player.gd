@@ -10,6 +10,7 @@ signal action_taken(action_details)
 
 var state: PlayerState
 var state_instances: Dictionary[String, PlayerState]
+var collected: int = 0
 
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 @onready var animated_sprite = $AnimatedSprite2D
@@ -62,6 +63,7 @@ func _on_body_area_body_exited(body: Node2D) -> void:
 
 func _on_body_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectable"):
+		collected += 1
 		audio.play("collect")
 
 func change_state(new_state_name: String):
