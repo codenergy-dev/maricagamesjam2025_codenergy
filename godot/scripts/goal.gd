@@ -11,5 +11,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if goal.is_colliding():
 		if level_select:
-			TransitionManager.transition("level_select_" + level_select)
+			var player: Player = goal.get_collider()
+			SharedPreferences.set_int("current_player_recycle", player.recycle.count)
+			SharedPreferences.set_string("next_level_select", level_select)
+			TransitionManager.transition("score")
 		queue_free()

@@ -20,10 +20,13 @@ var collected: int = 0
 @onready var audio: AudioManager = $AudioManager
 @onready var controls = $Controls
 @onready var joystick: VirtualJoystick = $"Controls/Virtual Joystick"
+@onready var recycle: Recycle = $"HUD/Recycle/Recycle"
 
 func _ready() -> void:
 	var platform = OS.get_name()
 	$Controls.visible = platform == "Android" or platform == "iOS"
+	
+	collected = SharedPreferences.get_int("current_player_recycle")
 	
 	for state_script in state_scripts:
 		var state_instance = state_scripts[state_script].new()
