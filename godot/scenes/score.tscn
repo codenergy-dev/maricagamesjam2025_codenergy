@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh235rtaxkjlf"]
+
+[ext_resource type="PackedScene" uid="uid://dx2y65luelwur" path="res://scenes/recycle.tscn" id="1_8juob"]
+[ext_resource type="Script" uid="uid://xnbr62xd67of" path="res://scripts/score.gd" id="1_plgac"]
+[ext_resource type="PackedScene" uid="uid://2du1ftlbw1kt" path="res://scenes/cash.tscn" id="2_bak1h"]
+[ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="4_68bkv"]
+[ext_resource type="AudioStream" uid="uid://bm3cuwvmxxjv6" path="res://assets/sounds/collect.wav" id="5_xcjqx"]
+[ext_resource type="AudioStream" uid="uid://dlm0p24owwt35" path="res://assets/sounds/cash.wav" id="6_xcjqx"]
+
+[node name="Score" type="CanvasLayer"]
+script = ExtResource("1_plgac")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Recycle" parent="Control" instance=ExtResource("1_8juob")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -32.0
+offset_right = -192.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+count = 50
+
+[node name="Cash" parent="Control" instance=ExtResource("2_bak1h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -32.0
+offset_right = 192.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("4_68bkv")
+metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
+
+[node name="Recycle" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("5_xcjqx")
+
+[node name="Cash" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("6_xcjqx")
