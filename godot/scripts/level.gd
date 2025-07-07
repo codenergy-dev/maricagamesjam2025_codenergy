@@ -1,6 +1,7 @@
 class_name Level
 extends Node2D
 
+@export var load_next_level: bool = true
 @export var player_sprite_frames: String = "default"
 @export var player_light_enabled: bool = false
 
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if camera_left >= global_position.x:
 		camera.limit_left = global_position.x
 		Game.queue_free_previous_level()
-	if is_instance_valid(next) and camera_right >= next.global_position.x and Game.auto_level_index == index:
+	if load_next_level and is_instance_valid(next) and camera_right >= next.global_position.x and Game.auto_level_index == index:
 		var game = get_tree().get_first_node_in_group("game")
 		var next_level = Game.next_level()
 		camera.limit_right = 10000000
