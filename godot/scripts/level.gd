@@ -47,17 +47,22 @@ func _physics_process(delta: float) -> void:
 		camera.limit_left = global_position.x
 		Game.queue_free_previous_level()
 	if load_next_level and is_instance_valid(next) and camera_right >= next.global_position.x and Game.auto_level_index == index:
-		var game = get_tree().get_first_node_in_group("game")
-		var next_level = Game.next_level()
-		camera.limit_right = 10000000
-		next_level.global_position = next.global_position
-		next.queue_free()
-		game.add_child(next_level)
+		load_next_level = false
+		_load_next_level()
 	
 	var player = get_tree().get_first_node_in_group("player")
 	if not player and not reset_level:
 		reset_level = true
 		TransitionManager.transition("reset_level")
+
+func _load_next_level():
+	var game = get_tree().get_first_node_in_group("game")
+	var camera: Camera2D = get_tree().get_first_node_in_group("camera")
+	var next_level = Game.next_level()
+	camera.limit_right = 10000000
+	next_level.global_position = next.global_position
+	next.queue_free()
+	game.add_child(next_level)
 
 func load_music():
 	var game = get_tree().get_first_node_in_group("game")
