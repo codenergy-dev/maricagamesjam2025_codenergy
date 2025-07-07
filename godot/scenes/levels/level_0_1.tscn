@@ -11,6 +11,7 @@
 
 [node name="Level 0 1" type="Node2D"]
 script = ExtResource("1_iow32")
+load_next_level = false
 metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 
 [node name="Background" parent="." instance=ExtResource("2_vbaru")]
