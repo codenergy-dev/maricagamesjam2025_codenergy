@@ -93,6 +93,8 @@ static func clear_level(level: Level):
 			continue
 		elif child is PlayerRecorder:
 			continue
+		elif child is SharedPreferences:
+			continue
 		elif child is Transition:
 			continue
 		elif child is TransitionManager:
