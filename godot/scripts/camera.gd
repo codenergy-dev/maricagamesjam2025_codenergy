@@ -30,6 +30,14 @@ extends Camera2D
 # --- VARIÁVEIS INTERNAS ---
 var current_lookahead_direction: float = 1.0
 
+func _ready() -> void:
+	var camera_center = get_screen_center_position()
+	var camera_transform = get_canvas_transform().affine_inverse()
+	var camera_left = camera_transform.origin.x
+	var camera_right = camera_center.x + (camera_center.x - camera_left)
+	var camera_width = camera_right - camera_left
+	global_position += Vector2(camera_width, 0)
+
 func _physics_process(delta: float) -> void:
 	# Se o alvo não foi definido no inspetor, tenta encontrar o jogador pelo grupo.
 	if not is_instance_valid(target_node):
