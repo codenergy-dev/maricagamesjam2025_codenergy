@@ -4,6 +4,8 @@ extends CanvasLayer
 @export var level_labels: Array[String] = []
 @export var level_images: Array[Texture2D] = []
 
+var selected = false
+
 @onready var level_image: TextureRect = $"Control/Level/TextureRect"
 @onready var level_label: Label = $"Control/Label"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -25,6 +27,9 @@ func _process(delta: float) -> void:
 			_on_left_pressed()
 
 func select():
+	if selected:
+		return
+	selected = true
 	audio.play("select")
 	await AudioFade.out(get_tree().root.get_node("AudioStreamPlayer"), 0.25)
 	TransitionManager.transition("level_select_" + str(current_level))
