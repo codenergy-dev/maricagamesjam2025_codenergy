@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ex2bnscbk8kg"]
+[gd_scene load_steps=29 format=3 uid="uid://ex2bnscbk8kg"]
 
 [ext_resource type="Script" uid="uid://dea0wajfas0un" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ctqe7py0maaqw" path="res://scripts/player_state_default.gd" id="2_tuyoq"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://3ijmbm3p1np1" path="res://scripts/input_button.gd" id="15_oprun"]
 [ext_resource type="PackedScene" uid="uid://bt6ydr8vbg7ay" path="res://scenes/light.tscn" id="19_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://bkkktyvadketi" path="res://scenes/heart.tscn" id="20_60mlk"]
+[ext_resource type="PackedScene" uid="uid://dx2y65luelwur" path="res://scenes/recycle.tscn" id="21_i4ail"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 7.8
@@ -309,6 +310,19 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 count = 3
+
+[node name="Recycle" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Recycle" parent="HUD/Recycle" instance=ExtResource("21_i4ail")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 88.0
 
 [connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
 [connection signal="body_entered" from="Knockback" to="." method="_on_knockback_body_entered"]
