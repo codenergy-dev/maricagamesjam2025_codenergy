@@ -1,0 +1,260 @@
+[gd_scene load_steps=34 format=3 uid="uid://vc2yhjl2bdbn"]
+
+[ext_resource type="Script" uid="uid://bwk4ei58u1ajc" path="res://scripts/truck.gd" id="1_0xl1e"]
+[ext_resource type="Texture2D" uid="uid://75dke68aafl1" path="res://assets/sprites/truck.png" id="1_8ivgs"]
+[ext_resource type="Texture2D" uid="uid://c0st63hj1dhik" path="res://assets/sprites/truck_firefighter.png" id="2_w5yki"]
+[ext_resource type="Texture2D" uid="uid://denrul516ex2e" path="res://assets/sprites/truck_firefighter_2.png" id="3_2lgic"]
+[ext_resource type="Texture2D" uid="uid://dnxy5buxot5sq" path="res://assets/sprites/truck_gas.png" id="4_hldv3"]
+[ext_resource type="Texture2D" uid="uid://bu65010uhhe1w" path="res://assets/sprites/truck_tow.png" id="5_bh7du"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5yki"]
+atlas = ExtResource("1_8ivgs")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lgic"]
+atlas = ExtResource("1_8ivgs")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hldv3"]
+atlas = ExtResource("1_8ivgs")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh7du"]
+atlas = ExtResource("1_8ivgs")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xl1e"]
+atlas = ExtResource("2_w5yki")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n0o7"]
+atlas = ExtResource("2_w5yki")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2ugu"]
+atlas = ExtResource("2_w5yki")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrudi"]
+atlas = ExtResource("2_w5yki")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2sht"]
+atlas = ExtResource("3_2lgic")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ddkj"]
+atlas = ExtResource("3_2lgic")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqesg"]
+atlas = ExtResource("3_2lgic")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjvdq"]
+atlas = ExtResource("3_2lgic")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnaug"]
+atlas = ExtResource("4_hldv3")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xro4f"]
+atlas = ExtResource("4_hldv3")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35b5j"]
+atlas = ExtResource("4_hldv3")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6fv8"]
+atlas = ExtResource("4_hldv3")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0h73"]
+atlas = ExtResource("5_bh7du")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtrmo"]
+atlas = ExtResource("5_bh7du")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pldcu"]
+atlas = ExtResource("5_bh7du")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oixy6"]
+atlas = ExtResource("5_bh7du")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xl1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5yki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lgic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hldv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh7du")
+}],
+"loop": true,
+"name": &"truck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xl1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n0o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2ugu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrudi")
+}],
+"loop": true,
+"name": &"truck_firefighter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2sht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ddkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqesg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjvdq")
+}],
+"loop": true,
+"name": &"truck_firefighter_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnaug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xro4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35b5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6fv8")
+}],
+"loop": true,
+"name": &"truck_gas",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0h73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtrmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pldcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oixy6")
+}],
+"loop": true,
+"name": &"truck_tow",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bh7du"]
+points = PackedVector2Array(-20, -2, -20, -5, -5, -5, 4, -1, 4, 2, -5, -2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh7du"]
+size = Vector2(90, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xl1e"]
+size = Vector2(35, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0o7"]
+size = Vector2(74, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrudi"]
+size = Vector2(44, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2ugu"]
+size = Vector2(47, 5)
+
+[node name="Truck" type="Node2D"]
+script = ExtResource("1_0xl1e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0xl1e")
+animation = &"truck_tow"
+speed_scale = 2.0
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2(-39, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = -1.5708
+shape = SubResource("ConvexPolygonShape2D_bh7du")
+one_way_collision = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 128
+gravity_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(1, 22)
+shape = SubResource("RectangleShape2D_bh7du")
+
+[node name="Cab" type="StaticBody2D" parent="."]
+position = Vector2(-23, -7)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cab"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_0xl1e")
+one_way_collision = true
+
+[node name="Cargo" type="StaticBody2D" parent="."]
+position = Vector2(20, -10)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cargo"]
+position = Vector2(-11, 0)
+shape = SubResource("RectangleShape2D_1n0o7")
+one_way_collision = true
+
+[node name="Gas" type="StaticBody2D" parent="."]
+position = Vector2(21, -8)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gas"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_nrudi")
+one_way_collision = true
+
+[node name="Tractor" type="StaticBody2D" parent="."]
+position = Vector2(19, 9)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tractor"]
+position = Vector2(3.5, -0.5)
+shape = SubResource("RectangleShape2D_m2ugu")
+one_way_collision = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.999998, 5)
+scale = Vector2(4.5, 1.9)
