@@ -38,12 +38,14 @@ func physics_process(delta: float):
 
 	# --- Ações ---
 	# Sua lógica de tiro continua funcionando perfeitamente aqui
-	if not player.laser.animation_player.is_playing():
+	if player.laser.is_ready_to_shoot:
 		if Input.is_action_just_pressed("ui_accept"):
-			player.animated_sprite.play("shoot")
 			player.laser.shoot()
-		else:
-			player.animated_sprite.play("fly")
+	
+	if player.laser.animation_player.is_playing():
+		player.animated_sprite.play("shoot")
+	else:
+		player.animated_sprite.play("fly")
 	
 	# --- Aplica o Movimento ---
 	# move_and_slide() pega a 'velocity' final e move o personagem, lidando com colisões.
