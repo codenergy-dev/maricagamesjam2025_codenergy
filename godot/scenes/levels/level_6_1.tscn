@@ -8,6 +8,7 @@
 
 [node name="Level 6 1" type="Node2D"]
 script = ExtResource("1_bi0wo")
+player_hud_recycle_enabled = false
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
