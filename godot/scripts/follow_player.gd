@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	# Gerencia as animações baseado na movimentação e no estado do pulo gravado.
 	if not is_on_floor():
 		animated_sprite.play("jump")
-	elif global_position.distance_to(target_position) > 2: # Se estiver se movendo para o alvo
+	elif global_position.distance_to(target_position) > 1: # Se estiver se movendo para o alvo
 		animated_sprite.play("walk")
 	else: # Se já chegou no alvo
 		animated_sprite.play("idle")
