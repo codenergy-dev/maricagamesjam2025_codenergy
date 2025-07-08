@@ -39,8 +39,20 @@ func _physics_process(delta: float) -> void:
 	if lives <= -1 or lives <= 0 and knockback.is_zero():
 		joystick._reset()
 		queue_free()
+	
 	state.physics_process(delta)
-	global_position.x = clamp(global_position.x, camera.limit_left + 12.5, camera.limit_right)
+	
+	var camera_center = camera.get_screen_center_position()
+	var camera_transform = camera.get_canvas_transform().affine_inverse()
+	
+	var camera_left = camera_transform.origin.x
+	var camera_right = camera_center.x + (camera_center.x - camera_left)
+	global_position.x = clamp(global_position.x, camera_left + 12.5, camera_right)
+	
+	var camera_top = camera_transform.origin.y
+	var camera_bottom = camera_center.y + (camera_center.y - camera_top)
+	global_position.y = clamp(global_position.y, camera_top + 12.5, camera_bottom - 12.5)
+	
 	PlayerRecorder.record_player_state(global_position, animated_sprite.flip_h, velocity.y)
 
 func _on_knockback_body_entered(body: Node2D) -> void:
