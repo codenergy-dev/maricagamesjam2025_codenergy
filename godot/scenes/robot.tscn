@@ -56,6 +56,7 @@ animations = [{
 [node name="Robot" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("5_xwnim")
+animation_enabled = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ru31")
