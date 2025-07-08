@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ex2bnscbk8kg"]
+[gd_scene load_steps=31 format=3 uid="uid://ex2bnscbk8kg"]
 
 [ext_resource type="Script" uid="uid://dea0wajfas0un" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ctqe7py0maaqw" path="res://scripts/player_state_default.gd" id="2_tuyoq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cn4odp2t3xvpf" path="res://scripts/flash.gd" id="4_dqkch"]
 [ext_resource type="SpriteFrames" uid="uid://dtewq8y7ea0xo" path="res://assets/animations/player_default.tres" id="4_fjrip"]
 [ext_resource type="SpriteFrames" uid="uid://b151qiutnbo2k" path="res://assets/animations/player_swim.tres" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://di74mge8xpumt" path="res://scripts/player_state_fly.gd" id="5_4ni07"]
 [ext_resource type="SpriteFrames" uid="uid://dtoffbu4gf871" path="res://assets/animations/player_fly.tres" id="7_4r5pv"]
 [ext_resource type="AudioStream" uid="uid://bymrr7d6xtjs1" path="res://assets/sounds/player_splash.wav" id="8_smehm"]
 [ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="8_ur7pv"]
@@ -21,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bt6ydr8vbg7ay" path="res://scenes/light.tscn" id="19_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://bkkktyvadketi" path="res://scenes/heart.tscn" id="20_60mlk"]
 [ext_resource type="PackedScene" uid="uid://dx2y65luelwur" path="res://scenes/recycle.tscn" id="21_i4ail"]
+[ext_resource type="PackedScene" uid="uid://c4vwxkpwpd7oq" path="res://scenes/laser.tscn" id="22_a38lo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 7.8
@@ -150,6 +152,7 @@ script = ExtResource("1_g2els")
 state_scripts = Dictionary[String, Script]({
 "default": ExtResource("2_tuyoq"),
 "dialogue": ExtResource("4_a8ls1"),
+"fly": ExtResource("5_4ni07"),
 "swim": ExtResource("3_fjrip")
 })
 sprite_frames = Dictionary[String, SpriteFrames]({
@@ -323,6 +326,15 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 88.0
 offset_bottom = 88.0
+
+[node name="Laser" parent="." instance=ExtResource("22_a38lo")]
+position = Vector2(0, -16)
+flip = true
+auto = false
+cooldown = 0.0
+charge_timeout = 0.0
+group = "player"
+collision_mask = 5
 
 [connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
 [connection signal="body_entered" from="Knockback" to="." method="_on_knockback_body_entered"]

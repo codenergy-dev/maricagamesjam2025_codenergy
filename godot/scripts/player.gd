@@ -21,6 +21,7 @@ var collected: int = 0
 @onready var controls = $Controls
 @onready var joystick: VirtualJoystick = $"Controls/Virtual Joystick"
 @onready var recycle: Recycle = $"HUD/Recycle/Recycle"
+@onready var laser: Laser = $Laser
 
 func _ready() -> void:
 	var platform = OS.get_name()
