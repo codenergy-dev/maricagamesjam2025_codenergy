@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=40 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
+[ext_resource type="Texture2D" uid="uid://bnxoixgjgxj8t" path="res://assets/sprites/drone_robot.png" id="3_mb3yg"]
 [ext_resource type="Texture2D" uid="uid://cvuigbmsy4yvx" path="res://assets/sprites/cat.png" id="3_p0o2y"]
 [ext_resource type="Script" uid="uid://bs3f83175nq7e" path="res://scripts/spawn.gd" id="3_v21g4"]
 [ext_resource type="Texture2D" uid="uid://c0cjcpaf6p3vs" path="res://assets/sprites/mumbuquinha.png" id="4_50vgb"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bjfwytg3mh677" path="res://scenes/alligator.tscn" id="21_hkp5j"]
 [ext_resource type="PackedScene" uid="uid://bitg8eyxay04a" path="res://scenes/crab.tscn" id="23_0l35s"]
 [ext_resource type="PackedScene" uid="uid://kw25uc3h6ru3" path="res://scenes/eagle.tscn" id="25_d06yf"]
+[ext_resource type="PackedScene" uid="uid://bwhww1bybyhr0" path="res://scenes/alien.tscn" id="27_ohile"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -37,6 +39,16 @@ texture_region_size = Vector2i(25, 32)
 texture = ExtResource("2_v21g4")
 0:0/0 = 0
 0:0/0/custom_data_0 = "bee"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohile"]
+texture = ExtResource("3_mb3yg")
+0:0/size_in_atlas = Vector2i(3, 2)
+0:0/0 = 0
+0:0/0/custom_data_0 = "alien"
+3:0/size_in_atlas = Vector2i(3, 2)
+3:0/0 = 0
+6:0/size_in_atlas = Vector2i(2, 2)
+6:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f5r3j"]
 texture = ExtResource("3_p0o2y")
@@ -158,11 +170,13 @@ sources/6 = SubResource("TileSetAtlasSource_4sv3x")
 sources/7 = SubResource("TileSetAtlasSource_0l35s")
 sources/8 = SubResource("TileSetAtlasSource_2tdm3")
 sources/9 = SubResource("TileSetAtlasSource_d06yf")
+sources/10 = SubResource("TileSetAtlasSource_ohile")
 
 [node name="Spawn" type="TileMapLayer"]
 tile_set = SubResource("TileSet_thjrq")
 script = ExtResource("3_v21g4")
 spawn_map = Dictionary[String, PackedScene]({
+"alien": ExtResource("27_ohile"),
 "alligator": ExtResource("21_hkp5j"),
 "arcade": ExtResource("19_n236h"),
 "bald": ExtResource("5_640p5"),
