@@ -76,7 +76,7 @@ func _load_next_level():
 	next.queue_free()
 	game.add_child(next_level)
 
-func load_music():
+func load_music(level = null):
 	var game = get_tree().get_first_node_in_group("game")
 	var has_audio_stream_player = game.has_node("AudioStreamPlayer")
 	if not has_audio_stream_player:
@@ -86,7 +86,7 @@ func load_music():
 	
 	var audio_stream_player: AudioStreamPlayer = game.get_node("AudioStreamPlayer")
 	if audio_stream_player:
-		var level = int(scene_file_path.split("/")[-1].split("_")[1])
+		level = level if level else int(scene_file_path.split("/")[-1].split("_")[1])
 		var music: Dictionary[int, String] = {
 			0: "res://assets/music/level_office.wav",
 			1: "res://assets/music/level_forest.wav",
@@ -94,6 +94,7 @@ func load_music():
 			3: "res://assets/music/level_sea.wav",
 			4: "res://assets/music/level_forest.wav",
 			5: "res://assets/music/level_sky.wav",
+			6: "res://assets/music/level_arcade.wav",
 		}
 		if not music.has(level):
 			return
