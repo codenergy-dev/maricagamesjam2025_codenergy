@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bj5268l2fysml"]
+
+[ext_resource type="Script" uid="uid://djqslthy7rod5" path="res://scripts/drone.gd" id="1_1r4ts"]
+[ext_resource type="Texture2D" uid="uid://bnxoixgjgxj8t" path="res://assets/sprites/drone_robot.png" id="1_knnud"]
+[ext_resource type="Texture2D" uid="uid://bvgqqjv11tdlh" path="res://assets/sprites/fire.png" id="2_1r4ts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
+atlas = ExtResource("1_knnud")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1p8w"]
+atlas = ExtResource("2_1r4ts")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6asb"]
+atlas = ExtResource("2_1r4ts")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxcwj"]
+atlas = ExtResource("2_1r4ts")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4gt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umx5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_k1p8w")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_f6asb")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_nxcwj")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"knockback",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knnud"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1r4ts"]
+
+[node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_1r4ts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t4gt0")
+autoplay = "default"
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_knnud")
+
+[node name="Knockback" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback"]
+shape = SubResource("CircleShape2D_1r4ts")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
