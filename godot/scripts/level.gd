@@ -7,6 +7,7 @@ extends Node2D
 @export var player_light_enabled: bool = false
 @export var player_hud_enabled: bool = true
 @export var player_hud_recycle_enabled: bool = true
+@export var camera_lock_vertical_movement: bool = false
 
 var index: int = 0
 var player: Player
@@ -22,12 +23,13 @@ func _ready():
 	if not game:
 		game = get_tree().root
 		game.add_to_group("game")
-	var camera: Camera2D = get_tree().get_first_node_in_group("camera")
+	var camera: Camera = get_tree().get_first_node_in_group("camera")
 	if not camera:
 		var camera_scene = load("res://scenes/camera.tscn")
 		camera = camera_scene.instantiate()
 		game.add_child(camera)
 	camera.limit_right = next.global_position.x
+	camera.lock_vertical_movement = camera_lock_vertical_movement
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	if player:
