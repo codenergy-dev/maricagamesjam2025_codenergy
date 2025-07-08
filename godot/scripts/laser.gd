@@ -24,7 +24,7 @@ extends Node2D # Mudei para Node2D, pois RigidBody2D não era necessário aqui. 
 var is_ready_to_shoot: bool = true
 
 func _ready() -> void:
-	add_to_group(group)
+	hitbox.add_to_group(group)
 	hitbox.collision_mask = 1 << (collision_mask - 1)
 	
 	beam.visible = false
