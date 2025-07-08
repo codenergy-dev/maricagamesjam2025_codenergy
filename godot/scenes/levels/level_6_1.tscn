@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=4 uid="uid://cj4op1r4rgnuy"]
+
+[ext_resource type="Script" uid="uid://cfk0kbgpmbkdd" path="res://scripts/level_6_1.gd" id="1_bi0wo"]
+[ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="2_2uqa3"]
+[ext_resource type="PackedScene" uid="uid://val1e6so2r8e" path="res://scenes/tile_map_layers/airport.tscn" id="2_gvcq6"]
+[ext_resource type="PackedScene" uid="uid://bcqh7ikttb63x" path="res://scenes/dialogue.tscn" id="4_wmrd2"]
+[ext_resource type="Resource" uid="uid://dsbh0eurxvgv4" path="res://dialogue/level_6.dialogue" id="5_1qpo7"]
+
+[node name="Level 6 1" type="Node2D"]
+script = ExtResource("1_bi0wo")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" parent="." instance=ExtResource("2_gvcq6")]
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAACAAIAAAAFAAAAAAACAAIAAAAGAAAAAAACAAIAAAAHAAAAAAACAAIAAAAIAAAAAAACAAIAAAAJAAAAAAACAAIAAAAKAAAAAAACAAIAAAALAAAAAAACAAIAAAAMAAAAAAACAAIAAAANAAAAAAACAAIAAAAOAAAAAAACAAIAAAAPAAAAAAACAAIAAAAQAAAAAAACAAIAAAARAAAAAAACAAIAAAASAAAAAAACAAIAAAATAAAAAAACAAIAAAAUAAAAAAACAAIAAAAVAAAAAAACAAIAAAAWAAAAAAACAAIAAAAXAAAAAAACAAIAAAAYAAAAAAACAAIAAAAZAAAAAAACAAIAAAAaAAAAAAACAAIAAAAbAAAAAAACAAIAAAAcAAAAAAACAAIAAAAdAAAAAAACAAIAAAAeAAAAAAACAAIAAAAfAAAAAAACAAIAAAAgAAAAAAACAAIAAAAhAAAAAAACAAIAAAAiAAAAAAACAAIAAAAjAAAAAAACAAIAAAAkAAAAAAACAAIAAAAlAAAAAAACAAIAAAAmAAAAAAACAAIAAAAnAAAAAAACAAIAAAAoAAAAAAACAAIAAAApAAAAAAACAAIAAAAqAAAAAAACAAIAAAArAAAAAAACAAIAAAAsAAAAAAACAAIAAAAtAAAAAAACAAIAAAAuAAAAAAACAAIAAAAvAAAAAAACAAIAAAAwAAAAAAACAAIAAAAxAAAAAAACAAIAAAAyAAAAAAACAAIAAAAzAAAAAAACAAIAAAA0AAAAAAACAAIAAAA=")
+
+[node name="Spawn" parent="." instance=ExtResource("2_2uqa3")]
+tile_map_data = PackedByteArray("AAADAP7/AwAAAAAAAAAaAP7/BgAAAAAAAAA=")
+
+[node name="Next" type="Marker2D" parent="."]
+position = Vector2(1280, 0)
+
+[node name="Dialogue" parent="." instance=ExtResource("4_wmrd2")]
+position = Vector2(592, -24)
+resource = ExtResource("5_1qpo7")
