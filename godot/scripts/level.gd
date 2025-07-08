@@ -85,6 +85,7 @@ func load_music():
 			0: "res://assets/music/level_office.wav",
 			1: "res://assets/music/level_forest.wav",
 			2: "res://assets/music/level_sea.wav",
+			5: "res://assets/music/level_sky.wav",
 		}
 		if not music.has(level):
 			return
