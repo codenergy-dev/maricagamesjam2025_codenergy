@@ -6,6 +6,7 @@ extends Node2D
 @export var player_sprite_frames: String = "default"
 @export var player_light_enabled: bool = false
 @export var player_hud_enabled: bool = true
+@export var player_hud_recycle_enabled: bool = true
 
 var index: int = 0
 var player: Player
@@ -33,6 +34,7 @@ func _ready():
 		player.change_state(player_state)
 		player.get_node("Light").visible = player_light_enabled
 		player.get_node("HUD").visible = player_hud_enabled
+		player.get_node("HUD/Recycle").visible = player_hud_recycle_enabled
 		player.set_sprite_frames(player_sprite_frames)
 	load_music()
 	DialogueManager.get_current_scene = func():
