@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwhww1bybyhr0"]
+
+[ext_resource type="Script" uid="uid://clmain10rv1uv" path="res://scripts/alien.gd" id="1_3vbw7"]
+[ext_resource type="Texture2D" uid="uid://bnxoixgjgxj8t" path="res://assets/sprites/drone_robot.png" id="1_h100l"]
+[ext_resource type="Texture2D" uid="uid://bvgqqjv11tdlh" path="res://assets/sprites/fire.png" id="2_u8rjw"]
+[ext_resource type="PackedScene" uid="uid://c4vwxkpwpd7oq" path="res://scenes/laser.tscn" id="4_np108"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8rjw"]
+atlas = ExtResource("1_h100l")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vbw7"]
+atlas = ExtResource("2_u8rjw")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np108"]
+atlas = ExtResource("2_u8rjw")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxp04"]
+atlas = ExtResource("2_u8rjw")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_decaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8rjw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_3vbw7")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_np108")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vxp04")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"knockback",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h100l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_np108"]
+
+[node name="Alien" type="CharacterBody2D"]
+script = ExtResource("1_3vbw7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_decaq")
+animation = &"knockback"
+autoplay = "default"
+
+[node name="Knockback" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback"]
+shape = SubResource("CircleShape2D_h100l")
+
+[node name="Laser" parent="." instance=ExtResource("4_np108")]
+position = Vector2(-16, 0)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_np108")
+
+[connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
