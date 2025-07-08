@@ -9,6 +9,7 @@ player_state = "fly"
 player_sprite_frames = "fly"
 player_hud_recycle_enabled = false
 camera_lock_vertical_movement = true
+camera_lookahead_offset = Vector2(100, 0)
 metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 
 [node name="Spawn" parent="." instance=ExtResource("2_2ahl1")]
