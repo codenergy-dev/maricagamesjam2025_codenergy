@@ -10,6 +10,8 @@ func activate_arcade():
 	arcade.laser.audio.add_child(audio_stream_player)
 	arcade.laser.audio.sounds["charge"] = audio_stream_player
 	arcade.laser.animation_player.connect("animation_started", on_arcade_animation_started)
+	
+	load_music(5)
 
 func on_arcade_animation_started(animation: String):
 	var arcade: Arcade = get_tree().get_first_node_in_group("game").find_child("Arcade", true, false)
