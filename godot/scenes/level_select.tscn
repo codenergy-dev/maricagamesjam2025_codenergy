@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1ty6qe6faatv"]
+[gd_scene load_steps=18 format=3 uid="uid://b1ty6qe6faatv"]
 
 [ext_resource type="Texture2D" uid="uid://b2j6aon7taaug" path="res://assets/images/level_select_0.png" id="1_3shnc"]
 [ext_resource type="Script" uid="uid://63ryelibgg3y" path="res://scripts/level_select.gd" id="1_p0wlc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dt62mh6ivbmaa" path="res://assets/images/level_select_4.png" id="6_htctk"]
 [ext_resource type="AudioStream" uid="uid://ch365rwwfr6p3" path="res://assets/sounds/select_2.wav" id="7_4nqmc"]
 [ext_resource type="Texture2D" uid="uid://bb7s3sugca2g8" path="res://assets/images/level_select_5.png" id="7_s6tf7"]
+[ext_resource type="Texture2D" uid="uid://cjpv228u0e5af" path="res://assets/images/level_select_6.png" id="8_htctk"]
 
 [sub_resource type="Animation" id="Animation_3shnc"]
 length = 0.001
@@ -354,8 +355,8 @@ _data = {
 
 [node name="LevelSelect" type="CanvasLayer"]
 script = ExtResource("1_p0wlc")
-level_labels = Array[String](["Galpão Tecnológico de Maricá", "Área de Proteção Ambiental de Maricá (APA)", "Praia da Estrela (Restinga de Maricá)", "Barra de Maricá", "Aeroporto Municipal de Maricá", "Espaço Aéreo de Maricá"])
-level_images = Array[Texture2D]([ExtResource("1_3shnc"), ExtResource("3_rif6e"), ExtResource("4_o2xx4"), ExtResource("4_chg43"), ExtResource("6_htctk"), ExtResource("7_s6tf7")])
+level_labels = Array[String](["Galpão Tecnológico de Maricá", "Área de Proteção Ambiental de Maricá (APA)", "Praia da Estrela (Restinga de Maricá)", "Barra de Maricá", "Aeroporto Municipal de Maricá", "Espaço Aéreo de Maricá", "Por um Futuro Melhor"])
+level_images = Array[Texture2D]([ExtResource("1_3shnc"), ExtResource("3_rif6e"), ExtResource("4_o2xx4"), ExtResource("4_chg43"), ExtResource("6_htctk"), ExtResource("7_s6tf7"), ExtResource("8_htctk")])
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
