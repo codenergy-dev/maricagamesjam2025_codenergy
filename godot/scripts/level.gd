@@ -8,6 +8,7 @@ extends Node2D
 @export var player_hud_enabled: bool = true
 @export var player_hud_recycle_enabled: bool = true
 @export var camera_lock_vertical_movement: bool = false
+@export var camera_lookahead_offset: Vector2 = Vector2(31.25, 0)
 
 var index: int = 0
 var player: Player
@@ -30,6 +31,7 @@ func _ready():
 		game.add_child(camera)
 	camera.limit_right = next.global_position.x
 	camera.lock_vertical_movement = camera_lock_vertical_movement
+	camera.lookahead_offset = camera_lookahead_offset
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	if player:
