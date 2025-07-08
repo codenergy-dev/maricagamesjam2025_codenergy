@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://qbymofyodlf1"]
+[gd_scene load_steps=3 format=4 uid="uid://qbymofyodlf1"]
 
 [ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_vyhwx"]
 [ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="2_2ahl1"]
@@ -11,7 +11,7 @@ player_hud_recycle_enabled = false
 metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 
 [node name="Spawn" parent="." instance=ExtResource("2_2ahl1")]
-tile_map_data = PackedByteArray(0, 0, 3, 0, 250, 255, 3, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAADAPr/AwAAAAAAAAAPAPf/CgAAAAAAAAAXAPz/CgAAAAAAAAAjAPf/CgAAAAAAAAAtAPz/CgAAAAAAAAATAPn/CgAGAAAAAAAaAPb/CgAGAAAAAAAeAPn/CgAGAAAAAAAjAPz/CgAGAAAAAAAoAPj/CgADAAAAAAAtAPX/CgADAAAAAAA3APj/CgADAAAAAAA8APv/CgADAAAAAAA=")
 
 [node name="Next" type="Marker2D" parent="."]
 position = Vector2(1e+07, 0)
