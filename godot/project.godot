@@ -56,7 +56,7 @@ pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/level_1.dialogue", "res://dialogue/level_0.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/level_1.dialogue", "res://dialogue/level_0.dialogue", "res://dialogue/level_6.dialogue")
 
 [layer_names]
 
