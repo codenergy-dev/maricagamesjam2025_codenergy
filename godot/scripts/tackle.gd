@@ -1,3 +1,4 @@
+class_name Tackle
 extends RigidBody2D
 
 @export_group("Tackle")
