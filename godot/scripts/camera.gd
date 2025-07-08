@@ -1,4 +1,5 @@
 # SmoothCamera2D.gd
+class_name Camera
 extends Camera2D
 
 # --- VARIÁVEIS DE CONFIGURAÇÃO (Ajuste no Inspetor) ---
@@ -10,6 +11,7 @@ extends Camera2D
 @export_group("Suavização (Follow)")
 @export var follow_smoothing_enabled: bool = true
 @export var follow_speed: float = 5.0 # Quão rápido a câmera segue. Valores maiores = mais rápido.
+@export var lock_vertical_movement: bool = false
 
 # Offset "Olhar à Frente"
 @export_group("Offset (Look Ahead)")
@@ -80,18 +82,23 @@ func _physics_process(delta: float) -> void:
 	# Atualiza a posição X do alvo final (o eixo X não tem zona morta neste exemplo)
 	final_target_position.x = ideal_target_pos.x
 	
-	# 3. LÓGICA DA ZONA MORTA VERTICAL CORRIGIDA
-	if vertical_deadzone_enabled:
-		var diff_y = ideal_target_pos.y - global_position.y
-		
-		# Se a câmera está fora da zona morta em relação à posição ideal...
-		if abs(diff_y) > vertical_deadzone_height / 2:
-			# ... então o alvo Y da câmera é a posição ideal, mas "puxada de volta"
-			# pela metade da altura da zona morta. Isso faz a câmera seguir o limite da caixa.
-			final_target_position.y = ideal_target_pos.y - (sign(diff_y) * vertical_deadzone_height / 2)
+	# 3. LÓGICA VERTICAL: TRAVADA OU COM ZONA MORTA
+	# [MODIFICADO] Verificamos primeiro se o movimento vertical está travado
+	if lock_vertical_movement:
+		# Se estiver travado, o alvo Y é simplesmente a posição Y atual da câmera. Ela não se moverá.
+		final_target_position.y = global_position.y
 	else:
-		# Se a zona morta estiver desativada, o alvo Y é simplesmente a posição ideal.
-		final_target_position.y = ideal_target_pos.y
+		if vertical_deadzone_enabled:
+			var diff_y = ideal_target_pos.y - global_position.y
+			
+			# Se a câmera está fora da zona morta em relação à posição ideal...
+			if abs(diff_y) > vertical_deadzone_height / 2:
+				# ... então o alvo Y da câmera é a posição ideal, mas "puxada de volta"
+				# pela metade da altura da zona morta. Isso faz a câmera seguir o limite da caixa.
+				final_target_position.y = ideal_target_pos.y - (sign(diff_y) * vertical_deadzone_height / 2)
+		else:
+			# Se a zona morta estiver desativada, o alvo Y é simplesmente a posição ideal.
+			final_target_position.y = ideal_target_pos.y
 
 
 	# --- SUAVIZAÇÃO (LERP) ---
