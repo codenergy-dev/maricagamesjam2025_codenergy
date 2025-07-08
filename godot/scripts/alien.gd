@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox: Area2D = $Hitbox
 
 func _on_knockback_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
+		hitbox.queue_free()
 		animated_sprite.play("knockback")
 		await animated_sprite.animation_finished
 		queue_free()
