@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 @export var load_next_level: bool = true
+@export var player_state: String = "default"
 @export var player_sprite_frames: String = "default"
 @export var player_light_enabled: bool = false
 @export var player_hud_enabled: bool = true
@@ -29,6 +30,7 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	if player:
+		player.change_state(player_state)
 		player.get_node("Light").visible = player_light_enabled
 		player.get_node("HUD").visible = player_hud_enabled
 		player.set_sprite_frames(player_sprite_frames)
