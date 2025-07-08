@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cijxpwaixbfb2" path="res://scenes/tile_map_layers/sea.tscn" id="2_enepk"]
 [ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="3_mi37v"]
 
-[node name="Level 2 1" type="Node2D"]
+[node name="Level 3 1" type="Node2D"]
 script = ExtResource("1_mi37v")
 player_sprite_frames = "swim"
 
