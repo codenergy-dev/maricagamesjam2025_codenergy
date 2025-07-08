@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://tx2nxbmcjb2a"]
+[gd_scene load_steps=11 format=3 uid="uid://tx2nxbmcjb2a"]
 
 [ext_resource type="Script" uid="uid://dagw4rj3gqnqf" path="res://scripts/arcade.gd" id="1_24fbm"]
 [ext_resource type="Texture2D" uid="uid://eco2j1b5kvpp" path="res://assets/sprites/arcade.png" id="1_pig0t"]
 [ext_resource type="PackedScene" uid="uid://bt6ydr8vbg7ay" path="res://scenes/light.tscn" id="3_24fbm"]
+[ext_resource type="PackedScene" uid="uid://c4vwxkpwpd7oq" path="res://scenes/laser.tscn" id="4_r0kxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_me10n"]
 atlas = ExtResource("1_pig0t")
@@ -102,3 +103,6 @@ shape = SubResource("RectangleShape2D_24fbm")
 libraries = {
 &"": SubResource("AnimationLibrary_wer3u")
 }
+
+[node name="Laser" parent="." instance=ExtResource("4_r0kxb")]
+auto = false
