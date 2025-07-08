@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=42 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://kw25uc3h6ru3" path="res://scenes/eagle.tscn" id="25_d06yf"]
 [ext_resource type="PackedScene" uid="uid://bwhww1bybyhr0" path="res://scenes/alien.tscn" id="27_ohile"]
 [ext_resource type="PackedScene" uid="uid://cjne8jegh4aoo" path="res://scenes/robot.tscn" id="28_rgusn"]
+[ext_resource type="PackedScene" uid="uid://bj5268l2fysml" path="res://scenes/drone.tscn" id="29_8v2c6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -48,6 +49,7 @@ texture = ExtResource("3_mb3yg")
 0:0/0/custom_data_0 = "alien"
 3:0/size_in_atlas = Vector2i(3, 2)
 3:0/0 = 0
+3:0/0/custom_data_0 = "drone"
 6:0/size_in_atlas = Vector2i(2, 2)
 6:0/0 = 0
 6:0/0/custom_data_0 = "robot"
@@ -187,6 +189,7 @@ spawn_map = Dictionary[String, PackedScene]({
 "checkpoint": ExtResource("11_g6o4p"),
 "collectable": ExtResource("17_ujrjd"),
 "crab": ExtResource("23_0l35s"),
+"drone": ExtResource("29_8v2c6"),
 "eagle": ExtResource("25_d06yf"),
 "fish": ExtResource("13_a3iv7"),
 "goal": ExtResource("10_3eo6f"),
