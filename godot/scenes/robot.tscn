@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjne8jegh4aoo"]
+
+[ext_resource type="Texture2D" uid="uid://bnxoixgjgxj8t" path="res://assets/sprites/drone_robot.png" id="2_rcrfe"]
+[ext_resource type="Texture2D" uid="uid://bvgqqjv11tdlh" path="res://assets/sprites/fire.png" id="3_xwnim"]
+[ext_resource type="Script" uid="uid://dt8ivpbkb3xqs" path="res://scripts/audio_manager.gd" id="4_rcrfe"]
+[ext_resource type="Script" uid="uid://cfqm8l8lk34ob" path="res://scripts/robot.gd" id="5_xwnim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5kvo"]
+atlas = ExtResource("2_rcrfe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e20l1"]
+atlas = ExtResource("3_xwnim")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujkns"]
+atlas = ExtResource("3_xwnim")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sycts"]
+atlas = ExtResource("3_xwnim")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ru31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5kvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_e20l1")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ujkns")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_sycts")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"knockback",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xwnim"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcrfe"]
+
+[node name="Robot" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("5_xwnim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4ru31")
+autoplay = "default"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-150, 0)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_xwnim")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("4_rcrfe")
+metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
+
+[node name="Knockback" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback"]
+shape = SubResource("CircleShape2D_rcrfe")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="Knockback" to="." method="_on_knockback_area_entered"]
