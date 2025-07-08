@@ -63,7 +63,7 @@ func shoot():
 	is_ready_to_shoot = false
 	
 	# --- LÓGICA DE ANIMAÇÃO (sua lógica original) ---
-	animated_sprite.play("charge")
+	animation_player.play("charge")
 	await get_tree().create_timer(charge_timeout).timeout
 	
 	animation_player.play("beam")
