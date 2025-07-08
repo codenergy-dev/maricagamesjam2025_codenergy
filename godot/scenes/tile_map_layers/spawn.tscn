@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://i17ubpshnwb3"]
+[gd_scene load_steps=41 format=3 uid="uid://i17ubpshnwb3"]
 
 [ext_resource type="Texture2D" uid="uid://cm8v3xi7vwn8f" path="res://assets/sprites/bald.png" id="1_0oeay"]
 [ext_resource type="Texture2D" uid="uid://bxshwik8ou22v" path="res://assets/sprites/bee.png" id="2_v21g4"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bitg8eyxay04a" path="res://scenes/crab.tscn" id="23_0l35s"]
 [ext_resource type="PackedScene" uid="uid://kw25uc3h6ru3" path="res://scenes/eagle.tscn" id="25_d06yf"]
 [ext_resource type="PackedScene" uid="uid://bwhww1bybyhr0" path="res://scenes/alien.tscn" id="27_ohile"]
+[ext_resource type="PackedScene" uid="uid://cjne8jegh4aoo" path="res://scenes/robot.tscn" id="28_rgusn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suvqx"]
 texture = ExtResource("1_0oeay")
@@ -49,6 +50,7 @@ texture = ExtResource("3_mb3yg")
 3:0/0 = 0
 6:0/size_in_atlas = Vector2i(2, 2)
 6:0/0 = 0
+6:0/0/custom_data_0 = "robot"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f5r3j"]
 texture = ExtResource("3_p0o2y")
@@ -190,5 +192,6 @@ spawn_map = Dictionary[String, PackedScene]({
 "goal": ExtResource("10_3eo6f"),
 "jellyfish": ExtResource("15_sgfwq"),
 "player": ExtResource("9_lpbsx"),
+"robot": ExtResource("28_rgusn"),
 "swordfish": ExtResource("14_t1yv7")
 })
