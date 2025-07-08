@@ -1,0 +1,8 @@
+~ start
+if SharedPreferences.get_int("player_cash") < 100
+	Flipão: Olá, Mumbuquinha, parece que você ainda não está pronto para voltar para o seu mundo. Você precisa de 1000 moedas para ir embora.
+	do TransitionManager.transition("level_select")
+else:
+	Flipão: Você vai precisar passar por mim primeiro antes de voltar para casa... [wave amp=25 freq=5]HAHAHA[/wave]
+	do activate_arcade()
+=> END
