@@ -39,12 +39,18 @@ func _ready() -> void:
 	
 	# --- LÓGICA DO AUTO COM TIMER ---
 	if auto:
-		# Conecta o sinal 'timeout' do timer à nossa função de tiro
-		timer.timeout.connect(shoot)
-		# O tempo de espera do timer será o nosso cooldown
-		timer.wait_time = cooldown
-		# Inicia o timer
-		timer.start()
+		enable_auto_shoot()
+
+func enable_auto_shoot():
+	# Conecta o sinal 'timeout' do timer à nossa função de tiro
+	timer.timeout.connect(shoot)
+	# O tempo de espera do timer será o nosso cooldown
+	timer.wait_time = cooldown
+	# Inicia o timer
+	timer.start()
+
+func disable_auto_shoot():
+	timer.stop()
 
 # [MODIFICADO] A função 'shoot' agora é assíncrona e lida com o cooldown.
 func shoot():
