@@ -1,3 +1,32 @@
+## Introdução
+
+##### Nome do jogo
+Aventuras de Mumbuquinha 2.0
+
+##### Integrantes da equipe
+- Programação e gráficos: Lucas Lannes Roland
+- Roteiro: Nataly Roland Lannes
+- Trilha sonora: Kauan Jorge Jordão de Matos da Conceição
+
+##### Descrição breve do jogo
+Em meio a uma geração tecnológica, ainda é necessário prestar atenção ao mundo real para fazermos a diferença.
+
+Mumbuquinha, assim como toda criança, está aprendendo a cuidar da natureza e perceber que ele tem um papel importante na preservação e cuidado com o meio ambiente.
+
+As aventuras de Mumbuquinha 2.0 estão ainda mais radicais! Passando pela biodiversidade de Maricá, Mumbuquinha ajuda no cuidado com a cidade e se torna até um herói, mostrando a todos que é possível um futuro melhor.
+
+##### Instruções de instalação e execução
+[Acesse a página de releases](https://github.com/codenergy-dev/maricagamesjam2025_codenergy/releases) (lançamentos) do repositório para baixar a versão mais recente de acordo com o sistema operacional.
+
+- Android: baixar e instalar `.apk`.
+- Windows: baixar `.zip`, descompactá-lo e executar `.exe`.
+
+> ⚠️ O arquivo `.pck`, que está incluído no `.zip`, deve estar sempre ao lado do `.exe`.
+
+##### Requisitos técnicos (sistema, dependências etc.)
+- Android: Android 5.0 Lollipop (API 21) ou mais recente.
+- Windows: Windows 7 ou mais recente.
+
 ## Assets
 
 ### Audio
