@@ -293,3 +293,7 @@ metadata/_custom_type_script = "uid://dt8ivpbkb3xqs"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("4_q8rul")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

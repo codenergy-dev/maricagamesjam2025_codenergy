@@ -19,6 +19,8 @@ extends Node2D # Mudei para Node2D, pois RigidBody2D não era necessário aqui. 
 @onready var collision_shape: CollisionShape2D = $Hitbox/CollisionShape2D
 @onready var beam: AnimatedSprite2D = $Beam
 @onready var audio: AudioManager = $AudioManager
+@onready var timer: Timer = $Timer
+@onready var visible_on_screen: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 # [NOVO] Variável de estado para controlar o cooldown.
 var is_ready_to_shoot: bool = true
@@ -35,28 +37,23 @@ func _ready() -> void:
 	if flip:
 		scale.x *= -1
 	
-	# --- LÓGICA DO AUTO ---
-	# Se 'auto' estiver marcado, inicia o loop de disparo automático.
+	# --- LÓGICA DO AUTO COM TIMER ---
 	if auto:
-		# Não precisamos de um Timer separado, podemos usar um loop com await.
-		auto_shoot_loop()
-
-# [NOVO] Loop assíncrono para o disparo automático.
-func auto_shoot_loop():
-	# Este loop continuará para sempre enquanto o nó existir.
-	while true:
-		# Chama nossa função de tiro e espera ela terminar (incluindo o cooldown).
-		await shoot()
-		
-		# Verificação extra para parar o loop se a opção 'auto' for desativada em tempo de execução
-		if not auto:
-			break
+		# Conecta o sinal 'timeout' do timer à nossa função de tiro
+		timer.timeout.connect(shoot)
+		# O tempo de espera do timer será o nosso cooldown
+		timer.wait_time = cooldown
+		# Inicia o timer
+		timer.start()
 
 # [MODIFICADO] A função 'shoot' agora é assíncrona e lida com o cooldown.
 func shoot():
 	# --- LÓGICA DO COOLDOWN ---
 	# Se o laser não estiver pronto, a função para aqui.
 	if not is_ready_to_shoot:
+		return
+	
+	if not visible_on_screen.is_on_screen():
 		return
 	
 	# 1. Trava o laser para impedir disparos consecutivos.
