@@ -12,6 +12,9 @@ func activate_arcade():
 	arcade.laser.animation_player.connect("animation_started", on_arcade_animation_started)
 
 func on_arcade_animation_started(animation: String):
+	var arcade: Arcade = get_tree().get_first_node_in_group("game").find_child("Arcade", true, false)
 	if animation == "charge":
-		var arcade: Arcade = get_tree().get_first_node_in_group("game").find_child("Arcade", true, false)
+		arcade.laser.animation_player.speed_scale = 1.0
 		arcade.laser.audio.play("charge")
+	elif animation == "beam":
+		arcade.laser.animation_player.speed_scale = 2.0
