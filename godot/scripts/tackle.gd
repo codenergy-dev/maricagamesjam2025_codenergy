@@ -8,6 +8,7 @@ extends RigidBody2D
 @export var max_rotation_degrees: float = 30.0
 @export var max_tackle_count = 1
 @export var linear_velocity_threshold = 0.05
+@export var animation_enabled = true
 
 # [NOVO] Variáveis para configurar o recuo
 @export_group("Tackle Recoil")
@@ -68,9 +69,9 @@ func detect_target():
 			timer.start()
 			audio.play("charge")
 			
-			if is_instance_valid(animated_sprite):
+			if animation_enabled and is_instance_valid(animated_sprite):
 				animated_sprite.play("tackle")
-	elif is_instance_valid(animated_sprite):
+	elif animation_enabled and is_instance_valid(animated_sprite):
 		animated_sprite.play("default")
 
 # [NOVO] Função que cria a animação de "aviso"
