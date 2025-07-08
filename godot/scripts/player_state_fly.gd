@@ -2,7 +2,7 @@
 extends PlayerState
 
 @export_group("Velocidades")
-@export var move_speed_x: float = 200.0  # Renomeado para clareza
+@export var move_speed_x: float = 100.0  # Renomeado para clareza
 @export var move_speed_y: float = 300.0  # Renomeado para clareza
 
 @export_group("Suavização")
