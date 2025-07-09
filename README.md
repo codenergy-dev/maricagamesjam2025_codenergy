@@ -27,6 +27,19 @@ As aventuras de Mumbuquinha 2.0 estão ainda mais radicais! Passando pela biodiv
 - Android: Android 5.0 Lollipop (API 21) ou mais recente.
 - Windows: Windows 7 ou mais recente.
 
+## Referências
+
+- [Maricá enfrenta recorde de queimadas e Fórum Popular propõe criação de Brigada Municipal de Incêndios - Maricá Info](https://share.google/fwi0GbkauhknDgQTi)
+
+- [Maricá: Mar de lixo na orla de Ponta Negra](https://share.google/tc9I7Sxm00svTPt1P)
+
+- [Prefeitura de Maricá vai incluir camarão na merenda escolar - Prefeitura de Maricá](https://share.google/hcApIRNNco3sYqBnG)
+
+- [Soltar balões representa risco para segurança aeroportuária - Prefeitura de Maricá](https://share.google/8jEoT3dyGQ4oJGzp0)
+
+- [A disciplina Educação Ambiental na Rede Municipal De Maricá (RJ): narrativas de uma docente](https://share.google/8Cw2rp97DbOZUdBpi)
+
+
 ## Assets
 
 ### Audio
