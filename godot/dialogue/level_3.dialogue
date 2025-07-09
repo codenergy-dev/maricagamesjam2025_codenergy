@@ -1,0 +1,15 @@
+~ start
+Mumbuquinha: Aqui no mar o fogo não vai me pegar...
+=> END
+
+~ trash
+Mumbuquinha: Essa não, até aqui tem lixo! Se eu não ajudar, os peixes irão morrer...
+=> END
+
+~ danger
+Mumbuquinha: Esse peixe espada e a água viva são perigosos...
+=> END
+
+~ shrimp
+Mumbuquinha: Hmmm, vou levar esses camarões para a minha escola! Meus amigos vão amar!
+=> END

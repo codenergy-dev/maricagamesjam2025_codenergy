@@ -1,3 +1,23 @@
+~ fire
+Mumbuquinha: O que está acontecendo? Ah não, está tudo pegando fogo!
+=> END
+
 ~ bee
-Mumbuquinha: Que abelha nervosa! Jogaram fogo na colmeia.
+Mumbuquinha: Essa abelha está muito nervosa, devem ter queimado a colmeia dela.
+=> END
+
+~ cat
+Mumbuquinha: Eu preciso salvar esse gatinho, antes que seja tarde demais.
+=> END
+
+~ trash
+Mumbuquinha: Tem muito lixo por aqui, quase não dá pra andar... Eu preciso fazer alguma coisa!
+=> END
+
+~ bald
+Mumbuquinha: Olha só esse homem, jogando lixo em tudo! Até em mim! Preciso sair daqui.
+=> END
+
+~ firefighter
+Mumbuquinha: Mumbuquinha, precisamos da sua ajuda! Só existe um caminhão de bombeiro na cidade, não conseguimos dar conta de tudo!
 => END

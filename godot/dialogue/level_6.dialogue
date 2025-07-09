@@ -1,8 +1,13 @@
 ~ start
+Mumbuquinha: Finalmente vou descansar um pouco... Ah não!
+=> END
+
+~ arcade
 if SharedPreferences.get_int("player_cash") < 100
-	Flipão: Olá, Mumbuquinha, parece que você ainda não está pronto para voltar para o seu mundo. Você precisa de 1000 moedas para ir embora.
+	Flipão: Mumbuquinha... você não conseguiu pegar lixo suficiente e acha que vai conseguir me derrotar? [wave amp=25 freq=5]HAHAHAHAHA[/wave]
 	do TransitionManager.transition("level_select")
 else:
-	Flipão: Você vai precisar passar por mim primeiro antes de voltar para casa... [wave amp=25 freq=5]HAHAHA[/wave]
+	Flipão: Chegou a sua hora, Mumbuquinha... vai fazer a sua parte ou vai ficar preso no mundo virtual pra sempre? [wave amp=25 freq=5]HAHAHAHA[/wave]
+	Mumbuquinha: Você não vai vencer mais uma vez, Flipão! Eu faço parte de um futuro melhor!
 	do activate_arcade()
 => END
