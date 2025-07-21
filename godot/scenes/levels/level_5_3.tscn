@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=4 uid="uid://dl8fejptmu0ni"]
+
+[ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_wu8lj"]
+[ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="2_j6meq"]
+
+[node name="Level 5 1" type="Node2D"]
+script = ExtResource("1_wu8lj")
+player_state = "fly"
+player_sprite_frames = "fly"
+player_hud_recycle_enabled = false
+camera_lock_vertical_movement = true
+camera_lookahead_offset = Vector2(100, 0)
+metadata/_custom_type_script = "uid://cabvn4kxfbwut"
+
+[node name="Spawn" parent="." instance=ExtResource("2_j6meq")]
+tile_map_data = PackedByteArray("AAAFAP3/AwAAAAAAAAA8AP3/AwADAAAAAAALAP7/CgAAAAAAAAAYAPz/CgAAAAAAAAAbAP7/CgADAAAAAAAjAPv/CgADAAAAAAAoAP7/CgAGAAAAAAASAPz/CgAGAAAAAAAtAP3/CgADAAAAAAAhAP//CgAAAAAAAAA2AP3/CgAGAAAAAAAzAPz/CgAGAAAAAAAwAP//CgADAAAAAAAtAPv/CgAAAAAAAAAQAAAADQABAAAAAAAeAP3/DQABAAAAAAAqAPv/DQABAAAAAAA3AP7/DQABAAAAAAAsAAAADgAAAAAAAAAEAP//EAAAAAAAAAAMAPv/EAAAAAAAAAATAAAAEAAAAAAAAAAbAPz/EAAAAAAAAAAjAP3/EAAAAAAAAAAgAAEAEAAAAAAAAAAuAP3/EAAAAAAAAAAzAAAAEAAAAAAAAAA4APv/EAAAAAAAAAA=")
+
+[node name="Next" type="Marker2D" parent="."]
+position = Vector2(1600, 0)

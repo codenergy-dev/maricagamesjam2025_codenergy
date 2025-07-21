@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://qbymofyodlf1"]
+[gd_scene load_steps=5 format=4 uid="uid://qbymofyodlf1"]
 
 [ext_resource type="Script" uid="uid://cabvn4kxfbwut" path="res://scripts/level.gd" id="1_vyhwx"]
 [ext_resource type="PackedScene" uid="uid://i17ubpshnwb3" path="res://scenes/tile_map_layers/spawn.tscn" id="2_2ahl1"]
+[ext_resource type="PackedScene" uid="uid://bcqh7ikttb63x" path="res://scenes/dialogue.tscn" id="3_41iwy"]
+[ext_resource type="Resource" uid="uid://btmnyjhea8rpi" path="res://dialogue/level_5.dialogue" id="4_d71ex"]
 
 [node name="Level 5 1" type="Node2D"]
 script = ExtResource("1_vyhwx")
@@ -13,7 +15,11 @@ camera_lookahead_offset = Vector2(100, 0)
 metadata/_custom_type_script = "uid://cabvn4kxfbwut"
 
 [node name="Spawn" parent="." instance=ExtResource("2_2ahl1")]
-tile_map_data = PackedByteArray("AAADAP3/AwAAAAAAAAAXAP//CgAAAAAAAAAjAP//CgAGAAAAAAAtAP//CgAAAAAAAAA8AP7/CgADAAAAAAAPAPz/CgAAAAAAAAATAP7/CgAGAAAAAAAaAPv/CgAGAAAAAAAeAP7/CgAGAAAAAAAjAPz/CgAAAAAAAAAoAP3/CgADAAAAAAAtAPr/CgADAAAAAAA3AP3/CgADAAAAAAA/AP3/AwADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAP3/AwAAAAAAAAAaAPz/CgAAAAAAAAAeAP7/CgAGAAAAAAAiAP//CgAAAAAAAAAlAPv/CgAGAAAAAAApAP7/CgAGAAAAAAAuAPz/CgAAAAAAAAAuAP//CgAGAAAAAAAzAP3/CgADAAAAAAA4APr/CgADAAAAAAA4AP//CgAAAAAAAAA8AP3/AwADAAAAAAAUAP7/DQABAAAAAAAgAPn/DQABAAAAAAAqAPz/DQABAAAAAAA2APv/DQABAAAAAAAXAPn/DgAAAAAAAAAHAP7/EAAAAAAAAAAOAPj/EAAAAAAAAAAXAPz/EAAAAAAAAAAbAP//EAAAAAAAAAApAPn/EAAAAAAAAAAgAPz/EAAAAAAAAAAyAPn/EAAAAAAAAAAsAP//EAAAAAAAAAA8APn/EAAAAAAAAAA3AP3/EAAAAAAAAAA=")
 
 [node name="Next" type="Marker2D" parent="."]
 position = Vector2(1600, 0)
+
+[node name="Dialogue" parent="." instance=ExtResource("3_41iwy")]
+position = Vector2(192, -64)
+resource = ExtResource("4_d71ex")

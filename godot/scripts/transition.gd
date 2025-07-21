@@ -12,6 +12,8 @@ func _ready() -> void:
 
 func on_transition():
 	if type == "title":
+		Game.clear_level(Game.current_level)
+		Game.reset_game()
 		get_tree().change_scene_to_file("res://scenes/title.tscn")
 	elif type == "start_game":
 		get_tree().change_scene_to_file("res://scenes/level_select.tscn")

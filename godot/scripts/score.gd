@@ -7,7 +7,7 @@ extends Node
 
 func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
-	var recycle_step = 2
+	var recycle_step = 4
 	var recycle_count_max = SharedPreferences.get_int("current_player_recycle")
 	while recycle.count < recycle_count_max:
 		recycle.count = min(recycle.count + recycle_step, recycle_count_max)

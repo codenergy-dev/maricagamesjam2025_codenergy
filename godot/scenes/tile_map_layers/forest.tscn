@@ -14,11 +14,13 @@ texture_region_size = Vector2i(24, 24)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 3.96481, -12, 3.86589)
 1:1/0/physics_layer_0/polygon_0/one_way = true
 0:1/0 = 0
+0:1/0/z_index = 1
 0:2/0 = 0
 1:2/0 = 0
 2:0/size_in_atlas = Vector2i(3, 4)
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 36)
+2:0/0/z_index = -1
 
 [sub_resource type="TileSet" id="TileSet_fdopt"]
 tile_size = Vector2i(24, 24)
